@@ -52,7 +52,42 @@ def genY(intercept, slope, start, end):
         y.append(intercept + slope*i)
     return y
 
-market = open('channel_down.txt', 'r')
+def matchIndexes(group1, group2):
+    matched = []
+    for item1 in group1:
+        for item2 in group2:
+            if item2.index == item1.index:
+                matched.append(item2)
+    return matched
+
+def findMatches(tempPrice, maxNumIndex, maxIndex, neg, cutoff, index):
+    '''tempPrice == list of prices
+    maxNumIndex is the number of indexes matched
+    neg == True if support
+    cutoff = multiplier for neg diff cutoff'''
+    multiplier = 1
+    if neg == True:
+        multiplier = -1
+
+    curInter, curSlope = leastSquare(tempPrice)
+    Diff = []
+    curMaxDiff = 0.0
+
+    for curPrice in tempPrice:
+        currDiff = curPrice.price - (curInter + curSlope*curPrice.index)
+        if currDiff < 0 and currDiff*multiplier > curMaxDiff:
+            curMaxDiff = currDiff*multiplier
+        Diff.append(Price(currDiff, curPrice.index))
+
+    cutDiff = [g for g in Diff if g.price*multiplier >= cutoff*curMaxDiff]
+    if(len(cutDiff) > maxNumIndex):
+        bigDiff = cutDiff
+        maxNumIndex = len(cutDiff)
+        maxIndex = index
+
+    return bigDiff, maxNumIndex, maxIndex
+
+market = open('ibm.txt', 'r')
 
 i=0
 for line in market:
@@ -91,7 +126,8 @@ for i in range(0, len(prices)-1):
     #find line with highest number of matched peaks
     try:
         tempResPrice = [x for x in prices if x.index > i]
-        resInter, resSlope = leastSquare(tempResPrice)
+        bigPosDiff, maxNumResIndex, maxResIndex = findMatches(tempResPrice, maxNumResIndex, maxResIndex, False, 0.8, i)
+        '''resInter, resSlope = leastSquare(tempResPrice)
         resDiff = []
         maxDiff = 0.0
 
@@ -105,7 +141,7 @@ for i in range(0, len(prices)-1):
         if(len(posDiff) > maxNumResIndex):
             bigPosDiff = posDiff
             maxNumResIndex = len(posDiff)
-            maxResIndex = i
+            maxResIndex = i'''
     except:
         print "error: " + str(i)
 
@@ -130,18 +166,12 @@ for i in range(0, len(prices)-1):
     except:
         print "error: " + str(i)
 
-tempPeaks = []
-tempTrough = []
-for dif in bigPosDiff:
-    for price in prices:
-        if price.index == dif.index:
-            tempPeaks.append(price)
-for dif in bigNegDiff:
-    for price in prices:
-        if price.index == dif.index:
-            tempTrough.append(price)
+tempPeaks = matchIndexes(bigPosDiff, prices)
+tempTrough = matchIndexes(bigNegDiff, prices)
+
 print len(tempPeaks)
 print len(tempTrough)
+
 resInter, resSlope = leastSquare(tempPeaks)
 supInter, supSlope = leastSquare(tempTrough)
 
@@ -161,26 +191,4 @@ plt.plot(range(0,len(prices)), priceY, 'r',
          range(maxResIndex, len(prices)-1), resY, 'g',
          range(maxSupIndex, len(prices)-1), supY, 'b')
 plt.show()
-#print "\nPrinting peaks: max peak = " + str(maxPeak)
-#for peak in peaks:
-#    print peak
 
-#print "\nPrinting troughs: min Trough = " + str(minTrough)
-#for trough in troughs:
-#    print trough
-
-#peaks = [x for x in peaks if x.price >= maxPeak*0.9]
-#troughs = [x for x in troughs if x.price <= minTrough/0.9]
-
-#print "\nPrinting near peaks: max peak = " + str(maxPeak)
-#for peak in peaks:
-#    print peak
-
-#print "\nPrinting near troughs: min Trough = " + str(minTrough)
-#for trough in troughs:
-#    print trough
-
-if len(peaks) > 2 and len(troughs) > 2:
-    print "may be sideways"
-else:
-    print "probaly not sideways"
