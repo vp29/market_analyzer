@@ -43,7 +43,7 @@ def leastSquare(data):
     b = (num*xy - x*y)/(num*xx-x*x)
     a = (y - b*x)/num
 
-    print str(a) + "+" + str(b) + "x"
+    #print str(a) + "+" + str(b) + "x"
     return a, b
 
 def genY(intercept, slope, start, end):
@@ -91,15 +91,12 @@ def findMatches(tempPrice, maxNumIndex, maxIndex, neg, cutoff, index):
 
     return bigDiff, maxNumIndex, maxIndex
 
-market = open('ibm.txt', 'r')
+market = open('sideways.txt', 'r')
 
 i=0
 for line in market:
     prices.append(Price(float(line), i))
     i = i+1
-
-maxPeak = 0.0
-minTrough = float('inf')
 
 resDiff = []
 supDiff = []
@@ -128,20 +125,20 @@ for i in range(0, len(prices)-1):
         tempResPrice = [x for x in prices if x.index > i]
         bigPosDiff, maxNumResIndex, maxResIndex = findMatches(tempResPrice, maxNumResIndex, maxResIndex, False, 0.8, i)
     except:
-        print "error: " + str(i)
+        None
 
     #next do support line
     try:
         tempSupPrice = [x for x in prices if x.index > i]
         bigNegDiff, maxNumSupIndex, maxSupIndex = findMatches(tempSupPrice, maxNumSupIndex, maxSupIndex, True, 0.6, i)
     except:
-        print "error: " + str(i)
+        None
 
 tempPeaks = matchIndexes(bigPosDiff, prices)
 tempTrough = matchIndexes(bigNegDiff, prices)
 
-print len(tempPeaks)
-print len(tempTrough)
+#print len(tempPeaks)
+#print len(tempTrough)
 
 resInter, resSlope = leastSquare(tempPeaks)
 supInter, supSlope = leastSquare(tempTrough)
@@ -153,8 +150,8 @@ priceY = []
 for price in prices:
     priceY.append(price.price)
 
-resY  = genY(resInter, resSlope, maxResIndex, len(prices)-1)
-supY  = genY(supInter, supSlope, maxSupIndex, len(prices)-1)
+resY = genY(resInter, resSlope, maxResIndex, len(prices)-1)
+supY = genY(supInter, supSlope, maxSupIndex, len(prices)-1)
 meanY = genY(inter, slope, 0, len(prices))
 
 plt.plot(range(0,len(prices)), priceY, 'r',
@@ -163,3 +160,17 @@ plt.plot(range(0,len(prices)), priceY, 'r',
          range(maxSupIndex, len(prices)-1), supY, 'b')
 plt.show()
 
+if resSlope < 0.001 and supSlope < 0.001:
+    print "Sideways moving market."
+elif resSlope > 0 and supSlope > 0:
+    if (resSlope <= supSlope and resSlope >= 0.8*supSlope) \
+            or (supSlope <= resSlope and supSlope >= 0.8*resSlope):
+        print "Upward trending channel."
+elif resSlope < 0 and supSlope < 0:
+    if (resSlope <= supSlope and resSlope >= 0.8*supSlope) \
+            or (supSlope <= resSlope and supSlope >= 0.8*resSlope):
+        print "Downward trending channel."
+elif (resSlope < 0 and supSlope > 0) \
+        or (resSlope < 0 and resSlope < supSlope)\
+        or (resSlope > 0 and resSlope < supSlope):
+    print "Wedge trend.  May break up or down."
