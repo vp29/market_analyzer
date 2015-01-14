@@ -55,16 +55,13 @@ def genY(intercept, slope, start, end):
 market = open('channel_down.txt', 'r')
 
 i=0
-total = 0.0
 for line in market:
     prices.append(Price(float(line), i))
-    total = total + float(line)
-    average.append(Price(total/(i+1), i))
     i = i+1
 
 print "printing prices"
 for price in prices:
-    print "price: " + str(price) + " average: " + str(average[price.index])
+    print "price: " + str(price)
 
 maxPeak = 0.0
 minTrough = float('inf')
@@ -77,22 +74,17 @@ maxNegDiff = 0.0
 tempResPrice = []
 tempSupPrice = []
 
+#largest amount of matches
 bigPosDiff = []
 bigNegDiff = []
 
+#number of largest amount of matches
 maxNumResIndex = 0
 maxNumSupIndex = 0
 
-for i, price in enumerate(prices):
-    if i > 0 and i < len(prices) - 1:
-        if price.price > prices[i-1].price and price.price > prices[i+1].price:
-            peaks.append(price)
-            if(price.price > maxPeak):
-                maxPeak = price.price
-        elif price.price < prices[i-1].price and price.price < prices[i+1].price:
-            troughs.append(price)
-            if(price.price < minTrough):
-                minTrough = price.price
+#index of larges amount of matches
+maxResIndex = 0
+maxSupIndex = 0
 
 for i in range(0, len(prices)-1):
     #first do resistance line
@@ -113,6 +105,7 @@ for i in range(0, len(prices)-1):
         if(len(posDiff) > maxNumResIndex):
             bigPosDiff = posDiff
             maxNumResIndex = len(posDiff)
+            maxResIndex = i
     except:
         print "error: " + str(i)
 
@@ -133,12 +126,10 @@ for i in range(0, len(prices)-1):
         if(len(negDiff) > maxNumSupIndex):
             bigNegDiff = negDiff
             maxNumSupIndex = len(negDiff)
+            maxSupIndex = i
     except:
         print "error: " + str(i)
 
-
-#posDiff = [x for x in resDiff if x.price >= 0.8*maxDiff]
-#negDiff = [x for x in supDiff if x.price*-1 >= 0.4*maxNegDiff]
 tempPeaks = []
 tempTrough = []
 for dif in bigPosDiff:
@@ -161,14 +152,14 @@ priceY = []
 for price in prices:
     priceY.append(price.price)
 
-resY  = genY(resInter, resSlope, maxNumResIndex, len(prices)-1)
-supY  = genY(supInter, supSlope, maxNumSupIndex, len(prices)-1)
+resY  = genY(resInter, resSlope, maxResIndex, len(prices)-1)
+supY  = genY(supInter, supSlope, maxSupIndex, len(prices)-1)
 meanY = genY(inter, slope, 0, len(prices))
 
 plt.plot(range(0,len(prices)), priceY, 'r',
          range(0,len(prices)), meanY,  'y',
-         range(maxNumResIndex, len(prices)-1), resY, 'g',
-         range(maxNumSupIndex, len(prices)-1), supY, 'b')
+         range(maxResIndex, len(prices)-1), resY, 'g',
+         range(maxSupIndex, len(prices)-1), supY, 'b')
 plt.show()
 #print "\nPrinting peaks: max peak = " + str(maxPeak)
 #for peak in peaks:
