@@ -66,21 +66,25 @@ def findMatches(tempPrice, maxNumIndex, maxIndex, neg, cutoff, index):
     neg == True if support
     cutoff = multiplier for neg diff cutoff'''
     multiplier = 1
-    if neg == True:
+    if neg:
         multiplier = -1
 
     curInter, curSlope = leastSquare(tempPrice)
-    Diff = []
+    diff = []
     curMaxDiff = 0.0
 
     for curPrice in tempPrice:
         currDiff = curPrice.price - (curInter + curSlope*curPrice.index)
-        if currDiff < 0 and currDiff*multiplier > curMaxDiff:
-            curMaxDiff = currDiff*multiplier
-        Diff.append(Price(currDiff, curPrice.index))
+        if neg:
+            if currDiff < 0 and currDiff*multiplier > curMaxDiff:
+                curMaxDiff = currDiff*multiplier
+        else:
+            if currDiff*multiplier > curMaxDiff:
+                curMaxDiff = currDiff*multiplier
+        diff.append(Price(currDiff, curPrice.index))
 
-    cutDiff = [g for g in Diff if g.price*multiplier >= cutoff*curMaxDiff]
-    if(len(cutDiff) > maxNumIndex):
+    cutDiff = [g for g in diff if g.price*multiplier >= cutoff*curMaxDiff]
+    if len(cutDiff) > maxNumIndex:
         bigDiff = cutDiff
         maxNumIndex = len(cutDiff)
         maxIndex = index
@@ -93,10 +97,6 @@ i=0
 for line in market:
     prices.append(Price(float(line), i))
     i = i+1
-
-print "printing prices"
-for price in prices:
-    print "price: " + str(price)
 
 maxPeak = 0.0
 minTrough = float('inf')
@@ -127,42 +127,13 @@ for i in range(0, len(prices)-1):
     try:
         tempResPrice = [x for x in prices if x.index > i]
         bigPosDiff, maxNumResIndex, maxResIndex = findMatches(tempResPrice, maxNumResIndex, maxResIndex, False, 0.8, i)
-        '''resInter, resSlope = leastSquare(tempResPrice)
-        resDiff = []
-        maxDiff = 0.0
-
-        for price in tempResPrice:
-            curDiff = price.price - (resInter + resSlope*price.index)
-            if curDiff > maxDiff:
-                maxDiff = curDiff
-            resDiff.append(Price(curDiff, price.index))
-
-        posDiff = [x for x in resDiff if x.price >= 0.8*maxDiff]
-        if(len(posDiff) > maxNumResIndex):
-            bigPosDiff = posDiff
-            maxNumResIndex = len(posDiff)
-            maxResIndex = i'''
     except:
         print "error: " + str(i)
 
     #next do support line
     try:
         tempSupPrice = [x for x in prices if x.index > i]
-        supInter, supSlope = leastSquare(tempSupPrice)
-        supDiff = []
-        maxNegDiff = 0.0
-
-        for price in tempSupPrice:
-            curDiff = price.price - (supInter + supSlope*price.index)
-            if curDiff < 0 and curDiff*-1 > maxNegDiff:
-                maxNegDiff = curDiff*-1
-            supDiff.append(Price(curDiff, price.index))
-
-        negDiff = [x for x in supDiff if x.price*-1 >= 0.6*maxNegDiff]
-        if(len(negDiff) > maxNumSupIndex):
-            bigNegDiff = negDiff
-            maxNumSupIndex = len(negDiff)
-            maxSupIndex = i
+        bigNegDiff, maxNumSupIndex, maxSupIndex = findMatches(tempSupPrice, maxNumSupIndex, maxSupIndex, True, 0.6, i)
     except:
         print "error: " + str(i)
 
