@@ -91,7 +91,7 @@ def findMatches(tempPrice, maxNumIndex, maxIndex, neg, cutoff, index):
 
     return bigDiff, maxNumIndex, maxIndex
 
-market = open('sideways.txt', 'r')
+market = open('ibm30sec.txt', 'r')
 
 i=0
 for line in market:
@@ -154,14 +154,16 @@ resY = genY(resInter, resSlope, maxResIndex, len(prices)-1)
 supY = genY(supInter, supSlope, maxSupIndex, len(prices)-1)
 meanY = genY(inter, slope, 0, len(prices))
 
-plt.plot(range(0,len(prices)), priceY, 'r',
-         range(0,len(prices)), meanY,  'y',
-         range(maxResIndex, len(prices)-1), resY, 'g',
-         range(maxSupIndex, len(prices)-1), supY, 'b')
-plt.show()
+print resSlope
+print supSlope
 
-if resSlope < 0.001 and supSlope < 0.001:
+if resSlope < 0.005 and resSlope > -0.005 and supSlope < 0.005 and supSlope > -0.005:
     print "Sideways moving market."
+elif ((resSlope < 0.005 and resSlope > -0.005) or (supSlope < 0.005 and supSlope > -0.005)):
+    if((resSlope < 0.005 and resSlope > -0.005) and supSlope > 0):
+        print "Triangle upward trend.  Predicted to break down."
+    elif((supSlope < 0.005 and supSlope > -0.005) and resSlope < 0):
+        print "Triangle downward trend.  Predicted to break up."
 elif resSlope > 0 and supSlope > 0:
     if (resSlope <= supSlope and resSlope >= 0.8*supSlope) \
             or (supSlope <= resSlope and supSlope >= 0.8*resSlope):
@@ -174,3 +176,9 @@ elif (resSlope < 0 and supSlope > 0) \
         or (resSlope < 0 and resSlope < supSlope)\
         or (resSlope > 0 and resSlope < supSlope):
     print "Wedge trend.  May break up or down."
+
+plt.plot(range(0,len(prices)), priceY, 'r',
+         range(0,len(prices)), meanY,  'y',
+         range(maxResIndex, len(prices)-1), resY, 'g',
+         range(maxSupIndex, len(prices)-1), supY, 'b')
+plt.show()
