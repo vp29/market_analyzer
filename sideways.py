@@ -15,12 +15,6 @@ class Price:
     def __repr__(self):
         return '<%r> %f' % (self.index, self.price)
 
-prices = []
-peaks = []
-troughs = []
-
-average = []
-
 def leastSquare(data):
     '''Y=a+bX, b=r*SDy/SDx, a=Y'-bX'
     b=slope
@@ -116,98 +110,115 @@ def trendType(resSlope, supSlope, resInt, supInt, nextInd, bsPoint):
             or (resSlope < 0 and resSlope < supSlope)\
             or (resSlope > 0 and resSlope < supSlope):
         print "Wedge trend.  May break up or down."
-    print "buy point:  " + str((nextSup + diff*bsPoint))
-    print "sell point: " + str((nextRes - diff*bsPoint))
+
+    #print "buy point:  " + str((nextSup + diff*bsPoint))
+    #print "sell point: " + str((nextRes - diff*bsPoint))
+    return (nextSup + diff*bsPoint), (nextRes - diff*bsPoint)
 
 market = open('ibm30sec.txt', 'r')
 
 #data = DataReader("RGS",  "yahoo", datetime(2000,1,1), datetime(2000,10,1))
-data = gi.GoogleIntradayQuote("RGS", 300, 10)
-print data.close
+data = gi.GoogleIntradayQuote("RGS", 3600, 50)
 
 #i=0
 #for line in market:
 #    prices.append(Price(float(line), i))
 #    i = i+1
-maxPrice = 0.0
 
-for i, item in enumerate(data.close):
-    maxPrice = item if item > maxPrice else maxPrice
-    prices.append(Price(item, i))
+analysisRange = 240 #len(data.close) #set max points for analysis at a given step
+stepSize = 6
+for j in range(0, len(data.close) - analysisRange, stepSize):
+    prices = []
+    start = j
+    maxPrice = 0.0
+    for i, item in enumerate(data.close[start:start+analysisRange]):
+        maxPrice = item if item > maxPrice else maxPrice
+        prices.append(Price(item, i))
 
-resDiff = []
-supDiff = []
-maxDiff = 0.0
-maxNegDiff = 0.0
+    resDiff = []
+    supDiff = []
+    maxDiff = 0.0
+    maxNegDiff = 0.0
 
-tempResPrice = []
-tempSupPrice = []
+    tempResPrice = []
+    tempSupPrice = []
 
-#largest amount of matches
-bigPosDiff = []
-bigNegDiff = []
+    #largest amount of matches
+    bigPosDiff = []
+    bigNegDiff = []
 
-#number of largest amount of matches
-maxNumResIndex = 0
-maxNumSupIndex = 0
+    #number of largest amount of matches
+    maxNumResIndex = 0
+    maxNumSupIndex = 0
 
-#index of larges amount of matches
-maxResIndex = 0
-maxSupIndex = 0
+    #index of larges amount of matches
+    maxResIndex = 0
+    maxSupIndex = 0
 
-for i in range(0, len(prices)-1):
-    #first do resistance line
-    #find line with highest number of matched peaks
-    try:
-        tempResPrice = [x for x in prices if x.index > i]
-        bigPosDiff, maxNumResIndex, maxResIndex = findMatches(tempResPrice, maxNumResIndex, maxResIndex, False, 0.8, i)
-    except:
-        None
+    #analysisRange = len(prices)-1
+    analysisRange = 500 if len(prices) - 1 > 500 else len(prices) - 1
 
-    #next do support line
-    try:
-        tempSupPrice = [x for x in prices if x.index > i]
-        bigNegDiff, maxNumSupIndex, maxSupIndex = findMatches(tempSupPrice, maxNumSupIndex, maxSupIndex, True, 0.6, i)
-    except:
-        None
+    for i in range(0, len(prices) - 1):
+        #first do resistance line
+        #find line with highest number of matched peaks
+        try:
+            tempResPrice = [x for x in prices if x.index > i]
+            bigPosDiff, maxNumResIndex, maxResIndex = findMatches(tempResPrice, maxNumResIndex, maxResIndex, False, 0.8, i)
+        except:
+            None
 
-tempPeaks = matchIndexes(bigPosDiff, prices)
-tempTrough = matchIndexes(bigNegDiff, prices)
+        #next do support line
+        try:
+            tempSupPrice = [x for x in prices if x.index > i]
+            bigNegDiff, maxNumSupIndex, maxSupIndex = findMatches(tempSupPrice, maxNumSupIndex, maxSupIndex, True, 0.6, i)
+        except:
+            None
 
-#print len(tempPeaks)
-#print len(tempTrough)
+    tempPeaks = matchIndexes(bigPosDiff, prices)
+    tempTrough = matchIndexes(bigNegDiff, prices)
 
-resInter, resSlope = leastSquare(tempPeaks)
-supInter, supSlope = leastSquare(tempTrough)
+    #print len(tempPeaks)
+    #print len(tempTrough)
 
-inter, slope = leastSquare(prices)
+    resInter, resSlope = leastSquare(tempPeaks)
+    supInter, supSlope = leastSquare(tempTrough)
 
-priceY = []
-#put prices in list for plotting
-for price in prices:
-    priceY.append(price.price)
+    inter, slope = leastSquare(prices)
 
-resY = genY(resInter, resSlope, maxResIndex, len(prices)-1)
-supY = genY(supInter, supSlope, maxSupIndex, len(prices)-1)
-meanY = genY(inter, slope, 0, len(prices))
+    priceY = []
+    #put prices in list for plotting
+    for price in prices:
+        priceY.append(price.price)
 
-print resSlope
-print supSlope
+    resY = genY(resInter, resSlope, maxResIndex, len(prices)-1)
+    supY = genY(supInter, supSlope, maxSupIndex, len(prices)-1)
+    meanY = genY(inter, slope, 0, len(prices))
 
-trendType(resSlope, supSlope, resInter, supInter, len(prices), .25)
+    #print resSlope
+    #print supSlope
 
-plt.figure(1)
-plt.subplot(211)
-plt.plot(range(0,len(prices)), priceY, 'r',
-         range(0,len(prices)), meanY,  'y',
-         range(maxResIndex, len(prices)-1), resY, 'g',
-         range(maxSupIndex, len(prices)-1), supY, 'b')
-plt.axis([0, len(prices), 0, maxPrice + 1])
+    buyPoint, sellPoint = trendType(resSlope, supSlope, resInter, supInter, len(prices), .1)
 
-plt.subplot(212)
-plt.plot(range(0,len(prices)), priceY, 'r',
-         range(0,len(prices)), meanY,  'y',
-         range(maxResIndex, len(prices)-1), resY, 'g',
-         range(maxSupIndex, len(prices)-1), supY, 'b')
+    if sellPoint > buyPoint:
+        if prices[-1].price <= buyPoint:
+            print "Buy current price : " + str(prices[-1].price)
+            print "Sell at price     : " + str(sellPoint)
+        elif prices[-1].price >= sellPoint:
+            print "Sell current price: " + str(prices[-1].price)
+            print "Buy at price      : " + str(buyPoint)
 
-plt.show()
+    plt.figure(1)
+    plt.subplot(211)
+    plt.plot(range(0,len(prices)), priceY, 'r',
+             range(0,len(prices)), meanY,  'y',
+             range(maxResIndex, len(prices)-1), resY, 'g',
+             range(maxSupIndex, len(prices)-1), supY, 'b')
+    plt.axis([0, len(prices), 0, maxPrice + 1])
+
+    plt.subplot(212)
+    plt.plot(range(0,len(prices)), priceY, 'r',
+             range(0,len(prices)), meanY,  'y',
+             range(maxResIndex, len(prices)-1), resY, 'g',
+             range(maxSupIndex, len(prices)-1), supY, 'b')
+
+    plt.show()
