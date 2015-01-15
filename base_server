@@ -1,0 +1,32 @@
+__author__ = 'agc'
+import rpyc
+import time
+from multiprocessing import Process
+
+
+
+class MyService(rpyc.Service):
+    exposed_stocks_with_open_orders = []
+
+    def on_connect(self):
+        pass
+
+    def exposed_keep_connection_alive(self):
+        return 1
+
+    def exposed_add_stock_to_open_orders_list(self, stock_ticker,entry_point,exit_point):
+        MyService.exposed_stocks_with_open_orders.append((stock_ticker,entry_point,exit_point))
+        print "called"
+
+    def exposed_remove_stock_from_open_orders_list(self,stock_ticker):
+        for length, stock in enumerate(MyService.exposed_stocks_with_open_orders):
+            if stock[0] == stock_ticker:
+                 MyService.exposed_stocks_with_open_orders.pop(length)
+
+
+if __name__ == "__main__":
+
+    from rpyc.utils.server import ThreadedServer
+
+    t = ThreadedServer(MyService, port = 18862)
+    t.start()
