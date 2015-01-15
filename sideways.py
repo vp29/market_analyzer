@@ -118,15 +118,15 @@ def trendType(resSlope, supSlope, resInt, supInt, nextInd, bsPoint):
 market = open('ibm30sec.txt', 'r')
 
 #data = DataReader("RGS",  "yahoo", datetime(2000,1,1), datetime(2000,10,1))
-data = gi.GoogleIntradayQuote("RGS", 3600, 50)
+data = gi.GoogleIntradayQuote("RGS", 300, 50)
 
 #i=0
 #for line in market:
 #    prices.append(Price(float(line), i))
 #    i = i+1
 
-analysisRange = 240 #len(data.close) #set max points for analysis at a given step
-stepSize = 6
+analysisRange = 2400 #len(data.close) #set max points for analysis at a given step
+stepSize = 20
 for j in range(0, len(data.close) - analysisRange, stepSize):
     prices = []
     start = j
@@ -154,9 +154,6 @@ for j in range(0, len(data.close) - analysisRange, stepSize):
     #index of larges amount of matches
     maxResIndex = 0
     maxSupIndex = 0
-
-    #analysisRange = len(prices)-1
-    analysisRange = 500 if len(prices) - 1 > 500 else len(prices) - 1
 
     for i in range(0, len(prices) - 1):
         #first do resistance line
