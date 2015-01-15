@@ -1,7 +1,9 @@
 __author__ = 'Erics'
 
-import numpy
 import matplotlib.pyplot as plt
+from pandas.io.data import DataReader
+from datetime import datetime
+import google_intraday as gi
 
 class Price:
     price = 0.0
@@ -91,12 +93,47 @@ def findMatches(tempPrice, maxNumIndex, maxIndex, neg, cutoff, index):
 
     return bigDiff, maxNumIndex, maxIndex
 
+def trendType(resSlope, supSlope, resInt, supInt, nextInd, bsPoint):
+    nextRes = resInt + resSlope*nextInd
+    nextSup = supInt + supSlope*nextInd
+    diff = nextRes - nextSup
+    if resSlope < 0.005 and resSlope > -0.005 and supSlope < 0.005 and supSlope > -0.005:
+        print "Sideways moving market."
+    elif ((resSlope < 0.005 and resSlope > -0.005) or (supSlope < 0.005 and supSlope > -0.005)):
+        if((resSlope < 0.005 and resSlope > -0.005) and supSlope > 0):
+            print "Triangle upward trend.  Predicted to break down."
+        elif((supSlope < 0.005 and supSlope > -0.005) and resSlope < 0):
+            print "Triangle downward trend.  Predicted to break up."
+    elif resSlope > 0 and supSlope > 0:
+        if (resSlope <= supSlope and resSlope >= 0.8*supSlope) \
+                or (supSlope <= resSlope and supSlope >= 0.8*resSlope):
+            print "Upward trending channel."
+    elif resSlope < 0 and supSlope < 0:
+        if (resSlope <= supSlope and resSlope >= 0.8*supSlope) \
+                or (supSlope <= resSlope and supSlope >= 0.8*resSlope):
+            print "Downward trending channel."
+    elif (resSlope < 0 and supSlope > 0) \
+            or (resSlope < 0 and resSlope < supSlope)\
+            or (resSlope > 0 and resSlope < supSlope):
+        print "Wedge trend.  May break up or down."
+    print "buy point:  " + str((nextSup + diff*bsPoint))
+    print "sell point: " + str((nextRes - diff*bsPoint))
+
 market = open('ibm30sec.txt', 'r')
 
-i=0
-for line in market:
-    prices.append(Price(float(line), i))
-    i = i+1
+#data = DataReader("RGS",  "yahoo", datetime(2000,1,1), datetime(2000,10,1))
+data = gi.GoogleIntradayQuote("RGS", 300, 10)
+print data.close
+
+#i=0
+#for line in market:
+#    prices.append(Price(float(line), i))
+#    i = i+1
+maxPrice = 0.0
+
+for i, item in enumerate(data.close):
+    maxPrice = item if item > maxPrice else maxPrice
+    prices.append(Price(item, i))
 
 resDiff = []
 supDiff = []
@@ -157,28 +194,20 @@ meanY = genY(inter, slope, 0, len(prices))
 print resSlope
 print supSlope
 
-if resSlope < 0.005 and resSlope > -0.005 and supSlope < 0.005 and supSlope > -0.005:
-    print "Sideways moving market."
-elif ((resSlope < 0.005 and resSlope > -0.005) or (supSlope < 0.005 and supSlope > -0.005)):
-    if((resSlope < 0.005 and resSlope > -0.005) and supSlope > 0):
-        print "Triangle upward trend.  Predicted to break down."
-    elif((supSlope < 0.005 and supSlope > -0.005) and resSlope < 0):
-        print "Triangle downward trend.  Predicted to break up."
-elif resSlope > 0 and supSlope > 0:
-    if (resSlope <= supSlope and resSlope >= 0.8*supSlope) \
-            or (supSlope <= resSlope and supSlope >= 0.8*resSlope):
-        print "Upward trending channel."
-elif resSlope < 0 and supSlope < 0:
-    if (resSlope <= supSlope and resSlope >= 0.8*supSlope) \
-            or (supSlope <= resSlope and supSlope >= 0.8*resSlope):
-        print "Downward trending channel."
-elif (resSlope < 0 and supSlope > 0) \
-        or (resSlope < 0 and resSlope < supSlope)\
-        or (resSlope > 0 and resSlope < supSlope):
-    print "Wedge trend.  May break up or down."
+trendType(resSlope, supSlope, resInter, supInter, len(prices), .25)
 
+plt.figure(1)
+plt.subplot(211)
 plt.plot(range(0,len(prices)), priceY, 'r',
          range(0,len(prices)), meanY,  'y',
          range(maxResIndex, len(prices)-1), resY, 'g',
          range(maxSupIndex, len(prices)-1), supY, 'b')
+plt.axis([0, len(prices), 0, maxPrice + 1])
+
+plt.subplot(212)
+plt.plot(range(0,len(prices)), priceY, 'r',
+         range(0,len(prices)), meanY,  'y',
+         range(maxResIndex, len(prices)-1), resY, 'g',
+         range(maxSupIndex, len(prices)-1), supY, 'b')
+
 plt.show()
