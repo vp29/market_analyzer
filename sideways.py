@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from pandas.io.data import DataReader
 from datetime import datetime
 import google_intraday as gi
+import math
 
 class Price:
     price = 0.0
@@ -87,53 +88,83 @@ def findMatches(tempPrice, maxNumIndex, maxIndex, neg, cutoff, index):
 
     return bigDiff, maxNumIndex, maxIndex
 
-def trendType(resSlope, supSlope, resInt, supInt, nextInd, bsPoint):
+def trendType(resSlope, supSlope, resInt, supInt, nextInd, bsPoint, curPrice, resRange, supRange):
+    potBuy = False
     nextRes = resInt + resSlope*nextInd
     nextSup = supInt + supSlope*nextInd
+    resRise = resSlope*resRange
+    supRise = supSlope*supRange
     diff = nextRes - nextSup
-    if resSlope < 0.005 and resSlope > -0.005 and supSlope < 0.005 and supSlope > -0.005:
+    resNorm = resRise/curPrice
+    supNorm = supRise/curPrice
+    print "resRise: " + str(resRise) + " supRise: " + str(supRise)
+    print "resNorm: " + str(resNorm) + " supNorm: " + str(supNorm)
+    normCutoff = 0.01
+    if resNorm < normCutoff and resNorm > -normCutoff \
+            and supNorm < normCutoff and supNorm > -normCutoff:
+        potBuy = True
         print "Sideways moving market."
-    elif ((resSlope < 0.005 and resSlope > -0.005) or (supSlope < 0.005 and supSlope > -0.005)):
-        if((resSlope < 0.005 and resSlope > -0.005) and supSlope > 0):
+    elif ((resNorm < normCutoff and resNorm > -normCutoff) \
+                  or (supNorm < normCutoff and supNorm > -normCutoff)):
+        if((resNorm < normCutoff and resNorm > -normCutoff) and supNorm > 0):
             print "Triangle upward trend.  Predicted to break down."
-        elif((supSlope < 0.005 and supSlope > -0.005) and resSlope < 0):
+        elif((supNorm < normCutoff and supNorm > -normCutoff) and resNorm < 0):
             print "Triangle downward trend.  Predicted to break up."
-    elif resSlope > 0 and supSlope > 0:
-        if (resSlope <= supSlope and resSlope >= 0.8*supSlope) \
-                or (supSlope <= resSlope and supSlope >= 0.8*resSlope):
+    elif (resNorm > 0 and supNorm > 0) \
+        and (resNorm <= supNorm and resNorm >= 0.8*supNorm) \
+            or (supNorm <= resNorm and supNorm >= 0.8*resNorm):
+            potBuy = True
             print "Upward trending channel."
-    elif resSlope < 0 and supSlope < 0:
-        if (resSlope <= supSlope and resSlope >= 0.8*supSlope) \
-                or (supSlope <= resSlope and supSlope >= 0.8*resSlope):
+    elif (resNorm < 0 and supNorm < 0) \
+        and (resNorm <= supNorm and resNorm >= 0.8*supNorm) \
+            or (supNorm <= resNorm and supNorm >= 0.8*resNorm):
+            potBuy = True
             print "Downward trending channel."
-    elif (resSlope < 0 and supSlope > 0) \
-            or (resSlope < 0 and resSlope < supSlope)\
-            or (resSlope > 0 and resSlope < supSlope):
+    elif (resNorm < 0 and supNorm > 0) \
+            or (resNorm < 0 and resNorm < supNorm)\
+            or (resNorm > 0 and resNorm < supNorm):
         print "Wedge trend.  May break up or down."
 
     #print "buy point:  " + str((nextSup + diff*bsPoint))
     #print "sell point: " + str((nextRes - diff*bsPoint))
-    return (nextSup + diff*bsPoint), (nextRes - diff*bsPoint)
+    return (nextSup + diff*bsPoint), (nextRes - diff*bsPoint), potBuy
 
 market = open('ibm30sec.txt', 'r')
 
 #data = DataReader("RGS",  "yahoo", datetime(2000,1,1), datetime(2000,10,1))
-data = gi.GoogleIntradayQuote("RGS", 300, 50)
+samplePeriod = 300
+data = gi.GoogleIntradayQuote("TGT", samplePeriod, 50)
 
 #i=0
 #for line in market:
 #    prices.append(Price(float(line), i))
 #    i = i+1
 
-analysisRange = 2400 #len(data.close) #set max points for analysis at a given step
-stepSize = 20
-for j in range(0, len(data.close) - analysisRange, stepSize):
+analysisRange = 1400 #len(data.close) #set max points for analysis at a given step
+stepSize = 10
+bought = False
+sellCutoff = 0.0
+soldPrice = 0.0
+boughtPrice = 0.0
+boughtIndex = 0
+start = 0
+for j in range(start, len(data.close) - analysisRange, stepSize):
+    print j
     prices = []
-    start = j
     maxPrice = 0.0
-    for i, item in enumerate(data.close[start:start+analysisRange]):
+    for i, item in enumerate(data.close[j:j+analysisRange]):
         maxPrice = item if item > maxPrice else maxPrice
         prices.append(Price(item, i))
+
+    if bought:
+        if prices[-1].price >= sellCutoff:
+            soldPrice = prices[-1].price
+            bought = False
+            print "time to sell: " + str((j-boughtIndex)*samplePeriod) + " seconds"
+            print "bought at: " + str(boughtPrice)
+            print "sold at  : " + str(soldPrice)
+        else:
+            continue
 
     resDiff = []
     supDiff = []
@@ -194,13 +225,20 @@ for j in range(0, len(data.close) - analysisRange, stepSize):
     #print resSlope
     #print supSlope
 
-    buyPoint, sellPoint = trendType(resSlope, supSlope, resInter, supInter, len(prices), .1)
+    buyPoint, sellPoint, potBuy = trendType(resSlope, supSlope, resInter, supInter,
+                                    len(prices), .1, prices[-1].price,
+                                    len(prices)-1 - maxResIndex, len(prices)-1 - maxSupIndex )
 
-    if sellPoint > buyPoint:
-        if prices[-1].price <= buyPoint:
+    if sellPoint > buyPoint and potBuy:
+        if prices[-1].price <= buyPoint and bought == False:
+            bought = True
+            boughtPrice = prices[-1].price
+            sellCutoff = sellPoint
+            boughtIndex = j
             print "Buy current price : " + str(prices[-1].price)
             print "Sell at price     : " + str(sellPoint)
-        elif prices[-1].price >= sellPoint:
+        elif prices[-1].price >= sellPoint and bought == True:
+            bought = False
             print "Sell current price: " + str(prices[-1].price)
             print "Buy at price      : " + str(buyPoint)
 
