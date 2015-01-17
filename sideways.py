@@ -1,10 +1,7 @@
 __author__ = 'Erics'
 
 import matplotlib.pyplot as plt
-from pandas.io.data import DataReader
-from datetime import datetime
 import google_intraday as gi
-import math
 
 class Price:
     price = 0.0
@@ -111,13 +108,13 @@ def trendType(resSlope, supSlope, resInt, supInt, nextInd, bsPoint, curPrice, re
         elif((supNorm < normCutoff and supNorm > -normCutoff) and resNorm < 0):
             print "Triangle downward trend.  Predicted to break up."
     elif (resNorm > 0 and supNorm > 0) \
-        and (resNorm <= supNorm and resNorm >= 0.8*supNorm) \
-            or (supNorm <= resNorm and supNorm >= 0.8*resNorm):
+        and ((resNorm <= supNorm and resNorm >= 0.8*supNorm) \
+            or (supNorm <= resNorm and supNorm >= 0.8*resNorm)):
             potBuy = True
             print "Upward trending channel."
     elif (resNorm < 0 and supNorm < 0) \
-        and (resNorm <= supNorm and resNorm >= 0.8*supNorm) \
-            or (supNorm <= resNorm and supNorm >= 0.8*resNorm):
+        and ((resNorm <= supNorm and abs(0.8*resNorm) <= abs(supNorm)) \
+            or (supNorm <= resNorm and abs(0.8*supNorm) <= abs(resNorm))):
             potBuy = True
             print "Downward trending channel."
     elif (resNorm < 0 and supNorm > 0) \
@@ -140,7 +137,7 @@ data = gi.GoogleIntradayQuote("TGT", samplePeriod, 50)
 #    prices.append(Price(float(line), i))
 #    i = i+1
 
-analysisRange = 1400 #len(data.close) #set max points for analysis at a given step
+analysisRange = 2400 #len(data.close) #set max points for analysis at a given step
 stepSize = 10
 bought = False
 sellCutoff = 0.0
@@ -152,6 +149,7 @@ for j in range(start, len(data.close) - analysisRange, stepSize):
     print j
     prices = []
     maxPrice = 0.0
+    print str(data.date[j]) + ' - ' + str(data.date[j+analysisRange])
     for i, item in enumerate(data.close[j:j+analysisRange]):
         maxPrice = item if item > maxPrice else maxPrice
         prices.append(Price(item, i))
@@ -222,12 +220,27 @@ for j in range(start, len(data.close) - analysisRange, stepSize):
     supY = genY(supInter, supSlope, maxSupIndex, len(prices)-1)
     meanY = genY(inter, slope, 0, len(prices))
 
-    #print resSlope
-    #print supSlope
+    #check that there are at least 2 areas that have matches, and one is in the middle
+    posMatches = [False, False, False]
+    negMatches = [False, False, False]
+    for i in range(0,3):
+        for diff in bigPosDiff:
+            if diff.index in range(maxResIndex + i*(len(prices)-maxResIndex)/3, maxResIndex + (i+1)*(len(prices)-maxResIndex)/3):
+                posMatches[i] = True
+        for diff in bigNegDiff:
+            if diff.index in range(maxSupIndex + i*(len(prices)-maxSupIndex)/3, maxSupIndex + (i+1)*(len(prices)-maxSupIndex)/3):
+                negMatches[i] = True
+
+    print posMatches
+    print negMatches
 
     buyPoint, sellPoint, potBuy = trendType(resSlope, supSlope, resInter, supInter,
                                     len(prices), .1, prices[-1].price,
                                     len(prices)-1 - maxResIndex, len(prices)-1 - maxSupIndex )
+
+    #only consider buying when suport matches in middle and at least one side
+    potBuy = potBuy and (negMatches[1] and (negMatches[0] or negMatches[2])) \
+             and (posMatches[1] and (posMatches[0] and posMatches[2]))
 
     if sellPoint > buyPoint and potBuy:
         if prices[-1].price <= buyPoint and bought == False:
@@ -242,7 +255,7 @@ for j in range(start, len(data.close) - analysisRange, stepSize):
             print "Sell current price: " + str(prices[-1].price)
             print "Buy at price      : " + str(buyPoint)
 
-    plt.figure(1)
+    '''plt.figure(1)
     plt.subplot(211)
     plt.plot(range(0,len(prices)), priceY, 'r',
              range(0,len(prices)), meanY,  'y',
@@ -256,4 +269,4 @@ for j in range(start, len(data.close) - analysisRange, stepSize):
              range(maxResIndex, len(prices)-1), resY, 'g',
              range(maxSupIndex, len(prices)-1), supY, 'b')
 
-    plt.show()
+    plt.show()'''
