@@ -126,147 +126,165 @@ def trendType(resSlope, supSlope, resInt, supInt, nextInd, bsPoint, curPrice, re
     #print "sell point: " + str((nextRes - diff*bsPoint))
     return (nextSup + diff*bsPoint), (nextRes - diff*bsPoint), potBuy
 
+def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
+    trades = open('trades.txt', 'a')
+    data = gi.GoogleIntradayQuote(stock, samplePeriod, 50)
+
+    #i=0
+    #for line in market:
+    #    prices.append(Price(float(line), i))
+    #    i = i+1
+
+    bought = False
+    sellCutoff = 0.0
+    soldPrice = 0.0
+    boughtPrice = 0.0
+    boughtIndex = 0
+    boughtTime = ""
+    start = 0
+    for j in range(start, len(data.close) - analysisRange, stepSize):
+        print j
+        prices = []
+        maxPrice = 0.0
+        print str(data.date[j]) + ' - ' + str(data.date[j+analysisRange])
+        for i, item in enumerate(data.close[j:j+analysisRange]):
+            maxPrice = item if item > maxPrice else maxPrice
+            prices.append(Price(item, i))
+
+        if bought:
+            if prices[-1].price >= sellCutoff:
+                trades.write("(" + stock + ") time to sell: " + str((j-boughtIndex)*samplePeriod) + " seconds")
+                trades.write("(" + stock + ") bought at: " + str(boughtPrice))
+                trades.write("(" + stock + ") sold at  : " + str(soldPrice))
+                trades.write("(" + stock + ") percent gain: " + str(float(soldPrice-boughtPrice)/boughtPrice))
+                soldPrice = prices[-1].price
+                bought = False
+                print "time to sell: " + str((j-boughtIndex)*samplePeriod) + " seconds"
+                print "bought at: " + str(boughtPrice)
+                print "sold at  : " + str(soldPrice)
+            else:
+                continue
+
+        resDiff = []
+        supDiff = []
+        maxDiff = 0.0
+        maxNegDiff = 0.0
+
+        tempResPrice = []
+        tempSupPrice = []
+
+        #largest amount of matches
+        bigPosDiff = []
+        bigNegDiff = []
+
+        #number of largest amount of matches
+        maxNumResIndex = 0
+        maxNumSupIndex = 0
+
+        #index of larges amount of matches
+        maxResIndex = 0
+        maxSupIndex = 0
+
+        for i in range(0, len(prices) - 1):
+            #first do resistance line
+            #find line with highest number of matched peaks
+            try:
+                tempResPrice = [x for x in prices if x.index > i]
+                bigPosDiff, maxNumResIndex, maxResIndex = findMatches(tempResPrice, maxNumResIndex, maxResIndex, False, 0.8, i)
+            except:
+                None
+
+            #next do support line
+            try:
+                tempSupPrice = [x for x in prices if x.index > i]
+                bigNegDiff, maxNumSupIndex, maxSupIndex = findMatches(tempSupPrice, maxNumSupIndex, maxSupIndex, True, 0.6, i)
+            except:
+                None
+
+        tempPeaks = matchIndexes(bigPosDiff, prices)
+        tempTrough = matchIndexes(bigNegDiff, prices)
+
+        #print len(tempPeaks)
+        #print len(tempTrough)
+
+        resInter, resSlope = leastSquare(tempPeaks)
+        supInter, supSlope = leastSquare(tempTrough)
+
+        inter, slope = leastSquare(prices)
+
+        priceY = []
+        #put prices in list for plotting
+        for price in prices:
+            priceY.append(price.price)
+
+        resY = genY(resInter, resSlope, maxResIndex, len(prices)-1)
+        supY = genY(supInter, supSlope, maxSupIndex, len(prices)-1)
+        meanY = genY(inter, slope, 0, len(prices))
+
+        #check that there are at least 2 areas that have matches, and one is in the middle
+        posMatches = [False, False, False]
+        negMatches = [False, False, False]
+        for i in range(0,3):
+            for diff in bigPosDiff:
+                if diff.index in range(maxResIndex + i*(len(prices)-maxResIndex)/3, maxResIndex + (i+1)*(len(prices)-maxResIndex)/3):
+                    posMatches[i] = True
+            for diff in bigNegDiff:
+                if diff.index in range(maxSupIndex + i*(len(prices)-maxSupIndex)/3, maxSupIndex + (i+1)*(len(prices)-maxSupIndex)/3):
+                    negMatches[i] = True
+
+        print posMatches
+        print negMatches
+
+        buyPoint, sellPoint, potBuy = trendType(resSlope, supSlope, resInter, supInter,
+                                        len(prices), .1, prices[-1].price,
+                                        len(prices)-1 - maxResIndex, len(prices)-1 - maxSupIndex )
+
+        #only consider buying when suport matches in middle and at least one side
+        potBuy = potBuy and (negMatches[1] and (negMatches[0] or negMatches[2])) \
+                 and (posMatches[1] and (posMatches[0] and posMatches[2]))
+
+        if sellPoint > buyPoint and potBuy:
+            if prices[-1].price <= buyPoint and bought == False:
+                bought = True
+                boughtPrice = prices[-1].price
+                sellCutoff = sellPoint
+                boughtIndex = j
+                boughtTime = prices[-1].date
+                print "Buy current price : " + str(prices[-1].price)
+                print "Sell at price     : " + str(sellPoint)
+            elif prices[-1].price >= sellPoint and bought == True:
+                bought = False
+                print "Sell current price: " + str(prices[-1].price)
+                print "Buy at price      : " + str(buyPoint)
+
+        if showChart==True:
+            plt.figure(1)
+            plt.subplot(211)
+            plt.plot(range(0,len(prices)), priceY, 'r',
+                     range(0,len(prices)), meanY,  'y',
+                     range(maxResIndex, len(prices)-1), resY, 'g',
+                     range(maxSupIndex, len(prices)-1), supY, 'b')
+            plt.axis([0, len(prices), 0, maxPrice + 1])
+
+            plt.subplot(212)
+            plt.plot(range(0,len(prices)), priceY, 'r',
+                     range(0,len(prices)), meanY,  'y',
+                     range(maxResIndex, len(prices)-1), resY, 'g',
+                     range(maxSupIndex, len(prices)-1), supY, 'b')
+
+            plt.show()
+
+    if bought == True:
+        trades.write("(" + stock + ") bought time: " + str(boughtTime))
+        trades.write("(" + stock + ") bought at: " + str(boughtPrice))
+
 market = open('ibm30sec.txt', 'r')
+stocks = open('stocks.txt', 'r')
 
 #data = DataReader("RGS",  "yahoo", datetime(2000,1,1), datetime(2000,10,1))
 samplePeriod = 300
-data = gi.GoogleIntradayQuote("TGT", samplePeriod, 50)
-
-#i=0
-#for line in market:
-#    prices.append(Price(float(line), i))
-#    i = i+1
-
 analysisRange = 2400 #len(data.close) #set max points for analysis at a given step
 stepSize = 10
-bought = False
-sellCutoff = 0.0
-soldPrice = 0.0
-boughtPrice = 0.0
-boughtIndex = 0
-start = 0
-for j in range(start, len(data.close) - analysisRange, stepSize):
-    print j
-    prices = []
-    maxPrice = 0.0
-    print str(data.date[j]) + ' - ' + str(data.date[j+analysisRange])
-    for i, item in enumerate(data.close[j:j+analysisRange]):
-        maxPrice = item if item > maxPrice else maxPrice
-        prices.append(Price(item, i))
 
-    if bought:
-        if prices[-1].price >= sellCutoff:
-            soldPrice = prices[-1].price
-            bought = False
-            print "time to sell: " + str((j-boughtIndex)*samplePeriod) + " seconds"
-            print "bought at: " + str(boughtPrice)
-            print "sold at  : " + str(soldPrice)
-        else:
-            continue
-
-    resDiff = []
-    supDiff = []
-    maxDiff = 0.0
-    maxNegDiff = 0.0
-
-    tempResPrice = []
-    tempSupPrice = []
-
-    #largest amount of matches
-    bigPosDiff = []
-    bigNegDiff = []
-
-    #number of largest amount of matches
-    maxNumResIndex = 0
-    maxNumSupIndex = 0
-
-    #index of larges amount of matches
-    maxResIndex = 0
-    maxSupIndex = 0
-
-    for i in range(0, len(prices) - 1):
-        #first do resistance line
-        #find line with highest number of matched peaks
-        try:
-            tempResPrice = [x for x in prices if x.index > i]
-            bigPosDiff, maxNumResIndex, maxResIndex = findMatches(tempResPrice, maxNumResIndex, maxResIndex, False, 0.8, i)
-        except:
-            None
-
-        #next do support line
-        try:
-            tempSupPrice = [x for x in prices if x.index > i]
-            bigNegDiff, maxNumSupIndex, maxSupIndex = findMatches(tempSupPrice, maxNumSupIndex, maxSupIndex, True, 0.6, i)
-        except:
-            None
-
-    tempPeaks = matchIndexes(bigPosDiff, prices)
-    tempTrough = matchIndexes(bigNegDiff, prices)
-
-    #print len(tempPeaks)
-    #print len(tempTrough)
-
-    resInter, resSlope = leastSquare(tempPeaks)
-    supInter, supSlope = leastSquare(tempTrough)
-
-    inter, slope = leastSquare(prices)
-
-    priceY = []
-    #put prices in list for plotting
-    for price in prices:
-        priceY.append(price.price)
-
-    resY = genY(resInter, resSlope, maxResIndex, len(prices)-1)
-    supY = genY(supInter, supSlope, maxSupIndex, len(prices)-1)
-    meanY = genY(inter, slope, 0, len(prices))
-
-    #check that there are at least 2 areas that have matches, and one is in the middle
-    posMatches = [False, False, False]
-    negMatches = [False, False, False]
-    for i in range(0,3):
-        for diff in bigPosDiff:
-            if diff.index in range(maxResIndex + i*(len(prices)-maxResIndex)/3, maxResIndex + (i+1)*(len(prices)-maxResIndex)/3):
-                posMatches[i] = True
-        for diff in bigNegDiff:
-            if diff.index in range(maxSupIndex + i*(len(prices)-maxSupIndex)/3, maxSupIndex + (i+1)*(len(prices)-maxSupIndex)/3):
-                negMatches[i] = True
-
-    print posMatches
-    print negMatches
-
-    buyPoint, sellPoint, potBuy = trendType(resSlope, supSlope, resInter, supInter,
-                                    len(prices), .1, prices[-1].price,
-                                    len(prices)-1 - maxResIndex, len(prices)-1 - maxSupIndex )
-
-    #only consider buying when suport matches in middle and at least one side
-    potBuy = potBuy and (negMatches[1] and (negMatches[0] or negMatches[2])) \
-             and (posMatches[1] and (posMatches[0] and posMatches[2]))
-
-    if sellPoint > buyPoint and potBuy:
-        if prices[-1].price <= buyPoint and bought == False:
-            bought = True
-            boughtPrice = prices[-1].price
-            sellCutoff = sellPoint
-            boughtIndex = j
-            print "Buy current price : " + str(prices[-1].price)
-            print "Sell at price     : " + str(sellPoint)
-        elif prices[-1].price >= sellPoint and bought == True:
-            bought = False
-            print "Sell current price: " + str(prices[-1].price)
-            print "Buy at price      : " + str(buyPoint)
-
-    '''plt.figure(1)
-    plt.subplot(211)
-    plt.plot(range(0,len(prices)), priceY, 'r',
-             range(0,len(prices)), meanY,  'y',
-             range(maxResIndex, len(prices)-1), resY, 'g',
-             range(maxSupIndex, len(prices)-1), supY, 'b')
-    plt.axis([0, len(prices), 0, maxPrice + 1])
-
-    plt.subplot(212)
-    plt.plot(range(0,len(prices)), priceY, 'r',
-             range(0,len(prices)), meanY,  'y',
-             range(maxResIndex, len(prices)-1), resY, 'g',
-             range(maxSupIndex, len(prices)-1), supY, 'b')
-
-    plt.show()'''
+for line in stocks:
+    analyzeStock(line, samplePeriod, analysisRange, stepSize, False)
