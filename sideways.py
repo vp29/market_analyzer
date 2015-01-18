@@ -123,6 +123,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
         maxSupIndex = 0
 
         for i in range(0, len(prices) - 1):
+            """A- This is potentially a very intesive loop. Function overhead in python is high. Maybe better to not turn it into a function?"""
             #first do resistance line
             #find line with highest number of matched peaks
             try:
@@ -232,4 +233,9 @@ for line in stocks:
 #whats with your dates
 #why false, true, true
 #http://gyazo.com/4585b43a224831e154a90f1037117977
-#this is way too slow
+#There needs to be a check in place(if not already put?) that will make sure that the difference between the spread
+#and the resistance is meaningful along with making sure the stock price is appropriate for our accoutn balance
+# i.e. we dont want to trade soemthign with 5 cents between the support and resistance, espeically when its
+#priced at 300$ per share which we could be something like 95% of our account balance
+#then again you can make teh argument that with tight stop losses it might be worth putting 60%-90% of our free money in a single trade
+#if the potential for profit is high

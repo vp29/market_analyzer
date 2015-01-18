@@ -1,5 +1,7 @@
 from __future__ import division
 import cython
+"""Eventually if we port everything into this file some of these functions can be turned into cdef so they dont have
+to use the python api"""
 
 class Price:
     price = 0.0
@@ -39,6 +41,7 @@ def leastSquare(data):
     a = (y - b*x)/num
 
     return a, b
+
 
 @cython.cdivision(True)
 def findMatches(tempPrice, int maxNumIndex, int maxIndex, neg, double cutoff, int index):
