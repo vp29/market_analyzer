@@ -21,6 +21,8 @@ class Price:
 
 """
 
+minimumPercent = 2
+
 def trendType(resSlope, supSlope, resInt, supInt, nextInd, bsPoint, curPrice, resRange, supRange):
     potBuy = False
     nextRes = resInt + resSlope*nextInd
@@ -181,7 +183,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
         potBuy = potBuy and (negMatches[1] and (negMatches[0] or negMatches[2])) \
                  and (posMatches[1] and (posMatches[0] and posMatches[2]))
 
-        if sellPoint > buyPoint and potBuy:
+        if sellPoint > buyPoint*(1.0 + minimumPercent/100) and potBuy:
             if prices[-1].price <= buyPoint and bought == False:
                 bought = True
                 boughtPrice = prices[-1].price
