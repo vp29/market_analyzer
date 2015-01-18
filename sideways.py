@@ -224,7 +224,7 @@ stocks = open('fortune500.txt', 'r')
 
 #data = DataReader("RGS",  "yahoo", datetime(2000,1,1), datetime(2000,10,1))
 samplePeriod = 300
-analysisRange = 2400 #len(data.close) #set max points for analysis at a given step
+analysisRange = 960 #len(data.close) #set max points for analysis at a given step
 stepSize = 10
 
 for line in stocks:
