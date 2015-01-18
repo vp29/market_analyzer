@@ -90,10 +90,10 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
 
         if bought:
             if prices[-1].price >= sellCutoff:
-                trades.write("(" + stock + ") time to sell: " + str((j-boughtIndex)*samplePeriod) + " seconds")
-                trades.write("(" + stock + ") bought at: " + str(boughtPrice))
-                trades.write("(" + stock + ") sold at  : " + str(soldPrice))
-                trades.write("(" + stock + ") percent gain: " + str(float(soldPrice-boughtPrice)/boughtPrice))
+                trades.write("(" + stock + ") time to sell: " + str((j-boughtIndex)*samplePeriod) + " seconds\n")
+                trades.write("(" + stock + ") bought at: " + str(boughtPrice) + '\n')
+                trades.write("(" + stock + ") sold at  : " + str(soldPrice) + '\n')
+                trades.write("(" + stock + ") percent gain: " + str(float(soldPrice-boughtPrice)/boughtPrice) + '\n')
                 soldPrice = prices[-1].price
                 bought = False
                 print "time to sell: " + str((j-boughtIndex)*samplePeriod) + " seconds"
@@ -186,7 +186,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
                 boughtPrice = prices[-1].price
                 sellCutoff = sellPoint
                 boughtIndex = j
-                boughtTime = prices[-1].date
+                boughtTime = data.date[j+analysisRange]
                 print "Buy current price : " + str(prices[-1].price)
                 print "Sell at price     : " + str(sellPoint)
             elif prices[-1].price >= sellPoint and bought == True:
@@ -214,8 +214,8 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
         print("total time taken this loop: ", end_time - start_time)
 
     if bought == True:
-        trades.write("(" + stock + ") bought time: " + str(boughtTime))
-        trades.write("(" + stock + ") bought at: " + str(boughtPrice))
+        trades.write("(" + stock + ") bought time: " + str(boughtTime) + '\n')
+        trades.write("(" + stock + ") bought at: " + str(boughtPrice) + '\n')
 
 stocks = open('stocks.txt', 'r')
 
@@ -227,7 +227,6 @@ stepSize = 10
 for line in stocks:
     print line
     analyzeStock(stock=line, samplePeriod=samplePeriod, analysisRange=analysisRange, stepSize=stepSize, showChart=False)
-    break
 
 
 #whats with your dates
