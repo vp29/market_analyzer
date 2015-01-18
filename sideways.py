@@ -220,7 +220,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
         trades.write("(" + stock + ") bought time: " + str(boughtTime) + '\n')
         trades.write("(" + stock + ") bought at: " + str(boughtPrice) + '\n')
 
-stocks = open('stocks.txt', 'r')
+stocks = open('fortune500.txt', 'r')
 
 #data = DataReader("RGS",  "yahoo", datetime(2000,1,1), datetime(2000,10,1))
 samplePeriod = 300
@@ -228,6 +228,7 @@ analysisRange = 2400 #len(data.close) #set max points for analysis at a given st
 stepSize = 10
 
 for line in stocks:
+    line = line[:-1] if "\n" in line else line
     print line
     analyzeStock(stock=line, samplePeriod=samplePeriod, analysisRange=analysisRange, stepSize=stepSize, showChart=False)
 
