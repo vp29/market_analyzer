@@ -1,7 +1,15 @@
+from __future__ import division
+
 __author__ = 'Erics'
 
 import matplotlib.pyplot as plt
 import google_intraday as gi
+from function_script import matchIndexes,genY, leastSquare, findMatches
+import time
+
+import cProfile
+#python -m cProfile -o profile.prof sideways.py
+#snakeviz profile.prof
 
 class Price:
     price = 0.0
@@ -13,77 +21,7 @@ class Price:
     def __repr__(self):
         return '<%r> %f' % (self.index, self.price)
 
-def leastSquare(data):
-    '''Y=a+bX, b=r*SDy/SDx, a=Y'-bX'
-    b=slope
-    a=intercept
-    X'=Mean of x values
-    Y'=Mean of y values
-    SDx = standard deviation of x
-    SDy = standard deviation of y'''
 
-    num = len(data)
-    xy = 0.0
-    xx = 0.0
-    x = 0.0
-    y = 0.0
-    for price in data:
-        xy = xy + price.price*price.index
-        xx = xx + price.index*price.index
-        x = x + price.index
-        y = y+ price.price
-
-
-    b = (num*xy - x*y)/(num*xx-x*x)
-    a = (y - b*x)/num
-
-    #print str(a) + "+" + str(b) + "x"
-    return a, b
-
-def genY(intercept, slope, start, end):
-    y = []
-    for i in range(start, end):
-        y.append(intercept + slope*i)
-    return y
-
-def matchIndexes(group1, group2):
-    matched = []
-    for item1 in group1:
-        for item2 in group2:
-            if item2.index == item1.index:
-                matched.append(item2)
-    return matched
-
-def findMatches(tempPrice, maxNumIndex, maxIndex, neg, cutoff, index):
-    '''tempPrice == list of prices
-    maxNumIndex is the number of indexes matched
-    neg == True if support
-    cutoff = multiplier for neg diff cutoff'''
-    multiplier = 1
-    if neg:
-        multiplier = -1
-
-    curInter, curSlope = leastSquare(tempPrice)
-    diff = []
-    curMaxDiff = 0.0
-
-    for curPrice in tempPrice:
-        currDiff = curPrice.price - (curInter + curSlope*curPrice.index)
-        if neg:
-            if currDiff < 0 and currDiff*multiplier > curMaxDiff:
-                curMaxDiff = currDiff*multiplier
-        else:
-            if currDiff*multiplier > curMaxDiff:
-                curMaxDiff = currDiff*multiplier
-        diff.append(Price(currDiff, curPrice.index))
-
-    cutDiff = [g for g in diff if g.price*multiplier >= cutoff*curMaxDiff]
-    if len(cutDiff) > maxNumIndex:
-        bigDiff = cutDiff
-        maxNumIndex = len(cutDiff)
-        maxIndex = index
-
-    return bigDiff, maxNumIndex, maxIndex
 
 def trendType(resSlope, supSlope, resInt, supInt, nextInd, bsPoint, curPrice, resRange, supRange):
     potBuy = False
@@ -143,7 +81,10 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
     boughtTime = ""
     start = 0
     for j in range(start, len(data.close) - analysisRange, stepSize):
+        start_time = time.time()
         print j
+        if j>50:
+            break
         prices = []
         maxPrice = 0.0
         print str(data.date[j]) + ' - ' + str(data.date[j+analysisRange])
@@ -191,6 +132,8 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
             try:
                 tempResPrice = [x for x in prices if x.index > i]
                 bigPosDiff, maxNumResIndex, maxResIndex = findMatches(tempResPrice, maxNumResIndex, maxResIndex, False, 0.8, i)
+                print "bigPOssdiff", bigPosDiff
+
             except:
                 None
 
@@ -200,15 +143,14 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
                 bigNegDiff, maxNumSupIndex, maxSupIndex = findMatches(tempSupPrice, maxNumSupIndex, maxSupIndex, True, 0.6, i)
             except:
                 None
-
         tempPeaks = matchIndexes(bigPosDiff, prices)
         tempTrough = matchIndexes(bigNegDiff, prices)
 
-        #print len(tempPeaks)
         #print len(tempTrough)
 
         resInter, resSlope = leastSquare(tempPeaks)
         supInter, supSlope = leastSquare(tempTrough)
+
 
         inter, slope = leastSquare(prices)
 
@@ -273,12 +215,13 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
                      range(maxSupIndex, len(prices)-1), supY, 'b')
 
             plt.show()
+        end_time = time.time()
+        print("total time taken this loop: ", end_time - start_time)
 
     if bought == True:
         trades.write("(" + stock + ") bought time: " + str(boughtTime))
         trades.write("(" + stock + ") bought at: " + str(boughtPrice))
 
-market = open('ibm30sec.txt', 'r')
 stocks = open('stocks.txt', 'r')
 
 #data = DataReader("RGS",  "yahoo", datetime(2000,1,1), datetime(2000,10,1))
@@ -287,4 +230,12 @@ analysisRange = 2400 #len(data.close) #set max points for analysis at a given st
 stepSize = 10
 
 for line in stocks:
-    analyzeStock(line, samplePeriod, analysisRange, stepSize, False)
+    print line
+    analyzeStock(stock=line, samplePeriod=samplePeriod, analysisRange=analysisRange, stepSize=stepSize, showChart=False)
+    break
+
+
+#whats with your dates
+#why false, true, true
+#http://gyazo.com/4585b43a224831e154a90f1037117977
+#this is way too slow
