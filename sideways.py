@@ -115,6 +115,8 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
                 print "Stop Loss bought at: " + str(boughtPrice)
                 print "Stop Loss sold at: " + str(soldPrice)
                 continue
+            else:
+                continue
 
         resDiff = []
         supDiff = []
