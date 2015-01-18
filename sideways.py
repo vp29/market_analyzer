@@ -92,11 +92,11 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
 
         if bought:
             if prices[-1].price >= sellCutoff:
+                soldPrice = prices[-1].price
                 trades.write("(" + stock + ") time to sell: " + str((j-boughtIndex)*samplePeriod) + " seconds\n")
                 trades.write("(" + stock + ") bought at: " + str(boughtPrice) + '\n')
                 trades.write("(" + stock + ") sold at  : " + str(soldPrice) + '\n')
                 trades.write("(" + stock + ") percent gain: " + str(float(soldPrice-boughtPrice)/boughtPrice) + '\n')
-                soldPrice = prices[-1].price
                 bought = False
                 print "time to sell: " + str((j-boughtIndex)*samplePeriod) + " seconds"
                 print "bought at: " + str(boughtPrice)
