@@ -1,16 +1,14 @@
-from __future__ import division
-
 __author__ = 'Erics'
 
 import matplotlib.pyplot as plt
 import google_intraday as gi
-from function_script import matchIndexes,genY, leastSquare, findMatches
+from function_script import matchIndexes,genY, leastSquare, findMatches, Price
 import time
 
 import cProfile
 #python -m cProfile -o profile.prof sideways.py
 #snakeviz profile.prof
-
+"""
 class Price:
     price = 0.0
     index = 0
@@ -21,7 +19,7 @@ class Price:
     def __repr__(self):
         return '<%r> %f' % (self.index, self.price)
 
-
+"""
 
 def trendType(resSlope, supSlope, resInt, supInt, nextInd, bsPoint, curPrice, resRange, supRange):
     potBuy = False
@@ -83,8 +81,6 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
     for j in range(start, len(data.close) - analysisRange, stepSize):
         start_time = time.time()
         print j
-        if j>50:
-            break
         prices = []
         maxPrice = 0.0
         print str(data.date[j]) + ' - ' + str(data.date[j+analysisRange])
@@ -132,8 +128,6 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
             try:
                 tempResPrice = [x for x in prices if x.index > i]
                 bigPosDiff, maxNumResIndex, maxResIndex = findMatches(tempResPrice, maxNumResIndex, maxResIndex, False, 0.8, i)
-                print "bigPOssdiff", bigPosDiff
-
             except:
                 None
 
@@ -171,6 +165,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
                 if diff.index in range(maxResIndex + i*(len(prices)-maxResIndex)/3, maxResIndex + (i+1)*(len(prices)-maxResIndex)/3):
                     posMatches[i] = True
             for diff in bigNegDiff:
+
                 if diff.index in range(maxSupIndex + i*(len(prices)-maxSupIndex)/3, maxSupIndex + (i+1)*(len(prices)-maxSupIndex)/3):
                     negMatches[i] = True
 

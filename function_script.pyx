@@ -1,7 +1,7 @@
 from __future__ import division
 import cython
 
-cdef class Price:
+class Price:
     price = 0.0
     index = 0
     def __init__(self, price, index):
@@ -11,7 +11,7 @@ cdef class Price:
     def __repr__(self):
         return '<%r> %f' % (self.index, self.price)
 
-
+@cython.cdivision(True)
 def leastSquare(data):
     cdef int num
     cdef float xy,xx,x,y
@@ -36,16 +36,12 @@ def leastSquare(data):
         y = y+ price.price
 
     b = (num*xy - x*y)/(num*xx-x*x)
-    print num
-
     a = (y - b*x)/num
 
     return a, b
 
-
-def findMatches(tempPrice, maxNumIndex, maxIndex, neg, cutoff, index):
-    #cdef int maxNumIndex,maxIndex,index #why the fuck doesn't this work
-    #cdef double cutoff
+@cython.cdivision(True)
+def findMatches(tempPrice, int maxNumIndex, int maxIndex, neg, double cutoff, int index):
 
     multiplier = 1
     if neg:
@@ -73,6 +69,10 @@ def findMatches(tempPrice, maxNumIndex, maxIndex, neg, cutoff, index):
 
     return bigDiff, maxNumIndex, maxIndex
 
+
+
+
+
 def matchIndexes(group1, group2):
     matched = []
     for item1 in group1:
@@ -82,7 +82,7 @@ def matchIndexes(group1, group2):
     return matched
 
 
-def genY(intercept, slope, start, end):
+def genY(float intercept, float slope,int start,int end):
     cdef int i
     y = []
     for i in range(start, end):
