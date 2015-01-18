@@ -68,10 +68,14 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
     trades = open('trades.txt', 'a')
     data = gi.GoogleIntradayQuote(stock, samplePeriod, 50)
 
+    print len(data.close)
+
     #i=0
     #for line in market:
     #    prices.append(Price(float(line), i))
     #    i = i+1
+
+    stopLossPerc = 10
 
     bought = False
     sellCutoff = 0.0
@@ -101,7 +105,15 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
                 print "time to sell: " + str((j-boughtIndex)*samplePeriod) + " seconds"
                 print "bought at: " + str(boughtPrice)
                 print "sold at  : " + str(soldPrice)
-            else:
+            elif prices[-1].price <= (boughtPrice - boughtPrice*stopLossPerc/100):
+                bought = False
+                soldPrice = prices[-1].price
+                trades.write("(" + stock + ") Stop Loss time to sell: " + str((j-boughtIndex)*samplePeriod) + " seconds\n")
+                trades.write("(" + stock + ") Stop Loss bought at: " + str(boughtPrice) + '\n')
+                trades.write("(" + stock + ") Stop Loss sold at  : " + str(soldPrice) + '\n')
+                trades.write("(" + stock + ") Stop Loss percent lost: " + str(float(soldPrice-boughtPrice)/boughtPrice) + '\n')
+                print "Stop Loss bought at: " + str(boughtPrice)
+                print "Stop Loss sold at: " + str(soldPrice)
                 continue
 
         resDiff = []
