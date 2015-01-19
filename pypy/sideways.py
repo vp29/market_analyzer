@@ -92,7 +92,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
                 trades.write("(" + stock + ") bought at: " + str(boughtPrice) + '\n')
                 trades.write("(" + stock + ") sold at  : " + str(sold_price) + '\n')
                 trades.write("(" + stock + ") percent gain: " + str(float(sold_price-boughtPrice)/boughtPrice * 100) + '\n')
-                trades.write("Global percent gain: " + str(global_percent_gain*100))
+                trades.write("Global percent gain: " + str(global_percent_gain*100) + '\n')
                 bought = False
                 print "time to sell: " + str((j-boughtIndex)*samplePeriod) + " seconds"
                 print "bought at: " + str(boughtPrice)
@@ -105,7 +105,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
                 trades.write("(" + stock + ") Stop Loss bought at: " + str(boughtPrice) + '\n')
                 trades.write("(" + stock + ") Stop Loss sold at  : " + str(sold_price) + '\n')
                 trades.write("(" + stock + ") Stop Loss percent lost: " + str(float(sold_price-boughtPrice)/boughtPrice * 100) + '\n')
-                trades.write("Global percent gain: " + str(global_percent_gain*100))
+                trades.write("Global percent gain: " + str(global_percent_gain*100) + '\n')
                 print "Stop Loss bought at: " + str(boughtPrice)
                 print "Stop Loss sold at: " + str(sold_price)
                 continue
@@ -210,14 +210,16 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
         print("total time taken this loop: ", end_time - start_time)
 
     if bought:
+        sold_price = data.close[-1]
         global_percent_gain += float(sold_price-boughtPrice)/boughtPrice
         trades.write("(" + stock + ") bought time: " + str(boughtTime) + '\n')
         trades.write("(" + stock + ") bought at: " + str(boughtPrice) + '\n')
         trades.write("(" + stock + ") current price: " + str(data.close[-1]) + '\n')
         trades.write("(" + stock + ") perceant gain: " + str(float(data.close[-1]-boughtPrice)/boughtPrice * 100) + '\n')
-        trades.write("Global percent gain: " + str(global_percent_gain*100))
+        trades.write("Global percent gain: " + str(global_percent_gain*100) + '\n')
 
 stocks = open('fortune500.txt', 'r')
+
 
 #data = DataReader("RGS",  "yahoo", datetime(2000,1,1), datetime(2000,10,1))
 samplePeriod = 300
