@@ -11,6 +11,7 @@ import time
 
 minimumPercent = 2
 global_percent_gain = 0.0
+global_stock_values = []
 
 def trendType(resSlope, supSlope, resInt, supInt, nextInd, bsPoint, curPrice, resRange, supRange):
     potBuy = False
@@ -53,7 +54,7 @@ def trendType(resSlope, supSlope, resInt, supInt, nextInd, bsPoint, curPrice, re
     #print "sell point: " + str((nextRes - diff*bsPoint))
     return (nextSup + diff*bsPoint), (nextRes - diff*bsPoint), potBuy
 
-def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
+def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, investment):
     global global_percent_gain
     trades = open('trades.txt', 'a')
     data = gi.GoogleIntradayQuote(stock, samplePeriod, 50)
@@ -94,6 +95,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
                 trades.write("(" + stock + ") percent gain: " + str(float(sold_price-boughtPrice)/boughtPrice * 100) + '\n')
                 trades.write("Global percent gain: " + str(global_percent_gain*100))
                 bought = False
+                investment = investment*(1+float(sold_price-boughtPrice)/boughtPrice)
                 print "time to sell: " + str((j-boughtIndex)*samplePeriod) + " seconds"
                 print "bought at: " + str(boughtPrice)
                 print "sold at  : " + str(sold_price)
@@ -106,6 +108,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
                 trades.write("(" + stock + ") Stop Loss sold at  : " + str(sold_price) + '\n')
                 trades.write("(" + stock + ") Stop Loss percent lost: " + str(float(sold_price-boughtPrice)/boughtPrice * 100) + '\n')
                 trades.write("Global percent gain: " + str(global_percent_gain*100))
+                investment = investment*(1+float(sold_price-boughtPrice)/boughtPrice)
                 print "Stop Loss bought at: " + str(boughtPrice)
                 print "Stop Loss sold at: " + str(sold_price)
                 continue
@@ -216,6 +219,9 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
         trades.write("(" + stock + ") current price: " + str(data.close[-1]) + '\n')
         trades.write("(" + stock + ") perceant gain: " + str(float(data.close[-1]-boughtPrice)/boughtPrice * 100) + '\n')
         trades.write("Global percent gain: " + str(global_percent_gain*100))
+        investment = investment*(1+float(data.close[-1]-boughtPrice)/boughtPrice)
+
+    return investment
 
 stocks = open('fortune500.txt', 'r')
 
@@ -224,10 +230,21 @@ samplePeriod = 300
 analysisRange = 960 #len(data.close) #set max points for analysis at a given step
 stepSize = 10
 
+initial = 0.0
+total = 0.0
 for line in stocks:
     line = line[:-1] if "\n" in line else line
     print line
-    analyzeStock(stock=line, samplePeriod=samplePeriod, analysisRange=analysisRange, stepSize=stepSize, showChart=False)
+    initial_investment = 100
+    investment = analyzeStock(stock=line, samplePeriod=samplePeriod, analysisRange=analysisRange,
+                              stepSize=stepSize, showChart=False, investment=initial_investment)
+    if (investment != 100):
+        initial += initial_investment
+        total += investment
+        global_stock_values.append(investment)
+    print "Initial Investment: " + str(initial)
+    print "Total Value: " + str(total)
+    print "Total Percent Gain: " + str((total-initial)/initial*100)
 
 
 #whats with your dates
