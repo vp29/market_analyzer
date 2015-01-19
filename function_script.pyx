@@ -1,5 +1,8 @@
-from __future__ import division
+#from __future__ import division
 import cython
+import google_intraday as gi
+import time
+
 """Eventually if we port everything into this file some of these functions can be turned into cdef so they dont have
 to use the python api"""
 
@@ -14,10 +17,7 @@ class Price:
         return '<%r> %f' % (self.index, self.price)
 
 @cython.cdivision(True)
-def leastSquare(data):
-    cdef int num
-    cdef float xy,xx,x,y
-
+def leastSquare(list data):
     '''Y=a+bX, b=r*SDy/SDx, a=Y'-bX'
     b=slope
     a=intercept
@@ -26,25 +26,28 @@ def leastSquare(data):
     SDx = standard deviation of x
     SDy = standard deviation of y'''
 
-    num = len(data)
-    xy = 0.0
-    xx = 0.0
-    x = 0.0
-    y = 0.0
+    cdef int num = len(data)
+    cdef float xy = 0.0
+    cdef float xx = 0.0
+    cdef float x = 0.0
+    cdef float y = 0.0
     for price in data:
         xy = xy + price.price*price.index
         xx = xx + price.index*price.index
         x = x + price.index
         y = y+ price.price
 
-    b = (num*xy - x*y)/(num*xx-x*x)
-    a = (y - b*x)/num
+    cdef float b = (num*xy - x*y)/(num*xx-x*x)
+    cdef float a = (y - b*x)/num
 
     return a, b
 
 
 @cython.cdivision(True)
-def findMatches(tempPrice, int maxNumIndex, int maxIndex, neg, double cutoff, int index):
+def findMatches(list tempPrice, int maxNumIndex, int maxIndex, bint neg, double cutoff, int index):
+    cdef float currDiff,curMaxDiff, curInter,curSlope
+    cdef signed int multiplier
+    cdef list diff
 
     multiplier = 1
     if neg:
@@ -74,8 +77,6 @@ def findMatches(tempPrice, int maxNumIndex, int maxIndex, neg, double cutoff, in
 
 
 
-
-
 def matchIndexes(group1, group2):
     matched = []
     for item1 in group1:
@@ -85,10 +86,10 @@ def matchIndexes(group1, group2):
     return matched
 
 
-def genY(float intercept, float slope,int start,int end):
+def genY(float intercept, float slope,int start,unsigned int end):
     cdef int i
     y = []
-    for i in range(start, end):
+    for i in xrange(start, end):
         y.append(intercept + slope*i)
     return y
 

@@ -1,30 +1,112 @@
-(A) bought time: 2014-12-01
-(A) bought at: 41.955
-(A) bought time: 2014-12-01
-(A) bought at: 41.955
-(AAPL) bought time: 2014-11-25
-(AAPL) bought at: 118.045
+(A) Stop Loss time to sell: 157500 seconds
+(A) Stop Loss bought at: 41.955
+(A) Stop Loss sold at  : 40.675
+(A) Stop Loss percent lost: -0.0305088785604
+(A) Stop Loss time to sell: 57000 seconds
+(A) Stop Loss bought at: 40.66
+(A) Stop Loss sold at  : 39.37
+(A) Stop Loss percent lost: -0.031726512543
+(A) bought time: 2015-01-14
+(A) bought at: 38.5499
+(AAPL) Stop Loss time to sell: 66000 seconds
+(AAPL) Stop Loss bought at: 118.045
+(AAPL) Stop Loss sold at  : 114.305
+(AAPL) Stop Loss percent lost: -0.031682832818
+(AAPL) time to sell: 78000 seconds
+(AAPL) bought at: 107.74
+(AAPL) sold at  : 112.2
+(AAPL) percent gain: 0.0413959532207
+(AAPL) bought time: 2015-01-16
+(AAPL) bought at: 105.51
 (ABC) time to sell: 6000 seconds
 (ABC) bought at: 89.9
-(ABC) sold at  : 0.0
-(ABC) percent gain: -1.0
-(ABC) bought time: 2014-12-05
+(ABC) sold at  : 90.89
+(ABC) percent gain: 0.0110122358176
+(ABC) time to sell: 529500 seconds
 (ABC) bought at: 92.24
-(ACE) time to sell: 9000 seconds
+(ABC) sold at  : 93.59
+(ABC) percent gain: 0.0146357328708
+(ACE) time to sell: 7500 seconds
 (ACE) bought at: 115.99
-(ACE) sold at  : 0.0
-(ACE) percent gain: -1.0
-(ACN) time to sell: 171000 seconds
-(ACN) bought at: 85.07
-(ACN) sold at  : 0.0
-(ACN) percent gain: -1.0
-(ADI) bought time: 2014-12-08
-(ADI) bought at: 56.13
+(ACE) sold at  : 117.23
+(ACE) percent gain: 0.0106905767739
+(ACN) Stop Loss time to sell: 81000 seconds
+(ACN) Stop Loss bought at: 85.07
+(ACN) Stop Loss sold at  : 82.45
+(ACN) Stop Loss percent lost: -0.0307981662161
+(ADBE) bought time: 2015-01-13
+(ADBE) bought at: 70.79
+(ADI) Stop Loss time to sell: 426000 seconds
+(ADI) Stop Loss bought at: 56.13
+(ADI) Stop Loss sold at  : 54.34
+(ADI) Stop Loss percent lost: -0.0318902547657
+(ADI) time to sell: 117000 seconds
+(ADI) bought at: 54.16
+(ADI) sold at  : 55.28
+(ADI) percent gain: 0.0206794682422
 (ADM) bought time: 2015-01-13
 (ADM) bought at: 47.92
-(ADP) bought time: 2014-12-05
-(ADP) bought at: 85.18
-(ADT) time to sell: 210000 seconds
-(ADT) bought at: 32.725
-(ADT) sold at  : 0.0
-(ADT) percent gain: -1.0
+(ADP) Stop Loss time to sell: 141000 seconds
+(ADP) Stop Loss bought at: 85.53
+(ADP) Stop Loss sold at  : 82.66
+(ADP) Stop Loss percent lost: -0.0335554776102
+(ADT) Stop Loss time to sell: 79500 seconds
+(ADT) Stop Loss bought at: 32.725
+(ADT) Stop Loss sold at  : 31.72
+(ADT) Stop Loss percent lost: -0.0307104660046
+(AEE) time to sell: 39000 seconds
+(AEE) bought at: 42.95
+(AEE) sold at  : 44.13
+(AEE) percent gain: 0.027473806752
+(AEP) time to sell: 43500 seconds
+(AEP) bought at: 57.48
+(AEP) sold at  : 59.04
+(AEP) percent gain: 0.027139874739
+(AEP) time to sell: 109500 seconds
+(AEP) bought at: 58.64
+(AEP) sold at  : 59.76
+(AEP) percent gain: 0.0190995907231
+(AES) Stop Loss time to sell: 237000 seconds
+(AES) Stop Loss bought at: 13.89
+(AES) Stop Loss sold at  : 13.39
+(AES) Stop Loss percent lost: -0.0359971202304
+(AET) time to sell: 96000 seconds
+(AET) bought at: 87.49
+(AET) sold at  : 88.87
+(AET) percent gain: 0.0157732312264
+(AET) bought time: 2015-01-13
+(AET) bought at: 89.98
+(AFL) Stop Loss time to sell: 253500 seconds
+(AFL) Stop Loss bought at: 59.68
+(AFL) Stop Loss sold at  : 57.74
+(AFL) Stop Loss percent lost: -0.0325067024129
+(AGN) time to sell: 759000 seconds
+(AGN) bought at: 209.47
+(AGN) sold at  : 219.95
+(AGN) percent gain: 0.0500310306965
+(AIG) time to sell: 48000 seconds
+(AIG) bought at: 54.45
+(AIG) sold at  : 55.38
+(AIG) percent gain: 0.0170798898072
+(AIG) Stop Loss time to sell: 51000 seconds
+(AIG) Stop Loss bought at: 52.08
+(AIG) Stop Loss sold at  : 50.42
+(AIG) Stop Loss percent lost: -0.0318740399386
+(AKAM) Stop Loss time to sell: 175500 seconds
+(AKAM) Stop Loss bought at: 63.37
+(AKAM) Stop Loss sold at  : 61.45
+(AKAM) Stop Loss percent lost: -0.0302982483825
+(AKAM) time to sell: 24000 seconds
+(AKAM) bought at: 59.92
+(AKAM) sold at  : 62.25
+(AKAM) percent gain: 0.0388851802403
+(ALL) time to sell: 6000 seconds
+(ALL) bought at: 67.43
+(ALL) sold at  : 68.27
+(ALL) percent gain: 0.0124573631915
+(ALL) time to sell: 55500 seconds
+(ALL) bought at: 67.73
+(ALL) sold at  : 68.53
+(ALL) percent gain: 0.0118116049018
+(ALL) bought time: 2015-01-14
+(ALL) bought at: 69.3
