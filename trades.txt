@@ -2,4 +2,36 @@
 (A) bought at: 41.955
 (A) current price: 38.25
 (A) perceant gain: -8.83089023954
-Global percent gain: -100.0
+Global percent gain: -100.0(AAPL) Stop Loss time to sell: 594000 seconds
+(AAPL) Stop Loss bought at: 118.045
+(AAPL) Stop Loss sold at  : 105.88
+(AAPL) Stop Loss percent lost: -10.3053920115
+Global percent gain: -110.305392012(AAPL) bought time: 2015-01-16
+(AAPL) bought at: 105.51
+(AAPL) current price: 105.9401
+(AAPL) perceant gain: 0.407639086343
+Global percent gain: -109.954714351(ABC) time to sell: 6000 seconds
+(ABC) bought at: 89.9
+(ABC) sold at  : 90.89
+(ABC) percent gain: 1.10122358176
+Global percent gain: -108.853490769(ABC) bought time: 2014-12-05
+(ABC) bought at: 92.24
+(ABC) current price: 92.39
+(ABC) perceant gain: 0.16261925412
+Global percent gain: -110.317064056(ACN) time to sell: 171000 seconds
+(ACN) bought at: 85.07
+(ACN) sold at  : 90.75
+(ACN) percent gain: 6.67685435524
+Global percent gain: -103.640209701(ADI) bought time: 2014-12-08
+(ADI) bought at: 56.13
+(ADI) current price: 53.69
+(ADI) perceant gain: -4.34705148762
+Global percent gain: -203.640209701(ADM) bought time: 2015-01-14
+(ADM) bought at: 47.27
+(ADM) current price: 47.66
+(ADM) perceant gain: 0.8250475989
+Global percent gain: -303.640209701(ADP) bought time: 2014-12-05
+(ADP) bought at: 85.18
+(ADP) current price: 84.57
+(ADP) perceant gain: -0.716130547077
+Global percent gain: -403.640209701

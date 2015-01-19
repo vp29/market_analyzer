@@ -257,7 +257,6 @@ for line in stocks:
     analyzeStock(stock=line, samplePeriod=samplePeriod, analysisRange=analysisRange, stepSize=stepSize, showChart=False)
 
 
-#whats with your dates
 #why false, true, true
 #http://gyazo.com/4585b43a224831e154a90f1037117977
 #There needs to be a check in place(if not already put?) that will make sure that the difference between the spread
