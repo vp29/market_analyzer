@@ -22,10 +22,10 @@ class Price:
 """
 
 minimumPercent = 2
-globalPercentGain = 0.0
+global_percent_gain = 0.0
 
 def trendType(resSlope, supSlope, resInt, supInt, nextInd, bsPoint, curPrice, resRange, supRange):
-    potBuy = False
+    pot_buy = False
     nextRes = resInt + resSlope*nextInd
     nextSup = supInt + supSlope*nextInd
     resRise = resSlope*resRange
@@ -38,7 +38,7 @@ def trendType(resSlope, supSlope, resInt, supInt, nextInd, bsPoint, curPrice, re
     normCutoff = 0.01
     if resNorm < normCutoff and resNorm > -normCutoff \
             and supNorm < normCutoff and supNorm > -normCutoff:
-        potBuy = True
+        pot_buy = True
         print "Sideways moving market."
     elif ((resNorm < normCutoff and resNorm > -normCutoff) \
                   or (supNorm < normCutoff and supNorm > -normCutoff)):
@@ -49,12 +49,12 @@ def trendType(resSlope, supSlope, resInt, supInt, nextInd, bsPoint, curPrice, re
     elif (resNorm > 0 and supNorm > 0) \
         and ((resNorm <= supNorm and resNorm >= 0.8*supNorm) \
             or (supNorm <= resNorm and supNorm >= 0.8*resNorm)):
-            potBuy = True
+            pot_buy = True
             print "Upward trending channel."
     elif (resNorm < 0 and supNorm < 0) \
         and ((resNorm <= supNorm and abs(0.8*resNorm) <= abs(supNorm)) \
             or (supNorm <= resNorm and abs(0.8*supNorm) <= abs(resNorm))):
-            potBuy = True
+            pot_buy = True
             print "Downward trending channel."
     elif (resNorm < 0 and supNorm > 0) \
             or (resNorm < 0 and resNorm < supNorm)\
@@ -63,9 +63,10 @@ def trendType(resSlope, supSlope, resInt, supInt, nextInd, bsPoint, curPrice, re
 
     #print "buy point:  " + str((nextSup + diff*bsPoint))
     #print "sell point: " + str((nextRes - diff*bsPoint))
-    return (nextSup + diff*bsPoint), (nextRes - diff*bsPoint), potBuy
+    return (nextSup + diff*bsPoint), (nextRes - diff*bsPoint), pot_buy
 
 def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
+    global global_percent_gain
     trades = open('trades.txt', 'a')
     data = gi.GoogleIntradayQuote(stock, samplePeriod, 50)
 
@@ -76,11 +77,11 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
     #    prices.append(Price(float(line), i))
     #    i = i+1
 
-    stopLossPerc = 10
+    stop_loss_perc = 10
 
     bought = False
     sellCutoff = 0.0
-    soldPrice = 0.0
+    sold_price = 0.0
     boughtPrice = 0.0
     boughtIndex = 0
     boughtTime = ""
@@ -97,28 +98,28 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
 
         if bought:
             if prices[-1].price >= sellCutoff:
-                soldPrice = prices[-1].price
-                globalPercentGain = globalPercentGain + float(soldPrice-boughtPrice)/boughtPrice
+                sold_price = prices[-1].price
+                global_percent_gain += float(sold_price-boughtPrice)/boughtPrice
                 trades.write("(" + stock + ") time to sell: " + str((j-boughtIndex)*samplePeriod) + " seconds\n")
                 trades.write("(" + stock + ") bought at: " + str(boughtPrice) + '\n')
-                trades.write("(" + stock + ") sold at  : " + str(soldPrice) + '\n')
-                trades.write("(" + stock + ") percent gain: " + str(float(soldPrice-boughtPrice)/boughtPrice * 100) + '\n')
-                trades.write("Global percent gain: " + globalPercentGain*100)
+                trades.write("(" + stock + ") sold at  : " + str(sold_price) + '\n')
+                trades.write("(" + stock + ") percent gain: " + str(float(sold_price-boughtPrice)/boughtPrice * 100) + '\n')
+                trades.write("Global percent gain: " + global_percent_gain*100)
                 bought = False
                 print "time to sell: " + str((j-boughtIndex)*samplePeriod) + " seconds"
                 print "bought at: " + str(boughtPrice)
-                print "sold at  : " + str(soldPrice)
-            elif prices[-1].price <= (boughtPrice - boughtPrice*stopLossPerc/100):
+                print "sold at  : " + str(sold_price)
+            elif prices[-1].price <= (boughtPrice - boughtPrice*stop_loss_perc/100):
                 bought = False
-                soldPrice = prices[-1].price
-                globalPercentGain = globalPercentGain + float(soldPrice-boughtPrice)/boughtPrice
+                sold_price = prices[-1].price
+                global_percent_gain += float(sold_price-boughtPrice)/boughtPrice
                 trades.write("(" + stock + ") Stop Loss time to sell: " + str((j-boughtIndex)*samplePeriod) + " seconds\n")
                 trades.write("(" + stock + ") Stop Loss bought at: " + str(boughtPrice) + '\n')
-                trades.write("(" + stock + ") Stop Loss sold at  : " + str(soldPrice) + '\n')
-                trades.write("(" + stock + ") Stop Loss percent lost: " + str(float(soldPrice-boughtPrice)/boughtPrice * 100) + '\n')
-                trades.write("Global percent gain: " + globalPercentGain*100)
+                trades.write("(" + stock + ") Stop Loss sold at  : " + str(sold_price) + '\n')
+                trades.write("(" + stock + ") Stop Loss percent lost: " + str(float(sold_price-boughtPrice)/boughtPrice * 100) + '\n')
+                trades.write("Global percent gain: " + global_percent_gain*100)
                 print "Stop Loss bought at: " + str(boughtPrice)
-                print "Stop Loss sold at: " + str(soldPrice)
+                print "Stop Loss sold at: " + str(sold_price)
                 continue
             else:
                 continue
@@ -170,78 +171,78 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
 
         inter, slope = leastSquare(prices)
 
-        priceY = []
+        price_y = []
         #put prices in list for plotting
         for price in prices:
-            priceY.append(price.price)
+            price_y.append(price.price)
 
-        resY = genY(resInter, resSlope, maxResIndex, len(prices)-1)
-        supY = genY(supInter, supSlope, maxSupIndex, len(prices)-1)
-        meanY = genY(inter, slope, 0, len(prices))
+        res_y = genY(resInter, resSlope, maxResIndex, len(prices)-1)
+        sup_y = genY(supInter, supSlope, maxSupIndex, len(prices)-1)
+        mean_y = genY(inter, slope, 0, len(prices))
 
         #check that there are at least 2 areas that have matches, and one is in the middle
-        posMatches = [False, False, False]
-        negMatches = [False, False, False]
+        pos_matches = [False, False, False]
+        neg_matches = [False, False, False]
         for i in range(0,3):
             for diff in bigPosDiff:
                 if diff.index in range(maxResIndex + i*(len(prices)-maxResIndex)/3, maxResIndex + (i+1)*(len(prices)-maxResIndex)/3):
-                    posMatches[i] = True
+                    pos_matches[i] = True
             for diff in bigNegDiff:
 
                 if diff.index in range(maxSupIndex + i*(len(prices)-maxSupIndex)/3, maxSupIndex + (i+1)*(len(prices)-maxSupIndex)/3):
-                    negMatches[i] = True
+                    neg_matches[i] = True
 
-        print posMatches
-        print negMatches
+        print pos_matches
+        print neg_matches
 
-        buyPoint, sellPoint, potBuy = trendType(resSlope, supSlope, resInter, supInter,
+        buy_point, sell_point, pot_buy = trendType(resSlope, supSlope, resInter, supInter,
                                         len(prices), .1, prices[-1].price,
                                         len(prices)-1 - maxResIndex, len(prices)-1 - maxSupIndex )
 
         #only consider buying when suport matches in middle and at least one side
-        potBuy = potBuy and (negMatches[1] and (negMatches[0] or negMatches[2])) \
-                 and (posMatches[1] and (posMatches[0] and posMatches[2]))
+        pot_buy = pot_buy and (neg_matches[1] and (neg_matches[0] or neg_matches[2])) \
+                 and (pos_matches[1] and (pos_matches[0] and pos_matches[2]))
 
-        if sellPoint > buyPoint*(1.0 + minimumPercent/100) and potBuy:
-            if prices[-1].price <= buyPoint and bought == False:
+        if sell_point > buy_point*(1.0 + minimumPercent/100) and pot_buy:
+            if prices[-1].price <= buy_point and bought == False:
                 bought = True
                 boughtPrice = prices[-1].price
-                sellCutoff = sellPoint
+                sellCutoff = sell_point
                 boughtIndex = j
                 boughtTime = data.date[j+analysisRange]
                 print "Buy current price : " + str(prices[-1].price)
-                print "Sell at price     : " + str(sellPoint)
-            elif prices[-1].price >= sellPoint and bought == True:
+                print "Sell at price     : " + str(sell_point)
+            elif prices[-1].price >= sell_point and bought == True:
                 bought = False
                 print "Sell current price: " + str(prices[-1].price)
-                print "Buy at price      : " + str(buyPoint)
+                print "Buy at price      : " + str(buy_point)
 
-        if showChart==True:
+        if showChart:
             plt.figure(1)
             plt.subplot(211)
-            plt.plot(range(0,len(prices)), priceY, 'r',
-                     range(0,len(prices)), meanY,  'y',
-                     range(maxResIndex, len(prices)-1), resY, 'g',
-                     range(maxSupIndex, len(prices)-1), supY, 'b')
+            plt.plot(range(0,len(prices)), price_y, 'r',
+                     range(0,len(prices)), mean_y,  'y',
+                     range(maxResIndex, len(prices)-1), res_y, 'g',
+                     range(maxSupIndex, len(prices)-1), sup_y, 'b')
             plt.axis([0, len(prices), 0, maxPrice + 1])
 
             plt.subplot(212)
-            plt.plot(range(0,len(prices)), priceY, 'r',
-                     range(0,len(prices)), meanY,  'y',
-                     range(maxResIndex, len(prices)-1), resY, 'g',
-                     range(maxSupIndex, len(prices)-1), supY, 'b')
+            plt.plot(range(0,len(prices)), price_y, 'r',
+                     range(0,len(prices)), mean_y,  'y',
+                     range(maxResIndex, len(prices)-1), res_y, 'g',
+                     range(maxSupIndex, len(prices)-1), sup_y, 'b')
 
             plt.show()
         end_time = time.time()
         print("total time taken this loop: ", end_time - start_time)
 
-    if bought == True:
-        globalPercentGain = globalPercentGain + float(soldPrice-boughtPrice)/boughtPrice
+    if bought:
+        global_percent_gain += float(sold_price-boughtPrice)/boughtPrice
         trades.write("(" + stock + ") bought time: " + str(boughtTime) + '\n')
         trades.write("(" + stock + ") bought at: " + str(boughtPrice) + '\n')
         trades.write("(" + stock + ") current price: " + str(data.close[-1]) + '\n')
         trades.write("(" + stock + ") perceant gain: " + str(float(data.close[-1]-boughtPrice)/boughtPrice * 100) + '\n')
-        trades.write("Global percent gain: " + globalPercentGain*100)
+        trades.write("Global percent gain: " + global_percent_gain*100)
 
 stocks = open('fortune500.txt', 'r')
 
