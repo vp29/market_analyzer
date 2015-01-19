@@ -1,7 +1,11 @@
-#from __future__ import division
+# cython: profile=True
 import cython
 import google_intraday as gi
 import time
+cimport cython
+
+
+#cython -a function_script.pyx
 
 """Eventually if we port everything into this file some of these functions can be turned into cdef so they dont have
 to use the python api"""
@@ -44,10 +48,10 @@ def leastSquare(list data):
 
 
 @cython.cdivision(True)
-def findMatches(list tempPrice, int maxNumIndex, int maxIndex, bint neg, double cutoff, int index):
+def findMatches(list tempPrice, unsigned int maxNumIndex, unsigned int maxIndex, bint neg, double cutoff, unsigned int index):
     cdef float currDiff,curMaxDiff, curInter,curSlope
     cdef signed int multiplier
-    cdef list diff
+    cdef list diff, cutDiff, bigDiff
 
     multiplier = 1
     if neg:
@@ -76,19 +80,19 @@ def findMatches(list tempPrice, int maxNumIndex, int maxIndex, bint neg, double 
     return bigDiff, maxNumIndex, maxIndex
 
 
-
-def matchIndexes(group1, group2):
-    matched = []
+@cython.boundscheck(False)
+def matchIndexes(list group1, list group2):
+    cdef list matched = []
     for item1 in group1:
         for item2 in group2:
             if item2.index == item1.index:
                 matched.append(item2)
     return matched
 
-
+@cython.boundscheck(False)
 def genY(float intercept, float slope,int start,unsigned int end):
     cdef int i
-    y = []
+    cdef list y = []
     for i in xrange(start, end):
         y.append(intercept + slope*i)
     return y
