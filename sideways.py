@@ -237,6 +237,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
         print("total time taken this loop: ", end_time - start_time)
 
     if bought:
+        sold_price = data.close[-1]
         global_percent_gain += float(sold_price-boughtPrice)/boughtPrice
         trades.write("(" + stock + ") bought time: " + str(boughtTime) + '\n')
         trades.write("(" + stock + ") bought at: " + str(boughtPrice) + '\n')
