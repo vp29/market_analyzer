@@ -22,6 +22,7 @@ class Price:
 """
 
 minimumPercent = 2
+globalPercentGain = 0.0
 
 def trendType(resSlope, supSlope, resInt, supInt, nextInd, bsPoint, curPrice, resRange, supRange):
     potBuy = False
@@ -97,10 +98,12 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
         if bought:
             if prices[-1].price >= sellCutoff:
                 soldPrice = prices[-1].price
+                globalPercentGain = globalPercentGain + float(soldPrice-boughtPrice)/boughtPrice
                 trades.write("(" + stock + ") time to sell: " + str((j-boughtIndex)*samplePeriod) + " seconds\n")
                 trades.write("(" + stock + ") bought at: " + str(boughtPrice) + '\n')
                 trades.write("(" + stock + ") sold at  : " + str(soldPrice) + '\n')
                 trades.write("(" + stock + ") percent gain: " + str(float(soldPrice-boughtPrice)/boughtPrice * 100) + '\n')
+                trades.write("Global percent gain: " + globalPercentGain*100)
                 bought = False
                 print "time to sell: " + str((j-boughtIndex)*samplePeriod) + " seconds"
                 print "bought at: " + str(boughtPrice)
@@ -108,10 +111,12 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
             elif prices[-1].price <= (boughtPrice - boughtPrice*stopLossPerc/100):
                 bought = False
                 soldPrice = prices[-1].price
+                globalPercentGain = globalPercentGain + float(soldPrice-boughtPrice)/boughtPrice
                 trades.write("(" + stock + ") Stop Loss time to sell: " + str((j-boughtIndex)*samplePeriod) + " seconds\n")
                 trades.write("(" + stock + ") Stop Loss bought at: " + str(boughtPrice) + '\n')
                 trades.write("(" + stock + ") Stop Loss sold at  : " + str(soldPrice) + '\n')
                 trades.write("(" + stock + ") Stop Loss percent lost: " + str(float(soldPrice-boughtPrice)/boughtPrice * 100) + '\n')
+                trades.write("Global percent gain: " + globalPercentGain*100)
                 print "Stop Loss bought at: " + str(boughtPrice)
                 print "Stop Loss sold at: " + str(soldPrice)
                 continue
@@ -231,10 +236,12 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
         print("total time taken this loop: ", end_time - start_time)
 
     if bought == True:
+        globalPercentGain = globalPercentGain + float(soldPrice-boughtPrice)/boughtPrice
         trades.write("(" + stock + ") bought time: " + str(boughtTime) + '\n')
         trades.write("(" + stock + ") bought at: " + str(boughtPrice) + '\n')
         trades.write("(" + stock + ") current price: " + str(data.close[-1]) + '\n')
         trades.write("(" + stock + ") perceant gain: " + str(float(data.close[-1]-boughtPrice)/boughtPrice * 100) + '\n')
+        trades.write("Global percent gain: " + globalPercentGain*100)
 
 stocks = open('fortune500.txt', 'r')
 
