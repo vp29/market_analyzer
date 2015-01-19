@@ -100,7 +100,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
                 trades.write("(" + stock + ") time to sell: " + str((j-boughtIndex)*samplePeriod) + " seconds\n")
                 trades.write("(" + stock + ") bought at: " + str(boughtPrice) + '\n')
                 trades.write("(" + stock + ") sold at  : " + str(soldPrice) + '\n')
-                trades.write("(" + stock + ") percent gain: " + str(float(soldPrice-boughtPrice)/boughtPrice) + '\n')
+                trades.write("(" + stock + ") percent gain: " + str(float(soldPrice-boughtPrice)/boughtPrice * 100) + '\n')
                 bought = False
                 print "time to sell: " + str((j-boughtIndex)*samplePeriod) + " seconds"
                 print "bought at: " + str(boughtPrice)
@@ -111,7 +111,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
                 trades.write("(" + stock + ") Stop Loss time to sell: " + str((j-boughtIndex)*samplePeriod) + " seconds\n")
                 trades.write("(" + stock + ") Stop Loss bought at: " + str(boughtPrice) + '\n')
                 trades.write("(" + stock + ") Stop Loss sold at  : " + str(soldPrice) + '\n')
-                trades.write("(" + stock + ") Stop Loss percent lost: " + str(float(soldPrice-boughtPrice)/boughtPrice) + '\n')
+                trades.write("(" + stock + ") Stop Loss percent lost: " + str(float(soldPrice-boughtPrice)/boughtPrice * 100) + '\n')
                 print "Stop Loss bought at: " + str(boughtPrice)
                 print "Stop Loss sold at: " + str(soldPrice)
                 continue
@@ -233,6 +233,8 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
     if bought == True:
         trades.write("(" + stock + ") bought time: " + str(boughtTime) + '\n')
         trades.write("(" + stock + ") bought at: " + str(boughtPrice) + '\n')
+        trades.write("(" + stock + ") current price: " + str(data.close[-1]) + '\n')
+        trades.write("(" + stock + ") perceant gain: " + str(float(data.close[-1]-boughtPrice)/boughtPrice * 100) + '\n')
 
 stocks = open('fortune500.txt', 'r')
 
