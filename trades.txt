@@ -1,0 +1,30 @@
+(A) bought time: 2014-12-01
+(A) bought at: 41.955
+(A) bought time: 2014-12-01
+(A) bought at: 41.955
+(AAPL) bought time: 2014-11-25
+(AAPL) bought at: 118.045
+(ABC) time to sell: 6000 seconds
+(ABC) bought at: 89.9
+(ABC) sold at  : 0.0
+(ABC) percent gain: -1.0
+(ABC) bought time: 2014-12-05
+(ABC) bought at: 92.24
+(ACE) time to sell: 9000 seconds
+(ACE) bought at: 115.99
+(ACE) sold at  : 0.0
+(ACE) percent gain: -1.0
+(ACN) time to sell: 171000 seconds
+(ACN) bought at: 85.07
+(ACN) sold at  : 0.0
+(ACN) percent gain: -1.0
+(ADI) bought time: 2014-12-08
+(ADI) bought at: 56.13
+(ADM) bought time: 2015-01-13
+(ADM) bought at: 47.92
+(ADP) bought time: 2014-12-05
+(ADP) bought at: 85.18
+(ADT) time to sell: 210000 seconds
+(ADT) bought at: 32.725
+(ADT) sold at  : 0.0
+(ADT) percent gain: -1.0
