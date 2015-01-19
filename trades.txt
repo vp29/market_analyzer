@@ -1,0 +1,5 @@
+(A) bought time: 2014-12-01
+(A) bought at: 41.955
+(A) current price: 38.25
+(A) perceant gain: -8.83089023954
+Global percent gain: -100.0
