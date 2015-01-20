@@ -61,7 +61,12 @@ def findMatches(tempPrice,maxNumIndex,maxIndex, neg, cutoff, index):
                 curMaxDiff = currDiff*multiplier
         diff.append(Price(currDiff, curPrice.index))
 
+    #print diff
+    #print len(diff)
     cutDiff = [g for g in diff if g.price*multiplier >= cutoff*curMaxDiff]
+    #print cutDiff
+    #print len(cutDiff)
+
     if len(cutDiff) > maxNumIndex:
         bigDiff = cutDiff
         maxNumIndex = len(cutDiff)
