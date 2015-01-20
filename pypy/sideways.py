@@ -66,7 +66,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
     #    prices.append(Price(float(line), i))
     #    i = i+1
 
-    stop_loss_perc = 10
+    stop_loss_perc = 5
 
     bought = False
     sellCutoff = 0.0
@@ -155,10 +155,11 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
         tempTrough = matchIndexes(bigNegDiff, prices)
 
         #print len(tempTrough)
-
-        resInter, resSlope = leastSquare(tempPeaks)
-        supInter, supSlope = leastSquare(tempTrough)
-
+        try:
+            resInter, resSlope = leastSquare(tempPeaks)
+            supInter, supSlope = leastSquare(tempTrough)
+        except:
+            continue
 
         inter, slope = leastSquare(prices)
 
@@ -244,6 +245,10 @@ for line in stocks:
         initial += initial_investment
         total += investment
         global_stock_values.append(investment)
+    trades = open('trades.txt', 'a')
+    trades.write("Initial Investment: " + str(initial) + '\n')
+    trades.write("Total Value: " + str(total) + '\n')
+    trades.write( "Total Percent Gain: " + str((total-initial)/initial*100) + '\n')
     print "Initial Investment: " + str(initial)
     print "Total Value: " + str(total)
     print "Total Percent Gain: " + str((total-initial)/initial*100)
