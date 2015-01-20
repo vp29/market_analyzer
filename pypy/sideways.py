@@ -89,6 +89,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
             if prices[-1].price >= sellCutoff:
                 sold_price = prices[-1].price
                 global_percent_gain += float(sold_price-boughtPrice)/boughtPrice
+                trades.write("(" + stock + ") bought time: " + str(boughtTime) + '\n')
                 trades.write("(" + stock + ") time to sell: " + str((j-boughtIndex)*samplePeriod) + " seconds\n")
                 trades.write("(" + stock + ") bought at: " + str(boughtPrice) + '\n')
                 trades.write("(" + stock + ") sold at  : " + str(sold_price) + '\n')
@@ -103,6 +104,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
                 bought = False
                 sold_price = prices[-1].price
                 global_percent_gain += float(sold_price-boughtPrice)/boughtPrice
+                trades.write("(" + stock + ") bought time: " + str(boughtTime) + '\n')
                 trades.write("(" + stock + ") Stop Loss time to sell: " + str((j-boughtIndex)*samplePeriod) + " seconds\n")
                 trades.write("(" + stock + ") Stop Loss bought at: " + str(boughtPrice) + '\n')
                 trades.write("(" + stock + ") Stop Loss sold at  : " + str(sold_price) + '\n')
