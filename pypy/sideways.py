@@ -22,8 +22,8 @@ def trendType(resSlope, supSlope, resInt, supInt, nextInd, bsPoint, curPrice, re
     diff = nextRes - nextSup
     resNorm = resRise/curPrice
     supNorm = supRise/curPrice
-    print "resRise: " + str(resRise) + " supRise: " + str(supRise)
-    print "resNorm: " + str(resNorm) + " supNorm: " + str(supNorm)
+    #print "resRise: " + str(resRise) + " supRise: " + str(supRise)
+    #print "resNorm: " + str(resNorm) + " supNorm: " + str(supNorm)
     normCutoff = 0.01
     if resNorm < normCutoff and resNorm > -normCutoff \
             and supNorm < normCutoff and supNorm > -normCutoff:
@@ -66,7 +66,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
     #    prices.append(Price(float(line), i))
     #    i = i+1
 
-    stop_loss_perc = 5
+    stop_loss_perc = 8
 
     bought = False
     sellCutoff = 0.0
@@ -184,8 +184,8 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
                 if diff.index in range(maxSupIndex + i*(len(prices)-maxSupIndex)/3, maxSupIndex + (i+1)*(len(prices)-maxSupIndex)/3):
                     neg_matches[i] = True
 
-        print pos_matches
-        print neg_matches
+        #print pos_matches
+        #print neg_matches
 
         buy_point, sell_point, pot_buy = trendType(resSlope, supSlope, resInter, supInter,
                                         len(prices), .1, prices[-1].price,
@@ -233,25 +233,28 @@ samplePeriod = 300
 analysisRange = 960 #len(data.close) #set max points for analysis at a given step
 stepSize = 10
 
+startingMoney = 15000
 initial = 0.0
-total = 0.0
+total = startingMoney
 for line in stocks:
     line = line[:-1] if "\n" in line else line
     print line
-    initial_investment = 100
+    #i know this isnt how it would work since these would be going on in parrallel, but it
+    #gives an idea
+    initial_investment = total/10 #invest 10% of the  money
     investment = analyzeStock(stock=line, samplePeriod=samplePeriod, analysisRange=analysisRange,
                               stepSize=stepSize, showChart=False, investment=initial_investment)
-    if (investment != 100):
-        initial += initial_investment
-        total += investment
-        global_stock_values.append(investment)
+    if (investment != initial_investment):
+        #initial += initial_investment
+        total += investment-initial_investment
+        #global_stock_values.append(investment)
     trades = open('trades.txt', 'a')
-    trades.write("Initial Investment: " + str(initial) + '\n')
+    trades.write("Initial Investment: " + str(startingMoney) + '\n')
     trades.write("Total Value: " + str(total) + '\n')
-    trades.write( "Total Percent Gain: " + str((total-initial)/initial*100) + '\n')
-    print "Initial Investment: " + str(initial)
+    trades.write("Total Percent Gain: " + str((total-startingMoney)/startingMoney*100) + '\n')
+    print "Initial Investment: " + str(startingMoney)
     print "Total Value: " + str(total)
-    print "Total Percent Gain: " + str((total-initial)/initial*100)
+    print "Total Percent Gain: " + str((total-startingMoney)/startingMoney*100)
 
 
 #whats with your dates
