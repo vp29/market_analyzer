@@ -11,6 +11,14 @@ import time
 
 minimumPercent = 2
 global_percent_gain = 0.0
+stop_loss_perce = 8
+samplePeriod = 300
+analysisRange = 960 #len(data.close) #set max points for analysis at a given step
+stepSize = 10
+startingMoney = 15000
+initial = 0.0
+total = startingMoney
+initial_investment = total/10 #invest 10% of the  money
 global_stock_values = []
 
 def trendType(resSlope, supSlope, resInt, supInt, nextInd, bsPoint, curPrice, resRange, supRange):
@@ -53,6 +61,8 @@ def trendType(resSlope, supSlope, resInt, supInt, nextInd, bsPoint, curPrice, re
     #print "buy point:  " + str((nextSup + diff*bsPoint))
     #print "sell point: " + str((nextRes - diff*bsPoint))
     return (nextSup + diff*bsPoint), (nextRes - diff*bsPoint), potBuy
+
+
 
 def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, investment):
     global global_percent_gain
@@ -242,7 +252,6 @@ def analyzefile(samplePeriod, analysisRange, stepSize, showChart, investment):
 
 
 
-    stop_loss_perc = 8
 
     bought = False
     sellCutoff = 0.0
@@ -386,7 +395,7 @@ def analyzefile(samplePeriod, analysisRange, stepSize, showChart, investment):
 
 
         end_time = time.time()
-        #print("total time taken this loop: ", end_time - start_time)
+        print("total time taken this loop: ", end_time - start_time)
 
     if bought:
         sold_price = market_prices[-1]
@@ -396,31 +405,38 @@ def analyzefile(samplePeriod, analysisRange, stepSize, showChart, investment):
         trades.write("(" + stock + ") current price: " + str(market_prices[-1]) + '\n')
         trades.write("(" + stock + ") perceant gain: " + str(float(market_prices[-1]-boughtPrice)/boughtPrice * 100) + '\n')
         trades.write("Global percent gain: " + str(global_percent_gain*100) + '\n')
-        investment = investment*(1+float(market_prices[-1]-boughtPrice)/boughtPrice)
+        investment *= (1+float(market_prices[-1]-boughtPrice)/boughtPrice)
 
     return investment
 
+def analyzefortune500stocks():
+    global total
+    stocks = open('fortune500.txt', 'r')
+    for line in stocks:
+        line = line[:-1] if "\n" in line else line
+        print line
+        #i know this isnt how it would work since these would be going on in parrallel, but it
+        #gives an idea
+
+        investment = analyzeStock(stock=line, samplePeriod=samplePeriod, analysisRange=analysisRange,
+                                  stepSize=stepSize, showChart=False, investment=initial_investment)
+        if investment != initial_investment:
+            #initial += initial_investment
+            total += investment-initial_investment
+            #global_stock_values.append(investment)
+        trades = open('trades.txt', 'a')
+        trades.write("Initial Investment: " + str(startingMoney) + '\n')
+        trades.write("Total Value: " + str(total) + '\n')
+        trades.write("Total Percent Gain: " + str((total-startingMoney)/startingMoney*100) + '\n')
+        print "Initial Investment: " + str(startingMoney)
+        print "Total Value: " + str(total)
+        print "Total Percent Gain: " + str((total-startingMoney)/startingMoney*100)
 
 
-#data = DataReader("RGS",  "yahoo", datetime(2000,1,1), datetime(2000,10,1))
-samplePeriod = 300
-analysisRange = 960 #len(data.close) #set max points for analysis at a given step
-stepSize = 10
-
-startingMoney = 15000
-initial = 0.0
-total = startingMoney
-"""
-stocks = open('fortune500.txt', 'r')
-for line in stocks:
-    line = line[:-1] if "\n" in line else line
-    print line
-    #i know this isnt how it would work since these would be going on in parrallel, but it
-    #gives an idea
-    initial_investment = total/10 #invest 10% of the  money
-    investment = analyzeStock(stock=line, samplePeriod=samplePeriod, analysisRange=analysisRange,
-                              stepSize=stepSize, showChart=False, investment=initial_investment)
-    if (investment != initial_investment):
+def analyzebitstamp():
+    investment = analyzefile(samplePeriod=samplePeriod, analysisRange=analysisRange,
+                          stepSize=stepSize, showChart=False, investment=initial_investment)
+    if investment != initial_investment:
         #initial += initial_investment
         total += investment-initial_investment
         #global_stock_values.append(investment)
@@ -432,23 +448,12 @@ for line in stocks:
     print "Total Value: " + str(total)
     print "Total Percent Gain: " + str((total-startingMoney)/startingMoney*100)
 
-"""
 
-initial_investment = total/10 #invest 10% of the  money
-investment = analyzefile(samplePeriod=samplePeriod, analysisRange=analysisRange,
-                          stepSize=stepSize, showChart=False, investment=initial_investment)
-if (investment != initial_investment):
-    #initial += initial_investment
-    total += investment-initial_investment
-    #global_stock_values.append(investment)
-trades = open('trades.txt', 'a')
-trades.write("Initial Investment: " + str(startingMoney) + '\n')
-trades.write("Total Value: " + str(total) + '\n')
-trades.write("Total Percent Gain: " + str((total-startingMoney)/startingMoney*100) + '\n')
-print "Initial Investment: " + str(startingMoney)
-print "Total Value: " + str(total)
-print "Total Percent Gain: " + str((total-startingMoney)/startingMoney*100)
-#whats with your dates
+
+if __name__ == "__main__":
+    analyzefortune500stocks()
+    #analyzebitstamp()
+
 #why false, true, true
 #http://gyazo.com/4585b43a224831e154a90f1037117977
 #There needs to be a check in place(if not already put?) that will make sure that the difference between the spread
