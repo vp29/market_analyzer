@@ -2,6 +2,9 @@ __author__ = 'Erics'
 
 import google_intraday as gi
 from function_script import matchIndexes,genY, leastSquare, findMatches, Price
+
+#b/c we dont want to share variables for testing sometimes
+from variables import analysisRange, stop_loss_perc,minimumPercent,samplePeriod,stepSize,startingMoney, initial_investment
 import time
 
 #import cProfile
@@ -9,16 +12,7 @@ import time
 #snakeviz profile.prof
 
 
-minimumPercent = 2
 global_percent_gain = 0.0
-stop_loss_perc = 8
-samplePeriod = 300
-analysisRange = 960 #len(data.close) #set max points for analysis at a given step
-stepSize = 1
-startingMoney = 15000
-initial = 0.0
-total = startingMoney
-initial_investment = total/10 #invest 10% of the  money
 global_stock_values = []
 
 def trendType(resSlope, supSlope, resInt, supInt, nextInd, bsPoint, curPrice, resRange, supRange):
@@ -76,7 +70,6 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
     #    prices.append(Price(float(line), i))
     #    i = i+1
 
-    stop_loss_perc = 8
 
     bought = False
     sellCutoff = 0.0
