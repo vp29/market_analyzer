@@ -2,9 +2,10 @@ __author__ = 'Erics'
 
 import google_intraday as gi
 from function_script import matchIndexes,genY, leastSquare, findMatches, Price
+import multiprocessing
 
 #b/c we dont want to share variables for testing sometimes
-from variables import analysisRange, stop_loss_perc,minimumPercent,samplePeriod,stepSize,startingMoney, initial_investment
+from variables import analysisRange, stop_loss_perc,minimumPercent,samplePeriod,stepSize,startingMoney, initial_investment, total
 import time
 
 #import cProfile
