@@ -11,10 +11,10 @@ import time
 
 minimumPercent = 2
 global_percent_gain = 0.0
-stop_loss_perce = 8
+stop_loss_perc = 8
 samplePeriod = 300
 analysisRange = 960 #len(data.close) #set max points for analysis at a given step
-stepSize = 10
+stepSize = 1
 startingMoney = 15000
 initial = 0.0
 total = startingMoney
@@ -244,7 +244,8 @@ def analyzefile(samplePeriod, analysisRange, stepSize, showChart, investment):
     stock = 'bitcoin'
 
     market_prices = []
-    with open('data/bitstampUSD.csv', 'rb') as csvfile:
+    #with open('data/bitstampUSD.csv', 'rb') as csvfile:
+    with open('data/cop10yeod.csv', 'rb') as csvfile:
         spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
         for row in spamreader:
             market_prices.append(float(row[1]))
@@ -395,7 +396,7 @@ def analyzefile(samplePeriod, analysisRange, stepSize, showChart, investment):
 
 
         end_time = time.time()
-        print("total time taken this loop: ", end_time - start_time)
+        #print("total time taken this loop: ", end_time - start_time)
 
     if bought:
         sold_price = market_prices[-1]
@@ -434,6 +435,7 @@ def analyzefortune500stocks():
 
 
 def analyzebitstamp():
+    global total
     investment = analyzefile(samplePeriod=samplePeriod, analysisRange=analysisRange,
                           stepSize=stepSize, showChart=False, investment=initial_investment)
     if investment != initial_investment:
@@ -451,8 +453,8 @@ def analyzebitstamp():
 
 
 if __name__ == "__main__":
-    analyzefortune500stocks()
-    #analyzebitstamp()
+    #analyzefortune500stocks()
+    analyzebitstamp()
 
 #why false, true, true
 #http://gyazo.com/4585b43a224831e154a90f1037117977
