@@ -12,6 +12,19 @@ class Price:
     def __repr__(self):
         return '<%r> %f' % (self.index, self.price)
 
+class Trade:
+    buy_time = 0
+    sell_time = 0
+    sell_cutoff = 0.0
+    buy_price = 0.0
+    sell_price = 0.0
+    def __init__(self, buy_time, sell_time, sell_cutoff, buy_price, sell_price):
+        self.buy_time = buy_time
+        self.sell_time = sell_time
+        self.sell_cutoff = sell_cutoff
+        self.sell_price = sell_price
+        self.buy_price = buy_price
+
 
 def leastSquare(data):
     '''Y=a+bX, b=r*SDy/SDx, a=Y'-bX'

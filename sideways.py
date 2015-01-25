@@ -217,7 +217,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
                 print "Sell current price: " + str(prices[-1].price)
                 print "Buy at price      : " + str(buy_point)
 
-        if showChart:
+        '''if showChart:
             plt.figure(1)
             plt.subplot(211)
             plt.plot(range(0,len(prices)), price_y, 'r',
@@ -232,7 +232,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart):
                      range(maxResIndex, len(prices)-1), res_y, 'g',
                      range(maxSupIndex, len(prices)-1), sup_y, 'b')
 
-            plt.show()
+            plt.show()'''
         end_time = time.time()
         print("total time taken this loop: ", end_time - start_time)
 

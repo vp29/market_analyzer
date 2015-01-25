@@ -1,13 +1,20 @@
 __author__ = 'Erics'
 
 import google_intraday as gi
-from function_script import matchIndexes,genY, leastSquare, findMatches, Price
+from function_script import matchIndexes,genY, leastSquare, findMatches, Price, Trade
 import time
+from datetime import datetime, timedelta
+import sqlite3
 
 #import cProfile
 #python -m cProfile -o profile.prof sideways.py
 #snakeviz profile.prof
+conn = sqlite3.connect('stocks.db')
+c = conn.cursor()
+c.execute("CREATE TABLE IF NOT EXISTS stocks (id INTEGER PRIMARY KEY, buy_date INTEGER, sell_date INTEGER, buy_price DOUBLE, sell_price DOUBLE);")
+conn.commit()
 
+database = True
 
 minimumPercent = 2
 global_percent_gain = 0.0
@@ -74,6 +81,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
     boughtPrice = 0.0
     boughtIndex = 0
     boughtTime = ""
+    bought_list = []
     start = 0
     for j in range(start, len(data.close) - analysisRange, stepSize):
         start_time = time.time()
@@ -86,36 +94,58 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
             prices.append(Price(item, i))
 
         if bought:
-            if prices[-1].price >= sellCutoff:
-                sold_price = prices[-1].price
-                global_percent_gain += float(sold_price-boughtPrice)/boughtPrice
-                trades.write("(" + stock + ") bought time: " + str(boughtTime) + '\n')
-                trades.write("(" + stock + ") time to sell: " + str((j-boughtIndex)*samplePeriod) + " seconds\n")
-                trades.write("(" + stock + ") bought at: " + str(boughtPrice) + '\n')
-                trades.write("(" + stock + ") sold at  : " + str(sold_price) + '\n')
-                trades.write("(" + stock + ") percent gain: " + str(float(sold_price-boughtPrice)/boughtPrice * 100) + '\n')
-                trades.write("Global percent gain: " + str(global_percent_gain*100) + '\n')
-                bought = False
-                investment = investment*(1+float(sold_price-boughtPrice)/boughtPrice)
-                print "time to sell: " + str((j-boughtIndex)*samplePeriod) + " seconds"
-                print "bought at: " + str(boughtPrice)
-                print "sold at  : " + str(sold_price)
-            elif prices[-1].price <= (boughtPrice - boughtPrice*stop_loss_perc/100):
-                bought = False
-                sold_price = prices[-1].price
-                global_percent_gain += float(sold_price-boughtPrice)/boughtPrice
-                trades.write("(" + stock + ") bought time: " + str(boughtTime) + '\n')
-                trades.write("(" + stock + ") Stop Loss time to sell: " + str((j-boughtIndex)*samplePeriod) + " seconds\n")
-                trades.write("(" + stock + ") Stop Loss bought at: " + str(boughtPrice) + '\n')
-                trades.write("(" + stock + ") Stop Loss sold at  : " + str(sold_price) + '\n')
-                trades.write("(" + stock + ") Stop Loss percent lost: " + str(float(sold_price-boughtPrice)/boughtPrice * 100) + '\n')
-                trades.write("Global percent gain: " + str(global_percent_gain*100) + '\n')
-                investment = investment*(1+float(sold_price-boughtPrice)/boughtPrice)
-                print "Stop Loss bought at: " + str(boughtPrice)
-                print "Stop Loss sold at: " + str(sold_price)
-                continue
-            else:
-                continue
+            for trade in bought_list:
+                if prices[-1].price >= trade.sell_cutoff:
+                    sold_price = prices[-1].price
+                    soldDate = data.date[j+analysisRange]
+                    soldTime = data.time[j+analysisRange]
+                    soldDateTime = datetime(soldDate.year, soldDate.month, soldDate.day,
+                                                     soldTime.hour, soldTime.minute, soldTime.second)
+                    soldTimestamp = (soldDateTime - datetime(1970, 1, 1)).total_seconds()
+                    global_percent_gain += float(sold_price-trade.buy_price)/trade.buy_price
+                    trades.write("(" + stock + ") bought time: " + str(trade.buy_time) + '\n')
+                    trades.write("(" + stock + ") time to sell: " + str((soldTimestamp - trade.buy_time)/1000) + " seconds\n")
+                    trades.write("(" + stock + ") bought at: " + str(trade.buy_price) + '\n')
+                    trades.write("(" + stock + ") sold at  : " + str(sold_price) + '\n')
+                    trades.write("(" + stock + ") percent gain: " + str(float(sold_price-trade.buy_price)/trade.buy_price * 100) + '\n')
+                    trades.write("Global percent gain: " + str(global_percent_gain*100) + '\n')
+                    if database:
+                        c.execute("INSERT INTO stocks VALUES (?, ?, ?, ?);", [(trade.buy_time, soldTimestamp, trade.buy_price, sold_price)])
+                        conn.commit()
+                    bought_list.remove(trade);
+                    if len(bought_list) == 0:
+                        bought = False
+                    investment = investment*(1+float(sold_price-trade.buy_price)/trade.buy_price)
+                    print "time to sell: " + str((sold_time - trade.buy_time)/1000) + " seconds"
+                    print "bought at: " + str(trade.buy_price)
+                    print "sold at  : " + str(sold_price)
+                elif prices[-1].price <= (trade.buy_price - trade.buy_price*stop_loss_perc/100):
+                    sold_price = prices[-1].price
+                    soldDate = data.date[j+analysisRange]
+                    soldTime = data.time[j+analysisRange]
+                    soldDateTime = datetime(soldDate.year, soldDate.month, soldDate.day,
+                                                     soldTime.hour, soldTime.minute, soldTime.second)
+                    soldTimestamp = (soldDateTime - datetime(1970, 1, 1)).total_seconds()
+                    global_percent_gain += float(sold_price-trade.buy_price)/trade.buy_price
+                    trades.write("(" + stock + ") bought time: " + str(trade.buy_time) + '\n')
+                    trades.write("(" + stock + ") Stop Loss time to sell: " + str((soldTimestamp - trade.buy_time)/1000) + " seconds\n")
+                    trades.write("(" + stock + ") Stop Loss bought at: " + str(trade.buy_price) + '\n')
+                    trades.write("(" + stock + ") Stop Loss sold at  : " + str(sold_price) + '\n')
+                    trades.write("(" + stock + ") Stop Loss percent lost: " + str(float(sold_price-trade.buy_price)/trade.buy_price * 100) + '\n')
+                    trades.write("Global percent gain: " + str(global_percent_gain*100) + '\n')
+                    investment = investment*(1+float(sold_price-trade.buy_price)/trade.buy_price)
+                    print "Stop Loss bought at: " + str(trade.buy_price)
+                    print "Stop Loss sold at: " + str(sold_price)
+                    if database:
+                        c.execute("INSERT INTO stocks (buy_date, sell_date, buy_price, sell_price) VALUES (%s, %s, %f, %f);" % (trade.buy_time, soldTimestamp, trade.buy_price, sold_price))
+                        conn.commit()
+                    bought_list.remove(trade)
+                    if len(bought_list) == 0:
+                        bought = False
+                    continue
+                else:
+                    if not database:
+                        continue
 
         resDiff = []
         supDiff = []
@@ -157,6 +187,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
         tempTrough = matchIndexes(bigNegDiff, prices)
 
         #print len(tempTrough)
+        #print len(tempPeaks)
         try:
             resInter, resSlope = leastSquare(tempPeaks)
             supInter, supSlope = leastSquare(tempTrough)
@@ -198,18 +229,24 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
                  and (pos_matches[1] and (pos_matches[0] and pos_matches[2]))
 
         if sell_point > buy_point*(1.0 + minimumPercent/100) and pot_buy:
-            if prices[-1].price <= buy_point and bought == False:
+            if prices[-1].price <= buy_point: #and bought == False:
                 bought = True
                 boughtPrice = prices[-1].price
                 sellCutoff = sell_point
                 boughtIndex = j
                 boughtTime = data.date[j+analysisRange]
+                boughtDate = data.date[j+analysisRange]
+                bought_time = data.time[j+analysisRange]
+                boughtDateTime = datetime(boughtDate.year, boughtDate.month, boughtDate.day,
+                                                         bought_time.hour, bought_time.minute, bought_time.second)
+                boughtTimestamp = (boughtDateTime - datetime(1970, 1, 1, 0, 0, 0)).total_seconds()
                 print "Buy current price : " + str(prices[-1].price)
                 print "Sell at price     : " + str(sell_point)
-            elif prices[-1].price >= sell_point and bought == True:
-                bought = False
-                print "Sell current price: " + str(prices[-1].price)
-                print "Buy at price      : " + str(buy_point)
+                bought_list.append(Trade(boughtTimestamp, 0, sellCutoff, boughtPrice, 0.0))
+            #elif prices[-1].price >= sell_point and bought == True:
+            #    bought = False
+            #    print "Sell current price: " + str(prices[-1].price)
+            #    print "Buy at price      : " + str(buy_point)
 
 
         end_time = time.time()
@@ -233,7 +270,7 @@ stocks = open('fortune500.txt', 'r')
 #data = DataReader("RGS",  "yahoo", datetime(2000,1,1), datetime(2000,10,1))
 samplePeriod = 300
 analysisRange = 960 #len(data.close) #set max points for analysis at a given step
-stepSize = 10
+stepSize = 5
 
 startingMoney = 15000
 initial = 0.0
@@ -241,6 +278,7 @@ total = startingMoney
 for line in stocks:
     line = line[:-1] if "\n" in line else line
     print line
+    line = "A"
     #i know this isnt how it would work since these would be going on in parrallel, but it
     #gives an idea
     initial_investment = total/10 #invest 10% of the  money
