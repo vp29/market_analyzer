@@ -2,12 +2,237 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08fa0ffd-2583-4a8c-a63c-82ed294ef2cc" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/bin/easy_install-2.7.exe" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/bin/easy_install.exe" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/bin/pip.exe" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/bin/pip2.7.exe" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/bin/pip2.exe" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/setuptools-5.7-py2.7.egg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/distlib/t32.exe" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/distlib/t64.exe" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/distlib/w32.exe" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/distlib/w64.exe" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/EGG-INFO/PKG-INFO" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/EGG-INFO/SOURCES.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/_markerlib/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/colorama/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/distlib/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/distlib/_backport/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/html5lib/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/html5lib/filters/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/html5lib/serializer/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/html5lib/treeadapters/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/html5lib/treebuilders/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/html5lib/treewalkers/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/html5lib/trie/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/urllib3/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/urllib3/contrib/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/urllib3/packages/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/urllib3/packages/ssl_match_hostname/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/urllib3/util/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/backwardcompat/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/commands/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/vcs/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/__main__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/html5lib/filters/_base.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/html5lib/treebuilders/_base.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/html5lib/treewalkers/_base.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/html5lib/trie/_base.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/urllib3/_collections.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/urllib3/packages/ssl_match_hostname/_implementation.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/adapters.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/html5lib/filters/alphabeticalattributes.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/colorama/ansi.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/colorama/ansitowin32.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/api.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/auth.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/basecommand.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/baseparser.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/vcs/bazaar.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/big5freq.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/big5prober.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/commands/bundle.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/cacert.pem" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/certs.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/chardetect.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/chardistribution.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/charsetgroupprober.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/charsetprober.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/cmdoptions.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/codingstatemachine.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/distlib/compat.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/compat.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/compat.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/commands/completion.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/urllib3/connection.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/urllib3/util/connection.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/urllib3/connectionpool.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/html5lib/constants.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/constants.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/cookies.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/cop10yeod.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/cp949prober.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/distlib/database.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/html5lib/trie/datrie.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/EGG-INFO/dependency_links.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/html5lib/treebuilders/dom.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/html5lib/treewalkers/dom.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/download.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/easy-install.pth" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/bin/easy_install-2.7-script.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/bin/easy_install-2.7.exe.manifest" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/bin/easy_install-script.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/bin/easy_install.exe.manifest" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/EGG-INFO/entry_points.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/escprober.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/escsm.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/html5lib/treebuilders/etree.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/html5lib/treewalkers/etree.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/html5lib/treebuilders/etree_lxml.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/eucjpprober.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/euckrfreq.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/euckrprober.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/euctwfreq.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/euctwprober.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/exceptions.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/exceptions.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/urllib3/exceptions.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/urllib3/fields.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/urllib3/filepost.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/commands/freeze.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/gb2312freq.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/gb2312prober.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/html5lib/treewalkers/genshistream.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/vcs/git.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/hebrewprober.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/commands/help.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/hooks.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/html5lib/html5parser.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/html5lib/serializer/htmlserializer.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/html5lib/ihatexml.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/index.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/distlib/index.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/colorama/initialise.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/html5lib/filters/inject_meta_charset.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/html5lib/inputstream.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/commands/install.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/jisfreq.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/jpcntx.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/langbulgarianmodel.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/langcyrillicmodel.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/langgreekmodel.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/langhebrewmodel.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/langhungarianmodel.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/langthaimodel.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/latin1prober.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/html5lib/filters/lint.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/commands/list.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/locations.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/distlib/locators.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/log.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/html5lib/treewalkers/lxmletree.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/distlib/manifest.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/_markerlib/markers.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/distlib/markers.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/mbcharsetprober.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/mbcsgroupprober.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/mbcssm.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/vcs/mercurial.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/distlib/metadata.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/distlib/_backport/misc.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/models.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/EGG-INFO/not-zip-safe" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/urllib3/contrib/ntlmpool.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/html5lib/filters/optionaltags.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/urllib3/packages/ordered_dict.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/pep425tags.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/bin/pip-script.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/bin/pip.exe.manifest" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/bin/pip2-script.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/bin/pip2.7-script.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/bin/pip2.7.exe.manifest" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/bin/pip2.exe.manifest" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/pkg_resources.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/urllib3/poolmanager.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/html5lib/treewalkers/pulldom.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/html5lib/trie/py.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/urllib3/contrib/pyopenssl.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/re-vendor.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/req.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/urllib3/request.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/urllib3/util/request.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/EGG-INFO/requires.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/distlib/resources.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/urllib3/response.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/urllib3/util/response.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/runner.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/html5lib/sanitizer.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/html5lib/filters/sanitizer.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/html5lib/treeadapters/sax.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/sbcharsetprober.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/sbcsgroupprober.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/distlib/scripts.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/commands/search.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/sessions.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/setuptools.pth" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/commands/show.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/distlib/_backport/shutil.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/six.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/urllib3/packages/six.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/sjisprober.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/urllib3/util/ssl_.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/status_codes.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/status_codes.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/structures.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/vcs/subversion.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/distlib/_backport/sysconfig.cfg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/distlib/_backport/sysconfig.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/distlib/_backport/tarfile.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/urllib3/util/timeout.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/html5lib/tokenizer.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/EGG-INFO/top_level.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/trades2.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/trades6.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/commands/uninstall.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/universaldetector.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/commands/unzip.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/urllib3/util/url.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/packages/chardet/utf8prober.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/util.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/distlib/util.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/html5lib/utils.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/requests/utils.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/distlib/version.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/wheel.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/distlib/wheel.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/commands/wheel.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/html5lib/filters/whitespace.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/colorama/win32.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/_vendor/colorama/winterm.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/site-packages/pip-1.5.6-py2.7.egg/pip/commands/zip.py" />
+      <change type="DELETED" beforePath="C:\Users\Erics\PycharmProjects\market_analyzer\fortune500.txt" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Erics\PycharmProjects\market_analyzer\ibm.txt" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Erics\PycharmProjects\market_analyzer\pypy\data\bitstampUSD.txt" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Erics\PycharmProjects\market_analyzer\stocks.txt" afterPath="" />
+      <change type="MOVED" beforePath="C:\Users\Erics\PycharmProjects\market_analyzer\aapl.txt" afterPath="$PROJECT_DIR$/stock_data/aapl.txt" />
+      <change type="MOVED" beforePath="C:\Users\Erics\PycharmProjects\market_analyzer\data2.txt" afterPath="$PROJECT_DIR$/stock_data/data2.txt" />
+      <change type="MOVED" beforePath="C:\Users\Erics\PycharmProjects\market_analyzer\function_script.c" afterPath="$PROJECT_DIR$/cython/function_script.c" />
+      <change type="MOVED" beforePath="C:\Users\Erics\PycharmProjects\market_analyzer\function_script.html" afterPath="$PROJECT_DIR$/cython/function_script.html" />
+      <change type="MOVED" beforePath="C:\Users\Erics\PycharmProjects\market_analyzer\function_script.pyd" afterPath="$PROJECT_DIR$/cython/function_script.pyd" />
+      <change type="MOVED" beforePath="C:\Users\Erics\PycharmProjects\market_analyzer\function_script.pyx" afterPath="$PROJECT_DIR$/cython/function_script.pyx" />
+      <change type="MOVED" beforePath="C:\Users\Erics\PycharmProjects\market_analyzer\google_intraday.py" afterPath="$PROJECT_DIR$/cython/google_intraday.py" />
+      <change type="MOVED" beforePath="C:\Users\Erics\PycharmProjects\market_analyzer\market.txt" afterPath="$PROJECT_DIR$/stock_data/market.txt" />
+      <change type="MOVED" beforePath="C:\Users\Erics\PycharmProjects\market_analyzer\setup.py" afterPath="$PROJECT_DIR$/cython/setup.py" />
+      <change type="MOVED" beforePath="C:\Users\Erics\PycharmProjects\market_analyzer\sideways.py" afterPath="$PROJECT_DIR$/cython/sideways.py" />
+      <change type="MOVED" beforePath="C:\Users\Erics\PycharmProjects\market_analyzer\wedge.txt" afterPath="$PROJECT_DIR$/stock_data/wedge.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pypy/function_script.py" afterPath="$PROJECT_DIR$/pypy/function_script.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/market_analyzer.iml" afterPath="$PROJECT_DIR$/.idea/market_analyzer.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sideways.py" afterPath="$PROJECT_DIR$/sideways.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pypy/sideways.py" afterPath="$PROJECT_DIR$/pypy/sideways.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="market_analyzer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,11 +255,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="sideways.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="sideways.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pypy/sideways.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1652" max-vertical-offset="5338">
-              <caret line="106" column="86" selection-start-line="106" selection-start-column="86" selection-end-line="106" selection-end-column="86" />
+            <state vertical-scroll-proportion="0.22709924" vertical-offset="0" max-vertical-offset="8551">
+              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding>
                 <element signature="e#22#50#0" expanded="true" />
               </folding>
@@ -45,7 +270,7 @@
       <file leaf-file-name="google_intraday.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pypy/google_intraday.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="1564">
+            <state vertical-scroll-proportion="0.0" vertical-offset="527" max-vertical-offset="1564">
               <caret line="31" column="30" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
               <folding />
             </state>
@@ -55,40 +280,8 @@
       <file leaf-file-name="trades.txt" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pypy/trades.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="22566" max-vertical-offset="23001">
+            <state vertical-scroll-proportion="0.0" vertical-offset="22464" max-vertical-offset="23001">
               <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="iqfeed.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pypy/iqfeed.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="874" max-vertical-offset="1343">
-              <caret line="67" column="38" selection-start-line="67" selection-start-column="38" selection-end-line="67" selection-end-column="38" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fortune500.txt" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pypy/fortune500.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="7854" max-vertical-offset="8585">
-              <caret line="463" column="2" selection-start-line="463" selection-start-column="2" selection-end-line="463" selection-end-column="2" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sandp500.txt" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pypy/sandp500.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8585">
-              <caret line="0" column="1" selection-start-line="0" selection-start-column="1" selection-end-line="468" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -97,7 +290,7 @@
       <file leaf-file-name="function_script.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pypy/function_script.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="245" max-vertical-offset="1870">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1955">
               <caret line="23" column="38" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
               <folding />
             </state>
@@ -136,17 +329,17 @@
         <option value="$PROJECT_DIR$/pypy/trades.txt" />
         <option value="$PROJECT_DIR$/pypy/function_script.py" />
         <option value="$PROJECT_DIR$/pypy/google_intraday.py" />
-        <option value="$PROJECT_DIR$/pypy/sideways.py" />
         <option value="$PROJECT_DIR$/pypy/iqfeed.py" />
         <option value="$PROJECT_DIR$/pypy/sandp500.txt" />
+        <option value="$PROJECT_DIR$/pypy/sideways.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="147" />
-    <option name="y" value="32" />
+    <option name="x" value="306" />
+    <option name="y" value="25" />
     <option name="width" value="1024" />
-    <option name="height" value="680" />
+    <option name="height" value="673" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -174,7 +367,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -209,6 +401,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -456,7 +649,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="147" y="32" width="1024" height="680" extended-state="0" />
+    <frame x="306" y="25" width="1024" height="673" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -467,7 +660,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3986014" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32867134" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32743362" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -499,7 +692,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/pypy/sideways.py</url>
-          <line>185</line>
+          <line>181</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
@@ -507,6 +700,72 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/pypy/sideways.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="9027">
+          <caret line="106" column="49" selection-start-line="106" selection-start-column="49" selection-end-line="106" selection-end-column="49" />
+          <folding>
+            <element signature="e#22#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pypy/google_intraday.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="527" max-vertical-offset="1564">
+          <caret line="31" column="30" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pypy/trades.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="22566" max-vertical-offset="23001">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pypy/iqfeed.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1139" max-vertical-offset="1343">
+          <caret line="67" column="38" selection-start-line="67" selection-start-column="38" selection-end-line="67" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pypy/fortune500.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="7854" max-vertical-offset="8585">
+          <caret line="463" column="2" selection-start-line="463" selection-start-column="2" selection-end-line="463" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pypy/sandp500.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8585">
+          <caret line="0" column="1" selection-start-line="0" selection-start-column="1" selection-end-line="468" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pypy/function_script.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="1955">
+          <caret line="23" column="38" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trades.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="714">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pypy/sideways.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="4131" max-vertical-offset="4709">
@@ -549,89 +808,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sideways.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3145" max-vertical-offset="4522">
-          <caret line="185" column="58" selection-start-line="185" selection-start-column="58" selection-end-line="185" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/trades.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/aapl.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1904">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ibm.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6291" max-vertical-offset="6715">
-          <caret line="389" column="0" selection-start-line="389" selection-start-column="0" selection-end-line="389" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wedge.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3706">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/google_intraday.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="558" max-vertical-offset="1564">
-          <caret line="36" column="35" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/market.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1037">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stocks.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="333">
-          <caret line="0" column="4" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fortune500.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="8184" max-vertical-offset="8585">
-          <caret line="499" column="3" selection-start-line="499" selection-start-column="3" selection-end-line="499" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/function_script.pyd">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3723">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/function_script.pyx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.0540543" vertical-offset="1350" max-vertical-offset="1683">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/function_script.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-237.15938" vertical-offset="75891" max-vertical-offset="76211">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -664,17 +845,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sideways.py">
+    <entry file="file://$PROJECT_DIR$/pypy/google_intraday.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4658">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="1564">
+          <caret line="31" column="30" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pypy/function_script.py">
+    <entry file="file://$PROJECT_DIR$/pypy/sandp500.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="245" max-vertical-offset="1870">
-          <caret line="23" column="38" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8585">
+          <caret line="0" column="1" selection-start-line="0" selection-start-column="1" selection-end-line="468" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pypy/fortune500.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.03307393" vertical-offset="7854" max-vertical-offset="8585">
+          <caret line="463" column="2" selection-start-line="463" selection-start-column="2" selection-end-line="463" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pypy/iqfeed.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6361868" vertical-offset="795" max-vertical-offset="1326">
+          <caret line="67" column="38" selection-start-line="67" selection-start-column="38" selection-end-line="67" selection-end-column="38" />
           <folding />
         </state>
       </provider>
@@ -687,47 +885,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pypy/google_intraday.py">
+    <entry file="file://$PROJECT_DIR$/pypy/function_script.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="1564">
-          <caret line="31" column="30" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="245" max-vertical-offset="1870">
+          <caret line="23" column="38" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pypy/sideways.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1652" max-vertical-offset="5338">
-          <caret line="106" column="86" selection-start-line="106" selection-start-column="86" selection-end-line="106" selection-end-column="86" />
+        <state vertical-scroll-proportion="0.22709924" vertical-offset="0" max-vertical-offset="8551">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding>
             <element signature="e#22#50#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pypy/fortune500.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="7854" max-vertical-offset="8585">
-          <caret line="463" column="2" selection-start-line="463" selection-start-column="2" selection-end-line="463" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pypy/iqfeed.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="874" max-vertical-offset="1343">
-          <caret line="67" column="38" selection-start-line="67" selection-start-column="38" selection-end-line="67" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pypy/sandp500.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8585">
-          <caret line="0" column="1" selection-start-line="0" selection-start-column="1" selection-end-line="468" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>

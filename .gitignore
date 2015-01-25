@@ -15,3 +15,5 @@ pypy/data/*.*
 .idea/inspectionProfiles/profiles_settings.xml
 .idea/market_analyzer.iml
 .idea/workspace.xml
+variables.py
+
