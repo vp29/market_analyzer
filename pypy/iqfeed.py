@@ -21,7 +21,7 @@ def read_historical_data_socket(sock, file, recv_buffer=4096):
         file.write(data)
 
         # Check if the end message string arrives
-        if "!ENDMSG!" in buffer:
+        if "!E" in buffer:
             break
 
     # Remove the end message string
@@ -33,7 +33,7 @@ if __name__ == "__main__":
     host = "127.0.0.1"  # Localhost
     port = 9100  # Historical data socket port
     syms = []
-    f = open("nasdaq.txt", 'r')
+    f = open("NYSE.txt", 'r')
     for line in f:
         syms.append(line[:-1])
 
@@ -51,7 +51,7 @@ if __name__ == "__main__":
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.connect((host, port))
 
-        f = open("data/nasdaq/%s-%s-%ssec.csv" % (sym, start_date, interval), "w")
+        f = open("data/nyse/%s-%s-%ssec.csv" % (sym, start_date, interval), "w")
 
         # Send the historical data request
         # message and buffer the data
@@ -62,10 +62,10 @@ if __name__ == "__main__":
 
         # Remove all the endlines and line-ending
         # comma delimiter from each record
-        f = open("data/nasdaq/%s-%s-%ssec.csv" % (sym, start_date, interval), "r")
+        f = open("data/nyse/%s-%s-%ssec.csv" % (sym, start_date, interval), "r")
         lines = f.readlines()
         f.close()
-        w = open("data/nasdaq/%s-%s-%ssec.csv" % (sym, start_date, interval), "w")
+        w = open("data/nyse/%s-%s-%ssec.csv" % (sym, start_date, interval), "w")
         w.writelines([line for line in lines[:-1]])
         w.close()
         # Write the data stream to disk

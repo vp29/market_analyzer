@@ -2,511 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08fa0ffd-2583-4a8c-a63c-82ed294ef2cc" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/A-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/AA-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/AAPL-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/ABC-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/ABT-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/ACE-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/ACN-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/ADBE-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/ADI-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/ADM-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/ADP-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/ADSK-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/AEE-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/AEP-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/AES-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/AET-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/AFL-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/AGN-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/AIG-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/AIV-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/AIZ-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/AKAM-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/ALL-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/ALTR-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/ALXN-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/AMAT-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/AMD-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/AMGN-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/AMP-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/AMT-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/AMZN-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/AN-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/ANF-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/AON-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/APA-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/APC-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/APD-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/APH-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/APOL-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/ARG-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/ATI-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/AVB-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/AVP-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/AVY-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/AXP-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/AZO-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/BA-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/BAC-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/BAX-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/BBBY-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/BBT-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/BBY-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/BCR-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/BDX-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/BEAM-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/BEN-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/BF.B-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/BHI-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/BIG-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/BIIB-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/BK-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/BLK-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/BLL-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/BMC-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/BMS-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/BMY-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/BRCM-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/BRK.B-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/BSX-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/BTU-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/BWA-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/BXP-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/C-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CA-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CAG-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CAH-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CAM-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CAT-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CB-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CBG-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CBS-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CCE-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CCI-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CCL-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CELG-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CERN-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CF-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CFN-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CHK-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CHRW-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CI-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CINF-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CL-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CLF-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CLX-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CMA-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CMCSA-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CME-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CMG-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CMI-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CMS-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CNP-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CNX-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/COF-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/COG-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/COH-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/COL-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/COP-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/COST-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/COV-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CPB-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CRM-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CSC-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CSCO-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CSX-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CTAS-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CTL-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CTSH-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CTXS-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CVC-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CVH-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CVS-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/CVX-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/D-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/DD-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/DE-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/DELL-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/DF-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/DFS-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/DG-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/DGX-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/DHI-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/DHR-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/DIS-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/DISCA-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/DLTR-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/DNB-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/DNR-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/DO-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/DOV-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/DOW-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/DPS-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/DRI-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/DTE-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/DTV-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/DUK-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/DVA-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/DVN-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/EA-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/EBAY-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/ECL-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/ED-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/EFX-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/EIX-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/EL-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/EMC-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/EMN-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/EMR-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/EOG-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/EQR-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/EQT-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/ESRX-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/ESV-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/ETFC-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/ETN-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/ETR-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/EW-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/EXC-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/EXPD-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/EXPE-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/F-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/FAST-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/FCX-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/FDO-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/FDX-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/FE-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/FFIV-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/FHN-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/FII-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/FIS-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/FISV-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/FITB-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/FLIR-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/FLR-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/FLS-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/FMC-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/FOSL-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/FRX-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/FSLR-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/FTI-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/FTR-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/GAS-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/GCI-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/GD-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/GE-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/GILD-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/GIS-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/GLW-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/GME-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/GNW-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/GPC-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/GPS-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/GS-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/GT-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/GWW-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/HAL-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/HAR-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/HAS-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/HBAN-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/HCBK-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/HCN-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/HCP-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/HD-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/HES-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/HIG-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/HNZ-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/HOG-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/HON-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/HOT-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/HP-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/HPQ-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/HRB-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/HRL-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/HRS-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/HSP-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/HST-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/HSY-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/HUM-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/IBM-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/ICE-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/IFF-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/IGT-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/INTC-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/INTU-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/IP-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/IPG-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/IR-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/IRM-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/ISRG-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/ITW-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/IVZ-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/JBL-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/JCI-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/JCP-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/JDSU-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/JEC-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/JNJ-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/JNPR-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/JOY-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/JPM-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/JWN-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/K-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/KEY-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/KIM-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/KLAC-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/KMB-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/KMI-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/KMX-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/KO-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/KR-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/KSS-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/L-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/LEG-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/LEN-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/LH-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/LIFE-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/LLL-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/LLTC-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/LLY-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/LM-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/LMT-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/LNC-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/LO-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/LOW-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/LRCX-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/LSI-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/LUK-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/LUV-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/LYB-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/M-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/MA-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/MAR-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/MAS-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/MAT-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/MCD-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/MCHP-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/MCK-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/MCO-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/MDLZ-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/MDT-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/MET-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/MJN-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/MKC-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/MMC-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/MMM-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/MNST-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/MO-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/MOLX-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/MON-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/MOS-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/MPC-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/MRK-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/MRO-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/MS-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/MSFT-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/MSI-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/MTB-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/MU-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/MUR-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/MWV-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/MYL-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/NBL-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/NBR-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/NDAQ-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/NE-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/NEE-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/NEM-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/NFLX-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/NFX-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/NI-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/NKE-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/NOC-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/NOV-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/NRG-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/NSC-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/NTAP-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/NTRS-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/NU-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/NUE-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/NVDA-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/NWL-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/NYX-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/OI-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/OKE-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/OMC-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/ORCL-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/ORLY-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/OXY-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/PAYX-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/PBCT-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/PBI-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/PCAR-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/PCG-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/PCL-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/PCLN-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/PCP-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/PDCO-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/PEG-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/PEP-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/PETM-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/PFE-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/PFG-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/PG-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/PGR-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/PH-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/PHM-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/PKI-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/PLD-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/PLL-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/PM-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/PNC-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/PNR-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/PNW-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/POM-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/PPG-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/PPL-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/PRGO-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/PRU-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/PSA-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/PWR-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/PX-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/PXD-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/QCOM-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/QEP-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/R-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/RAI-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/RDC-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/RF-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/RHI-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/RHT-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/RL-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/ROK-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/ROP-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/ROST-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/RRC-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/RRD-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/RSG-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/RTN-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/S-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/SBUX-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/SCG-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/SCHW-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/SE-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/SEE-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/SHW-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/SIAL-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/SJM-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/SLB-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/SLM-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/SNA-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/SNDK-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/SNI-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/SO-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/SPG-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/SPLS-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/SRCL-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/SRE-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/STI-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/STJ-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/STT-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/STX-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/STZ-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/SWK-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/SWN-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/SWY-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/SYK-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/SYMC-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/SYY-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/T-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/TAP-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/TDC-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/TE-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/TEG-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/TEL-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/TER-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/TGT-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/THC-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/TIE-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/TIF-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/TJX-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/TMK-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/TMO-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/TROW-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/TRV-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/TSN-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/TSO-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/TSS-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/TWC-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/TWX-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/TXN-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/TXT-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/TYC-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/UNH-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/UNM-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/UNP-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/UPS-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/URBN-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/USB-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/UTX-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/V-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/VAR-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/VFC-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/VIAB-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/VLO-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/VMC-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/VRSN-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/VTR-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/VZ-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/WM-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/WMB-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/WMT-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/WU-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/WY-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/WYN-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/WYNN-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/X-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/XEL-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/XL-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/XLNX-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/XOM-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/XRAY-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/XRX-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/YHOO-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/YUM-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/ZION-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/sp-20050101-60sec-1.rar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/ADT-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/GOOG-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/KRFT-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/LTD-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/MHP-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/NWSA-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/PCS-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/PSX-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/SAI-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/TRIP-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/VNO-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/WAG-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/WAT-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/WDC-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/WEC-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/WFC-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/WFM-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/WHR-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/WIN-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/WLP-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/WPI-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/WPO-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/WPX-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/XYL-20050101 075000-60sec.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pypy/data/sandp/ZM-20050101 075000-60sec.csv" />
-      <change type="MOVED" beforePath="C:\Users\Erics\PycharmProjects\market_analyzer\pypy\data\cop10yeod.csv" afterPath="$PROJECT_DIR$/pypy/data/sandp/cop10yeod.csv" />
+      <change type="DELETED" beforePath="C:\Users\Erics\PycharmProjects\market_analyzer\pypy\data\cop10yeod.csv" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pypy/iqfeed.py" afterPath="$PROJECT_DIR$/pypy/iqfeed.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pypy/sideways.py" afterPath="$PROJECT_DIR$/pypy/sideways.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="market_analyzer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -529,11 +26,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="sideways.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="sideways.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pypy/sideways.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4539" max-vertical-offset="8551">
-              <caret line="116" column="65" selection-start-line="116" selection-start-column="65" selection-end-line="116" selection-end-column="65" />
+            <state vertical-scroll-proportion="0.8819444" vertical-offset="5730" max-vertical-offset="8755">
+              <caret line="352" column="24" selection-start-line="352" selection-start-column="24" selection-end-line="352" selection-end-column="24" />
               <folding>
                 <element signature="e#22#50#0" expanded="true" />
               </folding>
@@ -551,21 +48,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="google_intraday.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pypy/google_intraday.py">
+      <file leaf-file-name="NYSE.txt" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pypy/NYSE.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="527" max-vertical-offset="1564">
-              <caret line="31" column="30" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="54706">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="iqfeed.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pypy/iqfeed.py">
+      <file leaf-file-name="variables.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pypy/variables.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.1489362" vertical-offset="744" max-vertical-offset="1326">
-              <caret line="67" column="30" selection-start-line="67" selection-start-column="30" selection-end-line="67" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
+              <caret line="8" column="55" selection-start-line="8" selection-start-column="55" selection-end-line="8" selection-end-column="55" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="google_intraday.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pypy/google_intraday.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="527" max-vertical-offset="1564">
+              <caret line="31" column="30" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -584,8 +91,18 @@
       <file leaf-file-name="function_script.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pypy/function_script.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1955">
-              <caret line="23" column="38" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="2550">
+              <caret line="24" column="38" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="iqfeed.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pypy/iqfeed.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1326">
+              <caret line="23" column="14" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -615,13 +132,14 @@
         <option value="$PROJECT_DIR$/pypy/google_intraday.py" />
         <option value="$PROJECT_DIR$/pypy/sandp500.txt" />
         <option value="$PROJECT_DIR$/pypy/nasdaq.txt" />
+        <option value="$PROJECT_DIR$/pypy/variables.py" />
+        <option value="$PROJECT_DIR$/pypy/NYSE.txt" />
         <option value="$PROJECT_DIR$/pypy/iqfeed.py" />
         <option value="$PROJECT_DIR$/pypy/sideways.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="306" />
     <option name="y" value="25" />
     <option name="width" value="1024" />
     <option name="height" value="673" />
@@ -724,6 +242,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Erics\PycharmProjects\market_analyzer\pypy" />
       <recent name="C:\Users\Erics\PycharmProjects\market_analyzer" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -955,8 +474,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="306" y="25" width="1024" height="673" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="25" width="1024" height="673" extended-state="1" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -966,7 +485,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3986014" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32743362" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32743362" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -998,7 +517,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/pypy/sideways.py</url>
-          <line>181</line>
+          <line>186</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
@@ -1177,16 +696,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pypy/function_script.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="245" max-vertical-offset="1870">
-          <caret line="23" column="38" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pypy/nasdaq.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="50095" max-vertical-offset="50677">
-          <caret line="2975" column="0" selection-start-line="2975" selection-start-column="0" selection-end-line="2975" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="2550">
+          <caret line="24" column="38" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
           <folding />
         </state>
       </provider>
@@ -1199,21 +710,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pypy/sideways.py">
+    <entry file="file://$PROJECT_DIR$/pypy/variables.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4539" max-vertical-offset="8551">
-          <caret line="116" column="65" selection-start-line="116" selection-start-column="65" selection-end-line="116" selection-end-column="65" />
-          <folding>
-            <element signature="e#22#50#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
+          <caret line="8" column="55" selection-start-line="8" selection-start-column="55" selection-end-line="8" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pypy/nasdaq.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="50677">
+          <caret line="2975" column="0" selection-start-line="2975" selection-start-column="0" selection-end-line="2975" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pypy/NYSE.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="56202">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pypy/iqfeed.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1489362" vertical-offset="744" max-vertical-offset="1326">
-          <caret line="67" column="30" selection-start-line="67" selection-start-column="30" selection-end-line="67" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1326">
+          <caret line="23" column="14" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pypy/sideways.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8819444" vertical-offset="5730" max-vertical-offset="8755">
+          <caret line="352" column="24" selection-start-line="352" selection-start-column="24" selection-end-line="352" selection-end-column="24" />
+          <folding>
+            <element signature="e#22#50#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

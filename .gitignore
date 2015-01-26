@@ -18,3 +18,4 @@ pypy/data/nasdaq/*.*
 variables.py
 
 pypy/data/sandp/*.*
+pypy/data/nyse/*.*
