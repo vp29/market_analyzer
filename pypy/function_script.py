@@ -1,5 +1,6 @@
 import time
-
+import plotly.plotly as py
+import plotly.graph_objs
 
 
 class Price:
@@ -104,6 +105,40 @@ def genY(intercept, slope,start,end):
     for i in xrange(start, end):
         y.append(intercept + slope*i)
     return y
+
+
+def generate_a_graph(prices,priceY,meanY,maxResIndex,resY,maxSupIndex,supY,index_or_title,identifiying_text):
+#def generate_a_graph():
+    plotly.tools.set_credentials_file(username='shemer77', api_key='m034bapk2z', stream_ids=['0373v57h06', 'cjbitbcr9j'])
+    trace0 = plotly.graph_objs.Scatter(
+    x=range(0,len(prices)),
+    y=priceY,
+    name='Stock Data'
+    )
+
+    trace1 = plotly.graph_objs.Scatter(
+    x=range(0,len(prices)),
+    y=meanY,
+    name="Mean"
+    )
+    trace2 = plotly.graph_objs.Scatter(
+    x=range(maxResIndex, len(prices)-1),
+    y=resY,
+    name='Resistance'
+    )
+    trace3 = plotly.graph_objs.Scatter(
+    x= range(maxSupIndex, len(prices)-1),
+    y=supY,
+    name='Support'
+    )
+    data = plotly.graph_objs.Data([trace0, trace1,trace2,trace3])
+    layout = plotly.graph_objs.Layout(
+    title=str(identifiying_text)
+        )
+    #add auto_open=False arg to turn off iopening the browser
+    fig = plotly.graph_objs.Figure(data=data, layout=layout)
+    unique_url = py.plot(fig, filename = str(index_or_title))
+    print unique_url
 
 
 

@@ -1,8 +1,9 @@
 __author__ = 'Erics'
 
 import google_intraday as gi
-from function_script import matchIndexes,genY, leastSquare, findMatches, Price, Trade
+from function_script import matchIndexes,genY, leastSquare, findMatches, Price, Trade, generate_a_graph
 import multiprocessing
+import requests
 
 #b/c we dont want to share variables for testing sometimes
 from variables import analysisRange, stop_loss_perc,minimumPercent,samplePeriod,stepSize,startingMoney, initial_investment, total
@@ -419,6 +420,7 @@ def analyzefile(samplePeriod, analysisRange, stepSize, showChart, investment):
 
         if sell_point > buy_point*(1.0 + minimumPercent/100) and pot_buy:
             if prices[-1].price <= buy_point and bought == False:
+                generate_a_graph(prices,price_y,mean_y,maxResIndex,res_y,maxSupIndex,sup_y,str(j)+stock,"randomshit")
                 bought = True
                 boughtPrice = prices[-1].price
                 sellCutoff = sell_point

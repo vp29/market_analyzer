@@ -1,0 +1,320 @@
+(bitcoin) bought time: 2772
+(bitcoin) time to sell: 90000 seconds
+(bitcoin) bought at: 59.54
+(bitcoin) sold at  : 61.25
+(bitcoin) percent gain: 2.87201881088
+Global percent gain: 2.87201881088
+(bitcoin) bought time: 6000
+(bitcoin) time to sell: 343800 seconds
+(bitcoin) bought at: 54.96
+(bitcoin) sold at  : 57.44
+(bitcoin) percent gain: 4.51237263464
+Global percent gain: 7.38439144553
+(bitcoin) bought time: 7260
+(bitcoin) time to sell: 145800 seconds
+(bitcoin) bought at: 56.67
+(bitcoin) sold at  : 58.9
+(bitcoin) percent gain: 3.93506264337
+Global percent gain: 11.3194540889
+(bitcoin) bought time: 8088
+(bitcoin) Stop Loss time to sell: 338400 seconds
+(bitcoin) Stop Loss bought at: 57.21
+(bitcoin) Stop Loss sold at  : 54.63
+(bitcoin) Stop Loss percent lost: -4.50970110121
+Global percent gain: 6.80975298769
+(bitcoin) bought time: 23334
+(bitcoin) time to sell: 174600 seconds
+(bitcoin) bought at: 46.04
+(bitcoin) sold at  : 48.08
+(bitcoin) percent gain: 4.43092962641
+Global percent gain: 11.2406826141
+(bitcoin) bought time: 26802
+(bitcoin) Stop Loss time to sell: 52200 seconds
+(bitcoin) Stop Loss bought at: 33.88
+(bitcoin) Stop Loss sold at  : 32.07
+(bitcoin) Stop Loss percent lost: -5.34238488784
+Global percent gain: 5.89829772627
+(bitcoin) bought time: 29370
+(bitcoin) time to sell: 84600 seconds
+(bitcoin) bought at: 24.16
+(bitcoin) sold at  : 27.63
+(bitcoin) percent gain: 14.3625827815
+Global percent gain: 20.2608805077
+(bitcoin) bought time: 30804
+(bitcoin) Stop Loss time to sell: 34200 seconds
+(bitcoin) Stop Loss bought at: 33.53
+(bitcoin) Stop Loss sold at  : 31.91
+(bitcoin) Stop Loss percent lost: -4.83149418431
+Global percent gain: 15.4293863234
+(bitcoin) bought time: 35850
+(bitcoin) time to sell: 84600 seconds
+(bitcoin) bought at: 36.42
+(bitcoin) sold at  : 38.89
+(bitcoin) percent gain: 6.78198791873
+Global percent gain: 22.2113742421
+(bitcoin) bought time: 37230
+(bitcoin) time to sell: 79200 seconds
+(bitcoin) bought at: 36.13
+(bitcoin) sold at  : 37.54
+(bitcoin) percent gain: 3.9025740382
+Global percent gain: 26.1139482803
+(bitcoin) bought time: 38352
+(bitcoin) time to sell: 68400 seconds
+(bitcoin) bought at: 36.07
+(bitcoin) sold at  : 37.29
+(bitcoin) percent gain: 3.38231217078
+Global percent gain: 29.4962604511
+(bitcoin) bought time: 39354
+(bitcoin) time to sell: 138600 seconds
+(bitcoin) bought at: 43.23
+(bitcoin) sold at  : 44.84
+(bitcoin) percent gain: 3.72426555633
+Global percent gain: 33.2205260074
+(bitcoin) bought time: 40068
+(bitcoin) Stop Loss time to sell: 345600 seconds
+(bitcoin) Stop Loss bought at: 43.98
+(bitcoin) Stop Loss sold at  : 41.85
+(bitcoin) Stop Loss percent lost: -4.84311050477
+Global percent gain: 28.3774155027
+(bitcoin) bought time: 42090
+(bitcoin) time to sell: 64800 seconds
+(bitcoin) bought at: 46.83
+(bitcoin) sold at  : 47.58
+(bitcoin) percent gain: 1.60153747598
+Global percent gain: 29.9789529786
+(bitcoin) bought time: 47238
+(bitcoin) time to sell: 151200 seconds
+(bitcoin) bought at: 51.19
+(bitcoin) sold at  : 52.43
+(bitcoin) percent gain: 2.42234811487
+Global percent gain: 32.4013010935
+(bitcoin) bought time: 48156
+(bitcoin) time to sell: 46800 seconds
+(bitcoin) bought at: 53.48
+(bitcoin) sold at  : 55.14
+(bitcoin) percent gain: 3.10396409873
+Global percent gain: 35.5052651922
+(bitcoin) bought time: 49320
+(bitcoin) time to sell: 108000 seconds
+(bitcoin) bought at: 54.92
+(bitcoin) sold at  : 56.42
+(bitcoin) percent gain: 2.73124544792
+Global percent gain: 38.2365106402
+(bitcoin) bought time: 50430
+(bitcoin) Stop Loss time to sell: 311400 seconds
+(bitcoin) Stop Loss bought at: 57.79
+(bitcoin) Stop Loss sold at  : 55.44
+(bitcoin) Stop Loss percent lost: -4.06644748226
+Global percent gain: 34.1700631579
+(bitcoin) bought time: 52704
+(bitcoin) time to sell: 262800 seconds
+(bitcoin) bought at: 50.66
+(bitcoin) sold at  : 52.93
+(bitcoin) percent gain: 4.48085274378
+Global percent gain: 38.6509159017
+(bitcoin) bought time: 54798
+(bitcoin) time to sell: 331200 seconds
+(bitcoin) bought at: 54.86
+(bitcoin) sold at  : 55.61
+(bitcoin) percent gain: 1.36711629603
+Global percent gain: 40.0180321977
+(bitcoin) bought time: 56520
+(bitcoin) Stop Loss time to sell: 86400 seconds
+(bitcoin) Stop Loss bought at: 54.38
+(bitcoin) Stop Loss sold at  : 52.19
+(bitcoin) Stop Loss percent lost: -4.02721588819
+Global percent gain: 35.9908163095
+(bitcoin) bought time: 58704
+(bitcoin) time to sell: 149400 seconds
+(bitcoin) bought at: 47.985
+(bitcoin) sold at  : 49.98
+(bitcoin) percent gain: 4.15754923414
+Global percent gain: 40.1483655436
+(bitcoin) bought time: 61626
+(bitcoin) Stop Loss time to sell: 201600 seconds
+(bitcoin) Stop Loss bought at: 44.88
+(bitcoin) Stop Loss sold at  : 43.07
+(bitcoin) Stop Loss percent lost: -4.03297682709
+Global percent gain: 36.1153887166
+(bitcoin) bought time: 65070
+(bitcoin) time to sell: 118800 seconds
+(bitcoin) bought at: 45.41
+(bitcoin) sold at  : 46.83
+(bitcoin) percent gain: 3.12706452323
+Global percent gain: 39.2424532398
+(bitcoin) bought time: 67020
+(bitcoin) Stop Loss time to sell: 88200 seconds
+(bitcoin) Stop Loss bought at: 48.87
+(bitcoin) Stop Loss sold at  : 46.82
+(bitcoin) Stop Loss percent lost: -4.19480253734
+Global percent gain: 35.0476507024
+(bitcoin) bought time: 71214
+(bitcoin) time to sell: 43200 seconds
+(bitcoin) bought at: 52.86
+(bitcoin) sold at  : 54.27
+(bitcoin) percent gain: 2.66742338252
+Global percent gain: 37.715074085
+(bitcoin) bought time: 73104
+(bitcoin) time to sell: 246600 seconds
+(bitcoin) bought at: 47.49
+(bitcoin) sold at  : 48.55
+(bitcoin) percent gain: 2.23204885239
+Global percent gain: 39.9471229374
+(bitcoin) bought time: 77136
+(bitcoin) time to sell: 9000 seconds
+(bitcoin) bought at: 43.9
+(bitcoin) sold at  : 44.81
+(bitcoin) percent gain: 2.0728929385
+Global percent gain: 42.0200158758
+(bitcoin) bought time: 77196
+(bitcoin) Stop Loss time to sell: 68400 seconds
+(bitcoin) Stop Loss bought at: 43.6
+(bitcoin) Stop Loss sold at  : 39.415
+(bitcoin) Stop Loss percent lost: -9.59862385321
+Global percent gain: 32.4213920226
+(bitcoin) bought time: 78996
+(bitcoin) Stop Loss time to sell: 518400 seconds
+(bitcoin) Stop Loss bought at: 37.34
+(bitcoin) Stop Loss sold at  : 35.81
+(bitcoin) Stop Loss percent lost: -4.09748259239
+Global percent gain: 28.3239094302
+(bitcoin) bought time: 90360
+(bitcoin) time to sell: 111600 seconds
+(bitcoin) bought at: 26.02
+(bitcoin) sold at  : 27.26
+(bitcoin) percent gain: 4.76556495004
+Global percent gain: 33.0894743803
+(bitcoin) bought time: 94248
+(bitcoin) Stop Loss time to sell: 45000 seconds
+(bitcoin) Stop Loss bought at: 28.55
+(bitcoin) Stop Loss sold at  : 26.29
+(bitcoin) Stop Loss percent lost: -7.91593695271
+Global percent gain: 25.1735374276
+(bitcoin) bought time: 95550
+(bitcoin) Stop Loss time to sell: 68400 seconds
+(bitcoin) Stop Loss bought at: 28.09
+(bitcoin) Stop Loss sold at  : 26.954
+(bitcoin) Stop Loss percent lost: -4.04414382342
+Global percent gain: 21.1293936041
+(bitcoin) bought time: 96498
+(bitcoin) time to sell: 37800 seconds
+(bitcoin) bought at: 25.72
+(bitcoin) sold at  : 26.58
+(bitcoin) percent gain: 3.34370139969
+Global percent gain: 24.4730950038
+(bitcoin) bought time: 97662
+(bitcoin) Stop Loss time to sell: 12600 seconds
+(bitcoin) Stop Loss bought at: 25.52
+(bitcoin) Stop Loss sold at  : 24.47
+(bitcoin) Stop Loss percent lost: -4.1144200627
+Global percent gain: 20.3586749411
+(bitcoin) bought time: 98472
+(bitcoin) time to sell: 59400 seconds
+(bitcoin) bought at: 23.1
+(bitcoin) sold at  : 24.61
+(bitcoin) percent gain: 6.5367965368
+Global percent gain: 26.8954714779
+(bitcoin) bought time: 101544
+(bitcoin) time to sell: 329400 seconds
+(bitcoin) bought at: 32.83
+(bitcoin) sold at  : 34.345
+(bitcoin) percent gain: 4.61468169357
+Global percent gain: 31.5101531715
+(bitcoin) bought time: 102792
+(bitcoin) Stop Loss time to sell: 120600 seconds
+(bitcoin) Stop Loss bought at: 33.78
+(bitcoin) Stop Loss sold at  : 32.395
+(bitcoin) Stop Loss percent lost: -4.10005920663
+Global percent gain: 27.4100939649
+(bitcoin) bought time: 106632
+(bitcoin) time to sell: 214200 seconds
+(bitcoin) bought at: 38.52
+(bitcoin) sold at  : 40.38
+(bitcoin) percent gain: 4.82866043614
+Global percent gain: 32.238754401
+(bitcoin) bought time: 108414
+(bitcoin) time to sell: 230400 seconds
+(bitcoin) bought at: 40.45
+(bitcoin) sold at  : 42.5
+(bitcoin) percent gain: 5.06798516687
+Global percent gain: 37.3067395679
+(bitcoin) bought time: 109566
+(bitcoin) time to sell: 23400 seconds
+(bitcoin) bought at: 42.09
+(bitcoin) sold at  : 42.68
+(bitcoin) percent gain: 1.40175813732
+Global percent gain: 38.7084977052
+(bitcoin) bought time: 112788
+(bitcoin) Stop Loss time to sell: 181800 seconds
+(bitcoin) Stop Loss bought at: 48.015
+(bitcoin) Stop Loss sold at  : 46.05
+(bitcoin) Stop Loss percent lost: -4.09247110278
+Global percent gain: 34.6160266024
+(bitcoin) bought time: 116412
+(bitcoin) Stop Loss time to sell: 187200 seconds
+(bitcoin) Stop Loss bought at: 45.54
+(bitcoin) Stop Loss sold at  : 43.52
+(bitcoin) Stop Loss percent lost: -4.4356609574
+Global percent gain: 30.180365645
+(bitcoin) bought time: 117114
+(bitcoin) time to sell: 158400 seconds
+(bitcoin) bought at: 43.235
+(bitcoin) sold at  : 45.21
+(bitcoin) percent gain: 4.56805828611
+Global percent gain: 34.7484239311
+(bitcoin) bought time: 120600
+(bitcoin) time to sell: 18000 seconds
+(bitcoin) bought at: 49.94
+(bitcoin) sold at  : 51.18
+(bitcoin) percent gain: 2.48297957549
+Global percent gain: 37.2314035066
+(bitcoin) bought time: 121518
+(bitcoin) time to sell: 9000 seconds
+(bitcoin) bought at: 52.185
+(bitcoin) sold at  : 53.45
+(bitcoin) percent gain: 2.42406821884
+Global percent gain: 39.6554717255
+(bitcoin) bought time: 121692
+(bitcoin) Stop Loss time to sell: 250200 seconds
+(bitcoin) Stop Loss bought at: 52.45
+(bitcoin) Stop Loss sold at  : 50.23
+(bitcoin) Stop Loss percent lost: -4.23260247855
+Global percent gain: 35.4228692469
+(bitcoin) bought time: 127302
+(bitcoin) time to sell: 117000 seconds
+(bitcoin) bought at: 55.17
+(bitcoin) sold at  : 56.45
+(bitcoin) percent gain: 2.32010150444
+Global percent gain: 37.7429707514
+(bitcoin) bought time: 128478
+(bitcoin) time to sell: 165600 seconds
+(bitcoin) bought at: 58.1625
+(bitcoin) sold at  : 62.95
+(bitcoin) percent gain: 8.23124865678
+Global percent gain: 45.9742194081
+(bitcoin) bought time: 129588
+(bitcoin) Stop Loss time to sell: 432000 seconds
+(bitcoin) Stop Loss bought at: 63.07
+(bitcoin) Stop Loss sold at  : 60.3
+(bitcoin) Stop Loss percent lost: -4.39194545743
+Global percent gain: 41.5822739507
+(bitcoin) bought time: 131904
+(bitcoin) time to sell: 46800 seconds
+(bitcoin) bought at: 58.12
+(bitcoin) sold at  : 60.03
+(bitcoin) percent gain: 3.28630419821
+Global percent gain: 44.8685781489
+(bitcoin) bought time: 138618
+(bitcoin) Stop Loss time to sell: 406800 seconds
+(bitcoin) Stop Loss bought at: 59.97
+(bitcoin) Stop Loss sold at  : 57.41
+(bitcoin) Stop Loss percent lost: -4.2688010672
+Global percent gain: 40.5997770817
+(bitcoin) bought time: 145794
+(bitcoin) bought at: 62.275
+(bitcoin) current price: 63.24
+(bitcoin) perceant gain: 1.54957848254
+Initial Investment: 15000
+Total Value: 15655.6863418
+Global percent gain: 42.1493555643
+Total Percent Gain: 4.37124227883

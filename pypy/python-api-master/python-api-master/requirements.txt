@@ -1,0 +1,19 @@
+### Dependencies for Core Plotly Functionality  ###
+###                                             ###
+### To install, run:                            ###
+###      $ pip install -r requirements.txt      ###
+###                                             ###
+###################################################
+
+## http request dependencies ##
+requests==2.3.0
+
+## python 2 to 3 compatibility ##
+six==1.8.0
+
+## timezone definitions ##
+pytz==2014.9
+
+## 2.6 python dependencies ##
+simplejson==3.6.5
+ordereddict==1.1
