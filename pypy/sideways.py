@@ -273,16 +273,22 @@ def analyzefile(samplePeriod, analysisRange, stepSize, showChart, investment):
     global global_percent_gain
     import csv
     stock = 'bitcoin'
-
+    i = 0
     market_prices = []
-    #with open('data/bitstampUSD.csv', 'rb') as csvfile:
-    with open('data/cop10yeod.csv', 'rb') as csvfile:
+    with open('data/CSC.csv', 'rb') as csvfile:
+    #with open('data/cop10yeod.csv', 'rb') as csvfile:
         spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
         for row in spamreader:
-            market_prices.append(float(row[1]))
+            if len(row) != 7:
+                continue
+            if '.' not in str(row[4]) and len(str(row[4])) >=4:
+                continue
+            if i == 4:
+                market_prices.append(float(row[4]))
+                i = 0
+            else:
+                i += 1
     trades = open('trades.txt', 'a')
-
-
 
 
     bought = False
@@ -495,3 +501,7 @@ if __name__ == "__main__":
 #priced at 300$ per share which we could be something like 95% of our account balance
 #then again you can make teh argument that with tight stop losses it might be worth putting 60%-90% of our free money in a single trade
 #if the potential for profit is high
+
+
+
+
