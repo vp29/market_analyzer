@@ -11,9 +11,10 @@ bitstampUSD.csv
 .idea/market_analyzer.iml
 .idea/market_analyzer.iml
 .idea/workspace.xml
-pypy/data/*.*
+pypy/data/nasdaq/*.*
 .idea/inspectionProfiles/profiles_settings.xml
 .idea/market_analyzer.iml
 .idea/workspace.xml
 variables.py
 
+pypy/data/sandp/*.*

@@ -15,7 +15,7 @@ import sqlite3
 #snakeviz profile.prof
 conn = sqlite3.connect('stocks.db')
 c = conn.cursor()
-c.execute("CREATE TABLE IF NOT EXISTS stocks (id INTEGER PRIMARY KEY, buy_date INTEGER, sell_date INTEGER, buy_price DOUBLE, sell_price DOUBLE);")
+c.execute("CREATE TABLE IF NOT EXISTS stocks (id INTEGER PRIMARY KEY, symbol TEXT, buy_date INTEGER, sell_date INTEGER, buy_price DOUBLE, sell_price DOUBLE);")
 conn.commit()
 
 database = True
@@ -114,7 +114,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
                     trades.write("(" + stock + ") percent gain: " + str(float(sold_price-trade.buy_price)/trade.buy_price * 100) + '\n')
                     trades.write("Global percent gain: " + str(global_percent_gain*100) + '\n')
                     if database:
-                        c.execute("INSERT INTO stocks VALUES (?, ?, ?, ?);", [(trade.buy_time, soldTimestamp, trade.buy_price, sold_price)])
+                        c.execute("INSERT INTO stocks VALUES (?, ?, ?, ?, ?);", [(stock, trade.buy_time, soldTimestamp, trade.buy_price, sold_price)])
                         conn.commit()
                     bought_list.remove(trade);
                     if len(bought_list) == 0:
@@ -141,7 +141,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
                     print "Stop Loss bought at: " + str(trade.buy_price)
                     print "Stop Loss sold at: " + str(sold_price)
                     if database:
-                        c.execute("INSERT INTO stocks (buy_date, sell_date, buy_price, sell_price) VALUES (%s, %s, %f, %f);" % (trade.buy_time, soldTimestamp, trade.buy_price, sold_price))
+                        c.execute("INSERT INTO stocks (stock, buy_date, sell_date, buy_price, sell_price) VALUES (%s, %s, %s, %f, %f);" % (stock, trade.buy_time, soldTimestamp, trade.buy_price, sold_price))
                         conn.commit()
                     bought_list.remove(trade)
                     if len(bought_list) == 0:
