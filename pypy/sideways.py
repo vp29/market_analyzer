@@ -1,15 +1,14 @@
 __author__ = 'Erics'
 
 import google_intraday as gi
-from function_script import matchIndexes, genY, leastSquare, findMatches, Price, Trade, generate_a_graph
+from function_script import matchIndexes, genY, leastSquare, findMatches, Price, Trade, generate_a_graph,background
 import multiprocessing
 import requests
-
-#b/c we don't want to share variables for testing sometimes
 from variables import analysisRange, stop_loss_perc, bufferPercent, minimumPercent, samplePeriod, stepSize, startingMoney, initial_investment, total
 import time
 from datetime import datetime, timedelta
 import sqlite3
+import threading
 
 #import cProfile
 #python -m cProfile -o profile.prof sideways.py
@@ -120,6 +119,8 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
             maxPrice = item if item > maxPrice else maxPrice
             prices.append(Price(item, i))
 
+
+
         if bought:
             for trade in bought_list:
                 if prices[-1].price >= trade.sell_cutoff:
@@ -130,6 +131,9 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
                                             soldTime.hour, soldTime.minute, soldTime.second)
                     soldTimestamp = (soldDateTime - datetime(1970, 1, 1)).total_seconds()
                     global_percent_gain += float(sold_price-trade.buy_price)/trade.buy_price
+
+                    #MAKE SURE the kwargs at the end have the correct values set then remove this comment, then implement it the second if statement below
+                    generate_a_graph(prices,price_y,mean_y,maxResIndex,res_y,maxSupIndex,sup_y,str(j)+stock,"closed profitable trade",buy_price=trade.buy_price,buy_index=boughtIndex,sold_price=sold_price,sold_index=prices[-1].index)
                     trades.write("(" + stock + ") bought time: " + str(trade.buy_time) + '\n')
                     trades.write("(" + stock + ") time to sell: " + str((soldTimestamp - trade.buy_time)/1000) + " seconds\n")
                     trades.write("(" + stock + ") bought at: " + str(trade.buy_price) + '\n')
@@ -242,7 +246,6 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
                 if diff.index in range(maxResIndex + i*(len(prices)-maxResIndex)/3, maxResIndex + (i+1)*(len(prices)-maxResIndex)/3):
                     pos_matches[i] = True
             for diff in bigNegDiff:
-
                 if diff.index in range(maxSupIndex + i*(len(prices)-maxSupIndex)/3, maxSupIndex + (i+1)*(len(prices)-maxSupIndex)/3):
                     neg_matches[i] = True
 
@@ -264,7 +267,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
                     res_y = genY(resInter, resSlope, maxResIndex, len(prices)-1)
                     sup_y = genY(supInter, supSlope, maxSupIndex, len(prices)-1)
                     mean_y = genY(inter, slope, 0, len(prices))
-                    generate_a_graph(prices,price_y,mean_y,maxResIndex,res_y,maxSupIndex,sup_y,str(j)+stock,"randomshit")
+                    generate_a_graph(prices,price_y,mean_y,maxResIndex,res_y,maxSupIndex,sup_y,str(j)+stock,"opened trade")
                 bought = True
                 buffer_zone = False
                 boughtPrice = prices[-1].price
@@ -289,6 +292,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
             buffer_zone = True
         else:
             buffer_zone = False
+
 
         #end_time = time.time()
         #print("total time taken this loop: ", end_time - start_time)
@@ -332,10 +336,9 @@ def analyzefortune500stocks():
 
 def analyzebitstamp():
     global total
-    #investment = analyzefile(samplePeriod=samplePeriod, analysisRange=analysisRange,
-    #                         stepSize=stepSize, showChart=False, investment=initial_investment)
-    investment = analyzeStock(stock='A', samplePeriod=samplePeriod, analysisRange=analysisRange,
-                              stepSize=stepSize, showChart=False, investment=initial_investment, read_csv=True, csvname='data/sandp/A-20050101 075000-60sec.csv')
+
+    investment = analyzeStock(stock='CSC', samplePeriod=samplePeriod, analysisRange=analysisRange,
+                              stepSize=stepSize, showChart=False, investment=initial_investment, read_csv=True, csvname='data/CSC.csv')
 
     if investment != initial_investment:
         #initial += initial_investment
