@@ -6,7 +6,7 @@ import multiprocessing
 import requests
 
 #b/c we don't want to share variables for testing sometimes
-from variables import analysisRange, stop_loss_perc, minimumPercent, samplePeriod, stepSize, startingMoney, initial_investment, total
+from variables import analysisRange, stop_loss_perc, bufferPercent, minimumPercent, samplePeriod, stepSize, startingMoney, initial_investment, total
 import time
 from datetime import datetime, timedelta
 import sqlite3
@@ -105,6 +105,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
     #sellCutoff = 0.0
     #sold_price = 0.0
     boughtPrice = 0.0
+    buffer_zone = False
     #boughtIndex = 0
     boughtTime = ""
     bought_list = []
@@ -256,7 +257,8 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
         pot_buy = pot_buy and (neg_matches[1] and (neg_matches[0] or neg_matches[2])) \
             and (pos_matches[1] and (pos_matches[0] and pos_matches[2]))
 
-        if sell_point > buy_point*(1.0 + minimumPercent/100) and pot_buy:
+        if sell_point > buy_point*(1.0 + minimumPercent/100) and pot_buy and buffer_zone\
+                and prices[-1].price > buy_point + (sell_point - buy_point)*(1 + bufferPercent/100):
             if prices[-1].price <= buy_point and (database or (not database and bought == False)): #and bought == False:
                 if not database:
                     res_y = genY(resInter, resSlope, maxResIndex, len(prices)-1)
@@ -264,6 +266,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
                     mean_y = genY(inter, slope, 0, len(prices))
                     generate_a_graph(prices,price_y,mean_y,maxResIndex,res_y,maxSupIndex,sup_y,str(j)+stock,"randomshit")
                 bought = True
+                buffer_zone = False
                 boughtPrice = prices[-1].price
                 sellCutoff = sell_point
                 boughtIndex = j
@@ -280,6 +283,12 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
             #    bought = False
             #    print "Sell current price: " + str(prices[-1].price)
             #    print "Buy at price      : " + str(buy_point)
+
+        #check if within buffer zone
+        if buy_point + (sell_point-buy_point)*(1+bufferPercent/100)>= prices[-1].price >= buy_point:
+            buffer_zone = True
+        else:
+            buffer_zone = False
 
         #end_time = time.time()
         #print("total time taken this loop: ", end_time - start_time)
