@@ -28,6 +28,15 @@ class Quote(object):
     self.symbol = ''
     self.date,self.time,self.open_,self.high,self.low,self.close,self.volume = ([] for _ in range(7))
 
+  def appendAll(self, date, open_, high, low, close):
+      for i in range(0, len(date)):
+          self.date.append(date[i].date())
+          self.time.append(date[i].time())
+          self.open_.append(open_[i])
+          self.high.append(high[i])
+          self.low.append(low[i])
+          self.close.append(close[i])
+
   def append(self,dt,open_,high,low,close,volume):
     self.date.append(dt.date())
     self.time.append(dt.time())

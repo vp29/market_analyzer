@@ -13,6 +13,19 @@ class Price:
     def __repr__(self):
         return '<%r> %f' % (self.index, self.price)
 
+class Data:
+    date = None
+    open = 0.0
+    high = 0.0
+    low = 0.0
+    close = 0.0
+    def __init__(self, date, open, high, low, close):
+        self.date = date
+        self.open = open
+        self.high = high
+        self.low = low
+        self.close = close
+
 class Trade:
     buy_time = 0
     sell_time = 0
@@ -107,7 +120,7 @@ def genY(intercept, slope,start,end):
     return y
 
 
-def generate_a_graph(prices,priceY,meanY,maxResIndex,resY,maxSupIndex,supY,index_or_title,identifiying_text):
+def generate_a_graph(prices, priceY, meanY, maxResIndex, resY, maxSupIndex, supY, index_or_title, identifiying_text):
 #def generate_a_graph():
     plotly.tools.set_credentials_file(username='shemer77', api_key='m034bapk2z', stream_ids=['0373v57h06', 'cjbitbcr9j'])
     trace0 = plotly.graph_objs.Scatter(
@@ -117,7 +130,7 @@ def generate_a_graph(prices,priceY,meanY,maxResIndex,resY,maxSupIndex,supY,index
     )
 
     trace1 = plotly.graph_objs.Scatter(
-    x=range(0,len(prices)),
+    x=range(0, len(prices)),
     y=meanY,
     name="Mean"
     )
@@ -137,7 +150,7 @@ def generate_a_graph(prices,priceY,meanY,maxResIndex,resY,maxSupIndex,supY,index
         )
     #add auto_open=False arg to turn off iopening the browser
     fig = plotly.graph_objs.Figure(data=data, layout=layout)
-    unique_url = py.plot(fig, filename = str(index_or_title))
+    unique_url = py.plot(fig, filename=str(index_or_title))
     print unique_url
 
 
