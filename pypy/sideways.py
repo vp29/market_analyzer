@@ -19,7 +19,7 @@ c = conn.cursor()
 c.execute("CREATE TABLE IF NOT EXISTS stocks (id INTEGER PRIMARY KEY, symbol TEXT, buy_date INTEGER, sell_date INTEGER, buy_price DOUBLE, sell_price DOUBLE);")
 conn.commit()
 
-database = False
+database = True
 
 global_percent_gain = 0.0
 global_stock_values = []
@@ -227,65 +227,79 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
         except:
             continue
 
-        inter, slope = leastSquare(prices)
+        sup_val = supInter + supSlope*len(prices)
+        res_val = resInter + resSlope*len(prices)
 
-        price_y = []
-        #put prices in list for plotting
-        for price in prices:
-            price_y.append(price.price)
+        max_buy_point = sup_val + (res_val-sup_val)*(0.2)
+        min_buy_point = sup_val + (res_val-sup_val)*(0.1)
 
-        #check that there are at least 2 areas that have matches, and one is in the middle
-        pos_matches = [False, False, False]
-        neg_matches = [False, False, False]
-        for i in range(0,3):
-            for diff in bigPosDiff:
-                if diff.index in range(maxResIndex + i*(len(prices)-maxResIndex)/3, maxResIndex + (i+1)*(len(prices)-maxResIndex)/3):
-                    pos_matches[i] = True
-            for diff in bigNegDiff:
+        if buffer_zone:
 
-                if diff.index in range(maxSupIndex + i*(len(prices)-maxSupIndex)/3, maxSupIndex + (i+1)*(len(prices)-maxSupIndex)/3):
-                    neg_matches[i] = True
+            inter, slope = leastSquare(prices)
 
-        #print pos_matches
-        #print neg_matches
+            price_y = []
+            #put prices in list for plotting
+            for price in prices:
+                price_y.append(price.price)
 
-        buy_point, sell_point, pot_buy = trendType(resSlope, supSlope, resInter, supInter,
-                                                   len(prices), .1, prices[-1].price,
-                                                   len(prices)-1 - maxResIndex, len(prices)-1 - maxSupIndex )
+            #check that there are at least 2 areas that have matches, and one is in the middle
+            pos_matches = [False, False, False]
+            neg_matches = [False, False, False]
+            for i in range(0,3):
+                for diff in bigPosDiff:
+                    if diff.index in range(maxResIndex + i*(len(prices)-maxResIndex)/3, maxResIndex + (i+1)*(len(prices)-maxResIndex)/3):
+                        pos_matches[i] = True
+                for diff in bigNegDiff:
 
-        #only consider buying when support matches in middle and at least one side
-        pot_buy = pot_buy and (neg_matches[1] and (neg_matches[0] or neg_matches[2])) \
-            and (pos_matches[1] and (pos_matches[0] and pos_matches[2]))
+                    if diff.index in range(maxSupIndex + i*(len(prices)-maxSupIndex)/3, maxSupIndex + (i+1)*(len(prices)-maxSupIndex)/3):
+                        neg_matches[i] = True
 
-        if sell_point > buy_point*(1.0 + minimumPercent/100) and pot_buy and buffer_zone\
-                and prices[-1].price > buy_point + (sell_point - buy_point)*(1 + bufferPercent/100):
-            if prices[-1].price <= buy_point and (database or (not database and bought == False)): #and bought == False:
-                if not database:
-                    res_y = genY(resInter, resSlope, maxResIndex, len(prices)-1)
-                    sup_y = genY(supInter, supSlope, maxSupIndex, len(prices)-1)
-                    mean_y = genY(inter, slope, 0, len(prices))
-                    generate_a_graph(prices,price_y,mean_y,maxResIndex,res_y,maxSupIndex,sup_y,str(j)+stock,"randomshit")
-                bought = True
-                buffer_zone = False
-                boughtPrice = prices[-1].price
-                sellCutoff = sell_point
-                boughtIndex = j
-                boughtTime = data.date[j+analysisRange]
-                boughtDate = data.date[j+analysisRange]
-                bought_time = data.time[j+analysisRange]
-                boughtDateTime = datetime(boughtDate.year, boughtDate.month, boughtDate.day,
-                                                         bought_time.hour, bought_time.minute, bought_time.second)
-                boughtTimestamp = (boughtDateTime - datetime(1970, 1, 1, 0, 0, 0)).total_seconds()
-                print "Buy current price : " + str(prices[-1].price)
-                print "Sell at price     : " + str(sell_point)
-                bought_list.append(Trade(boughtTimestamp, 0, sellCutoff, boughtPrice, 0.0))
-            #elif prices[-1].price >= sell_point and bought == True:
-            #    bought = False
-            #    print "Sell current price: " + str(prices[-1].price)
-            #    print "Buy at price      : " + str(buy_point)
+            #print pos_matches
+            #print neg_matches
+
+            buy_point, sell_point, pot_buy = trendType(resSlope, supSlope, resInter, supInter,
+                                                       len(prices), .1, prices[-1].price,
+                                                       len(prices)-1 - maxResIndex, len(prices)-1 - maxSupIndex )
+
+            #only consider buying when support matches in middle and at least one side
+            pot_buy = pot_buy and (neg_matches[1] and (neg_matches[0] or neg_matches[2])) \
+                and (pos_matches[1] and (pos_matches[0] and pos_matches[2]))
+
+            print "Sell Point: " + str(sell_point)
+            print "Buy Range:  " + str(min_buy_point) + ' - ' + str(max_buy_point)
+            print "Cur Price:  " + str(prices[-1].price)
+            print "buf Price:  " + str(sup_val + (res_val - sup_val)*(bufferPercent/100))
+
+            if sell_point > prices[-1].price*(1.0 + minimumPercent/100) and pot_buy:
+                if min_buy_point <= prices[-1].price <= max_buy_point and (database or (not database and bought == False)): #and bought == False:
+                    if not database:
+                        res_y = genY(resInter, resSlope, maxResIndex, len(prices)-1)
+                        sup_y = genY(supInter, supSlope, maxSupIndex, len(prices)-1)
+                        mean_y = genY(inter, slope, 0, len(prices))
+                        generate_a_graph(prices,price_y,mean_y,maxResIndex,res_y,maxSupIndex,sup_y,str(j)+stock,"randomshit")
+                    bought = True
+                    buffer_zone = False
+                    boughtPrice = prices[-1].price
+                    sellCutoff = sell_point
+                    boughtIndex = j
+                    boughtTime = data.date[j+analysisRange]
+                    boughtDate = data.date[j+analysisRange]
+                    bought_time = data.time[j+analysisRange]
+                    boughtDateTime = datetime(boughtDate.year, boughtDate.month, boughtDate.day,
+                                                             bought_time.hour, bought_time.minute, bought_time.second)
+                    boughtTimestamp = (boughtDateTime - datetime(1970, 1, 1, 0, 0, 0)).total_seconds()
+                    print "Buy current price : " + str(prices[-1].price)
+                    print "Sell at price     : " + str(sell_point)
+                    bought_list.append(Trade(boughtTimestamp, 0, sellCutoff, boughtPrice, 0.0))
+                #elif prices[-1].price >= sell_point and bought == True:
+                #    bought = False
+                #    print "Sell current price: " + str(prices[-1].price)
+                #    print "Buy at price      : " + str(buy_point)
 
         #check if within buffer zone
-        if buy_point + (sell_point-buy_point)*(1+bufferPercent/100)>= prices[-1].price >= buy_point:
+        if sup_val + (res_val-sup_val)*(bufferPercent/100) >= prices[-1].price:
+            buffer_zone = True
+        elif prices[-1].price < min_buy_point and buffer_zone:
             buffer_zone = True
         else:
             buffer_zone = False
