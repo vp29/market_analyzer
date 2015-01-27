@@ -1,7 +1,16 @@
 import time
 import plotly.plotly as py
 import plotly.graph_objs
+import threading
 
+def background(f):
+    '''
+    a threading decorator
+    use @background above the function you want to run in the background
+    '''
+    def bg_f(*a, **kw):
+        threading.Thread(target=f, args=a, kwargs=kw).start()
+    return bg_f
 
 class Price:
     price = 0.0
@@ -120,9 +129,13 @@ def genY(intercept, slope,start,end):
     return y
 
 
-def generate_a_graph(prices, priceY, meanY, maxResIndex, resY, maxSupIndex, supY, index_or_title, identifiying_text):
-#def generate_a_graph():
+
+@background
+def generate_a_graph(prices, priceY, meanY, maxResIndex, resY, maxSupIndex, supY, index_or_title, identifiying_text,**kwargs):
+    ##kwargs is used to find buy price and sell price points
     plotly.tools.set_credentials_file(username='shemer77', api_key='m034bapk2z', stream_ids=['0373v57h06', 'cjbitbcr9j'])
+
+
     trace0 = plotly.graph_objs.Scatter(
     x=range(0,len(prices)),
     y=priceY,
@@ -145,6 +158,29 @@ def generate_a_graph(prices, priceY, meanY, maxResIndex, resY, maxSupIndex, supY
     name='Support'
     )
     data = plotly.graph_objs.Data([trace0, trace1,trace2,trace3])
+
+    if kwargs:
+        print kwargs
+        trace4 = plotly.graph_objs.Scatter(
+          x= kwargs['buy_index'],
+          y=kwargs['buy_price'],
+          name='Buy Price',
+          marker = plotly.graph_objs.Marker(
+              size=12
+            )
+          )
+
+        trace5 = plotly.graph_objs.Scatter(
+          x= kwargs['sold_index'],
+          y=kwargs['sold_price'],
+          name='Sell Price',
+          marker = plotly.graph_objs.Marker(
+              size=12
+            )
+          )
+        data = plotly.graph_objs.Data([trace0, trace1,trace2,trace3,trace4,trace5])
+
+
     layout = plotly.graph_objs.Layout(
     title=str(identifiying_text)
         )
