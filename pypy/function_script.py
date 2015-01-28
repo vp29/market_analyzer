@@ -160,7 +160,7 @@ def generate_a_graph(prices, priceY, meanY, maxResIndex, resY, maxSupIndex, supY
     data = plotly.graph_objs.Data([trace0, trace1,trace2,trace3])
 
     if kwargs:
-        print kwargs
+        #print kwargs
         trace4 = plotly.graph_objs.Scatter(
           x= kwargs['buy_index'],
           y=kwargs['buy_price'],
