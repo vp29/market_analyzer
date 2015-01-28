@@ -1,7 +1,7 @@
 __author__ = 'Erics'
 
 import google_intraday as gi
-from function_script import matchIndexes, genY, leastSquare, findMatches, Price, Trade, generate_a_graph,background
+from function_script import matchIndexes, genY, leastSquare, findMatches, Price, Trade, generate_a_graph,background, analyze_db
 import multiprocessing
 import requests
 from variables import analysisRange, stop_loss_perc, bufferPercent, minimumPercent, samplePeriod, stepSize, startingMoney, initial_investment, total
@@ -140,7 +140,9 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
                     #put prices in list for plotting
                     for price in prices:
                         price_y.append(price.price)
-                    generate_a_graph(prices,price_y,mean_y,maxResIndex,res_y,maxSupIndex,sup_y,str(j)+stock,"closed profitable trade",buy_price=trade.buy_price,buy_index=genY(resInter,resSlope,j-boughtIndex-960,j-boughtIndex),sold_price=sold_price,sold_index=prices[-1].index)
+                    if not database:
+                        generate_a_graph(prices,price_y,mean_y,maxResIndex,res_y,maxSupIndex,sup_y,str(j)+stock,"closed profitable trade",buy_price=trade.buy_price,buy_index=genY(resInter,resSlope,j-boughtIndex-960,j-boughtIndex),sold_price=sold_price,sold_index=prices[-1].index)
+
                     trades.write("(" + stock + ") bought time: " + str(trade.buy_time) + '\n')
                     trades.write("(" + stock + ") time to sell: " + str((soldTimestamp - trade.buy_time)/1000) + " seconds\n")
                     trades.write("(" + stock + ") bought at: " + str(trade.buy_price) + '\n')
@@ -359,8 +361,8 @@ def analyzefortune500stocks():
 def analyzebitstamp():
     global total
 
-    investment = analyzeStock(stock='CSC', samplePeriod=samplePeriod, analysisRange=analysisRange,
-                              stepSize=stepSize, showChart=False, investment=initial_investment, read_csv=True, csvname='data/CSC.csv')
+    investment = analyzeStock(stock='ABC', samplePeriod=samplePeriod, analysisRange=analysisRange,
+                              stepSize=stepSize, showChart=False, investment=initial_investment, read_csv=True, csvname='data/sandp/ABC-20050101 075000-60sec.csv')
 
     if investment != initial_investment:
         #initial += initial_investment
@@ -378,6 +380,7 @@ def analyzebitstamp():
 if __name__ == "__main__":
     #analyzefortune500stocks()
     analyzebitstamp()
+    #analyze_db(c, 15000)
 
 #why false, true, true
 #http://gyazo.com/4585b43a224831e154a90f1037117977
