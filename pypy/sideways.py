@@ -369,7 +369,7 @@ def analyzebitstamp():
 
     if multi_processing:
         pool = multiprocessing.Pool(processes=4)
-        results = [pool.apply_async(analyzeStock,args=(line,samplePeriod,analysisRange,stepSize,False,initial_investment,True,'data/sandp/' + line.strip() + '-20050101 075000-60sec.csv')) for line in stocks]
+        results = [pool.apply_async(analyzeStock,args=(line,samplePeriod,analysisRange,stepSize,False,initial_investment,True,'../../sandp/' + line.strip() + '-20050101 075000-60sec.csv')) for line in stocks]
         output = [p.get() for p in results]
         print output
         return
