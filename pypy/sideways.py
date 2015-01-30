@@ -72,7 +72,7 @@ def trendType(resSlope, supSlope, resInt, supInt, nextInd, bsPoint, curPrice, re
     return (nextSup + diff*bsPoint), (nextRes - diff*bsPoint), potBuy
 
 def insert_into_database(stock,trade,soldTimestamp,sold_price,graph_url):
-    c.execute("INSERT INTO stocks VALUES (?, ?, ?, ?, ?, ?);", (None, stock, int(trade.buy_time), int(soldTimestamp), float(trade.buy_price), float(sold_price), graph_url))
+    c.execute("INSERT INTO stocks VALUES (?, ?, ?, ?, ?, ?, ?);", (None, stock, int(trade.buy_time), int(soldTimestamp), float(trade.buy_price), float(sold_price), graph_url))
     conn.commit()
 
 
@@ -187,7 +187,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
 
                     if graphing:
                         #MAKE SURE the kwargs at the end have the correct values set then remove this comment, then implement it the second if statement below
-                        graph_url = generate_a_graph(prices,resInter, resSlope,boughtIndex,j,supInter,supSlope,inter,slope, maxResIndex, maxSupIndex, str(j)+stock,"closed profitable trade",buy_price=trade.buy_price,buy_index=genY(resInter,resSlope,j-boughtIndex-960,j-boughtIndex),sold_price=sold_price,sold_index=prices[-1].index)
+                        graph_url = generate_a_graph(prices,resInter, resSlope,boughtIndex,j,supInter,supSlope,inter,slope, maxResIndex, maxSupIndex, str(j)+stock,"Stop loss trade",buy_price=trade.buy_price,buy_index=genY(resInter,resSlope,j-boughtIndex-960,j-boughtIndex),sold_price=sold_price,sold_index=prices[-1].index)
                     else:
                         graph_url = None
 
@@ -421,8 +421,8 @@ def analyzefile(filename):
 if __name__ == "__main__":
     #analyzefortune500stocks()
     #analyzebitstamp()
-    analyzefile('CSC.csv')
-    #analyze_db(c, 15000)
+    #analyzefile('CSC.csv')
+    analyze_db(c, 15000)
 
 #why false, true, true
 #http://gyazo.com/4585b43a224831e154a90f1037117977
