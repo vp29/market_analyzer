@@ -275,7 +275,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
             print "Cur Price:  " + str(prices[-1].price)
             print "buf Price:  " + str(sup_val + (res_val - sup_val)*(bufferPercent/100))
 
-            if sell_point > prices[-1].price*(1.0 + minimumPercent/100) and pot_buy:
+            if sell_point > prices[-1].price*(1.0 + float(minimumPercent)/float(100)) and pot_buy:
                 if min_buy_point <= prices[-1].price <= max_buy_point and (database or (not database and bought == False)): #and bought == False:
                     if not database:
                         res_y = genY(resInter, resSlope, maxResIndex, len(prices)-1)
@@ -353,8 +353,12 @@ def analyzefortune500stocks():
 def analyzebitstamp():
     global total
 
-    investment = analyzeStock(stock='ABC', samplePeriod=samplePeriod, analysisRange=analysisRange,
-                              stepSize=stepSize, showChart=False, investment=initial_investment, read_csv=True, csvname='data/sandp/ABC-20050101 075000-60sec.csv')
+    stocks = open('sandp500stocklist.txt', 'r')
+    for line in stocks:
+        line = line[:-1] if "\n" in line else line
+        print line
+        investment = analyzeStock(stock=line, samplePeriod=samplePeriod, analysisRange=analysisRange,
+                              stepSize=stepSize, showChart=False, investment=initial_investment, read_csv=True, csvname='data/sandp/' + line + '-20050101 075000-60sec.csv')
 
     if investment != initial_investment:
         #initial += initial_investment
@@ -370,8 +374,8 @@ def analyzebitstamp():
 
 if __name__ == "__main__":
     #analyzefortune500stocks()
-    analyzebitstamp()
-    #analyze_db(c, 15000)
+    #analyzebitstamp()
+    analyze_db(c, 15000)
 
 #why false, true, true
 #http://gyazo.com/4585b43a224831e154a90f1037117977
