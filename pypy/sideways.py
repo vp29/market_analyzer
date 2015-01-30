@@ -18,6 +18,8 @@ c = conn.cursor()
 c.execute("CREATE TABLE IF NOT EXISTS stocks (id INTEGER PRIMARY KEY, symbol TEXT, buy_date INTEGER, sell_date INTEGER, buy_price DOUBLE, sell_price DOUBLE, graph_url TEXT);")
 conn.commit()
 
+
+
 database = True
 graphing = True
 multi_processing = True
@@ -294,10 +296,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
 
             if sell_point > prices[-1].price*(1.0 + float(minimumPercent)/float(100)) and pot_buy:
                 if min_buy_point <= prices[-1].price <= max_buy_point and (database or (not database and bought == False)): #and bought == False:
-                    if graphing:
-                        graph_url = generate_a_graph(prices,resInter, resSlope,boughtIndex,j,supInter,supSlope,inter,slope, maxResIndex, maxSupIndex, str(j)+stock,"Generated buy order")
-                    else:
-                        graph_url = None
+
                     bought = True
                     buffer_zone = False
                     boughtPrice = prices[-1].price
@@ -309,6 +308,12 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
                     boughtDateTime = datetime(boughtDate.year, boughtDate.month, boughtDate.day,
                                                              bought_time.hour, bought_time.minute, bought_time.second)
                     boughtTimestamp = (boughtDateTime - datetime(1970, 1, 1, 0, 0, 0)).total_seconds()
+
+                    if graphing:
+                        graph_url = generate_a_graph(prices,resInter, resSlope,boughtIndex,j,supInter,supSlope,inter,slope, maxResIndex, maxSupIndex, str(j)+stock,"Generated buy order")
+                    else:
+                        graph_url = None
+
                     print "Buy current price : " + str(prices[-1].price)
                     print "Sell at price     : " + str(sell_point)
                     bought_list.append(Trade(boughtTimestamp, 0, sellCutoff, boughtPrice, 0.0))
@@ -396,10 +401,27 @@ def analyzebitstamp():
     print "Total Value: " + str(total)
     print "Total Percent Gain: " + str((total-startingMoney)/startingMoney*100)
 
+def analyzefile(filename):
+    investment = analyzeStock(stock=str(filename), samplePeriod=samplePeriod, analysisRange=analysisRange,
+                              stepSize=stepSize, showChart=False, investment=initial_investment, read_csv=True, csvname='data/%s' % filename)
+
+    if investment != initial_investment:
+        #initial += initial_investment
+        total += investment-initial_investment
+        #global_stock_values.append(investment)
+    trades = open('trades.txt', 'a')
+    trades.write("Initial Investment: " + str(startingMoney) + '\n')
+    trades.write("Total Value: " + str(total) + '\n')
+    trades.write("Total Percent Gain: " + str((total-startingMoney)/startingMoney*100) + '\n')
+    print "Initial Investment: " + str(startingMoney)
+    print "Total Value: " + str(total)
+    print "Total Percent Gain: " + str((total-startingMoney)/startingMoney*100)
+
 
 if __name__ == "__main__":
     #analyzefortune500stocks()
-    analyzebitstamp()
+    #analyzebitstamp()
+    analyzefile('CSC.csv')
     #analyze_db(c, 15000)
 
 #why false, true, true
