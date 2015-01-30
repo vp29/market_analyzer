@@ -163,30 +163,38 @@ def genY(intercept, slope,start,end):
 
 
 @background
-def generate_a_graph(prices, priceY, meanY, maxResIndex, resY, maxSupIndex, supY, index_or_title, identifiying_text,**kwargs):
+def generate_a_graph(prices,resInter,resSlope,boughtIndex,j,supInter,supSlope,inter,slope, maxResIndex, maxSupIndex, index_or_title, identifiying_text,**kwargs):
+    res_y = genY(resInter, resSlope, j-boughtIndex-960, j-boughtIndex)
+    sup_y = genY(supInter, supSlope, maxSupIndex, len(prices)-1)
+    mean_y = genY(inter, slope, 0, len(prices))
+    price_y = []
+    #put prices in list for plotting
+    for price in prices:
+        price_y.append(price.price)
+
     ##kwargs is used to find buy price and sell price points
     plotly.tools.set_credentials_file(username='shemer77', api_key='m034bapk2z', stream_ids=['0373v57h06', 'cjbitbcr9j'])
 
 
     trace0 = plotly.graph_objs.Scatter(
     x=range(0,len(prices)),
-    y=priceY,
+    y=price_y,
     name='Stock Data'
     )
 
     trace1 = plotly.graph_objs.Scatter(
     x=range(0, len(prices)),
-    y=meanY,
+    y=mean_y,
     name="Mean"
     )
     trace2 = plotly.graph_objs.Scatter(
     x=range(maxResIndex, len(prices)-1),
-    y=resY,
+    y=res_y,
     name='Resistance'
     )
     trace3 = plotly.graph_objs.Scatter(
     x= range(maxSupIndex, len(prices)-1),
-    y=supY,
+    y=sup_y,
     name='Support'
     )
     data = plotly.graph_objs.Data([trace0, trace1,trace2,trace3])
@@ -216,10 +224,11 @@ def generate_a_graph(prices, priceY, meanY, maxResIndex, resY, maxSupIndex, supY
     layout = plotly.graph_objs.Layout(
     title=str(identifiying_text)
         )
-    #add auto_open=False arg to turn off iopening the browser
     fig = plotly.graph_objs.Figure(data=data, layout=layout)
-    unique_url = py.plot(fig, filename=str(index_or_title))
+    #add auto_open=False arg to turn off iopening the browser
+    unique_url = py.plot(fig, filename=str(index_or_title),auto_open=False)
     print unique_url
+    return unique_url
 
 
 

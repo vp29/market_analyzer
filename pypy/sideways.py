@@ -15,10 +15,12 @@ import threading
 #snakeviz profile.prof
 conn = sqlite3.connect('stocks.db')
 c = conn.cursor()
-c.execute("CREATE TABLE IF NOT EXISTS stocks (id INTEGER PRIMARY KEY, symbol TEXT, buy_date INTEGER, sell_date INTEGER, buy_price DOUBLE, sell_price DOUBLE);")
+c.execute("CREATE TABLE IF NOT EXISTS stocks (id INTEGER PRIMARY KEY, symbol TEXT, buy_date INTEGER, sell_date INTEGER, buy_price DOUBLE, sell_price DOUBLE, graph_url TEXT);")
 conn.commit()
 
-database = False
+database = True
+graphing = True
+multi_processing = True
 
 global_percent_gain = 0.0
 global_stock_values = []
@@ -64,6 +66,9 @@ def trendType(resSlope, supSlope, resInt, supInt, nextInd, bsPoint, curPrice, re
     #print "sell point: " + str((nextRes - diff*bsPoint))
     return (nextSup + diff*bsPoint), (nextRes - diff*bsPoint), potBuy
 
+def insert_into_database(stock,trade,soldTimestamp,sold_price,graph_url):
+    c.execute("INSERT INTO stocks VALUES (?, ?, ?, ?, ?, ?);", (None, stock, int(trade.buy_time), int(soldTimestamp), float(trade.buy_price), float(sold_price), graph_url))
+    conn.commit()
 
 
 def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, investment, read_csv, csvname=""):
@@ -132,17 +137,6 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
                     soldTimestamp = (soldDateTime - datetime(1970, 1, 1)).total_seconds()
                     global_percent_gain += float(sold_price-trade.buy_price)/trade.buy_price
 
-                    #MAKE SURE the kwargs at the end have the correct values set then remove this comment, then implement it the second if statement below
-                    res_y = genY(resInter, resSlope, j-boughtIndex-960, j-boughtIndex)
-                    sup_y = genY(supInter, supSlope, maxSupIndex, len(prices)-1)
-                    mean_y = genY(inter, slope, 0, len(prices))
-                    price_y = []
-                    #put prices in list for plotting
-                    for price in prices:
-                        price_y.append(price.price)
-                    if not database:
-                        generate_a_graph(prices,price_y,mean_y,maxResIndex,res_y,maxSupIndex,sup_y,str(j)+stock,"closed profitable trade",buy_price=trade.buy_price,buy_index=genY(resInter,resSlope,j-boughtIndex-960,j-boughtIndex),sold_price=sold_price,sold_index=prices[-1].index)
-
                     trades.write("(" + stock + ") bought time: " + str(trade.buy_time) + '\n')
                     trades.write("(" + stock + ") time to sell: " + str((soldTimestamp - trade.buy_time)/1000) + " seconds\n")
                     trades.write("(" + stock + ") bought at: " + str(trade.buy_price) + '\n')
@@ -150,10 +144,15 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
                     trades.write("(" + stock + ") percent gain: " + str(float(sold_price-trade.buy_price)/trade.buy_price * 100) + '\n')
                     trades.write("Global percent gain: " + str(global_percent_gain*100) + '\n')
                     trades.write("")
+
+                    if graphing:
+                        #MAKE SURE the kwargs at the end have the correct values set then remove this comment, then implement it the second if statement below
+                        graph_url = generate_a_graph(prices,resInter, resSlope,boughtIndex,j,supInter,supSlope,inter,slope, maxResIndex, maxSupIndex, str(j)+stock,"closed profitable trade",buy_price=trade.buy_price,buy_index=genY(resInter,resSlope,j-boughtIndex-960,j-boughtIndex),sold_price=sold_price,sold_index=prices[-1].index)
+                    else:
+                        graph_url = None
                     if database:
-                        #print (stock, int(trade.buy_time), int(soldTimestamp), float(trade.buy_price), float(sold_price))
-                        c.execute("INSERT INTO stocks VALUES (?, ?, ?, ?, ?, ?);", (None, stock, int(trade.buy_time), int(soldTimestamp), float(trade.buy_price), float(sold_price)))
-                        conn.commit()
+                        insert_into_database(stock,trade,soldTimestamp,sold_price,graph_url)
+
                     bought_list.remove(trade)
                     if len(bought_list) == 0:
                         bought = False
@@ -179,9 +178,15 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
                     investment *= (1+float(sold_price-trade.buy_price)/trade.buy_price)
                     print "Stop Loss bought at: " + str(trade.buy_price)
                     print "Stop Loss sold at: " + str(sold_price)
+
+                    if graphing:
+                        #MAKE SURE the kwargs at the end have the correct values set then remove this comment, then implement it the second if statement below
+                        graph_url = generate_a_graph(prices,resInter, resSlope,boughtIndex,j,supInter,supSlope,inter,slope, maxResIndex, maxSupIndex, str(j)+stock,"closed profitable trade",buy_price=trade.buy_price,buy_index=genY(resInter,resSlope,j-boughtIndex-960,j-boughtIndex),sold_price=sold_price,sold_index=prices[-1].index)
+                    else:
+                        graph_url = None
+
                     if database:
-                        c.execute("INSERT INTO stocks VALUES (?, ?, ?, ?, ?, ?);", (None, stock, int(trade.buy_time), int(soldTimestamp), float(trade.buy_price), float(sold_price)))
-                        conn.commit()
+                        insert_into_database(stock,trade,soldTimestamp,sold_price,graph_url)
                     bought_list.remove(trade)
                     if len(bought_list) == 0:
                         bought = False
@@ -285,11 +290,10 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
 
             if sell_point > prices[-1].price*(1.0 + float(minimumPercent)/float(100)) and pot_buy:
                 if min_buy_point <= prices[-1].price <= max_buy_point and (database or (not database and bought == False)): #and bought == False:
-                    if not database:
-                        res_y = genY(resInter, resSlope, maxResIndex, len(prices)-1)
-                        sup_y = genY(supInter, supSlope, maxSupIndex, len(prices)-1)
-                        mean_y = genY(inter, slope, 0, len(prices))
-                        generate_a_graph(prices,price_y,mean_y,maxResIndex,res_y,maxSupIndex,sup_y,str(j)+stock,"Generated buy order")
+                    if graphing:
+                        graph_url = generate_a_graph(prices,resInter, resSlope,boughtIndex,j,supInter,supSlope,inter,slope, maxResIndex, maxSupIndex, str(j)+stock,"Generated buy order")
+                    else:
+                        graph_url = None
                     bought = True
                     buffer_zone = False
                     boughtPrice = prices[-1].price
@@ -362,6 +366,14 @@ def analyzebitstamp():
     global total
 
     stocks = open('sandp500stocklist.txt', 'r')
+
+    if multi_processing:
+        pool = multiprocessing.Pool(processes=4)
+        results = [pool.apply_async(analyzeStock,args=(line,samplePeriod,analysisRange,stepSize,False,initial_investment,True,'data/sandp/' + line.strip() + '-20050101 075000-60sec.csv')) for line in stocks]
+        output = [p.get() for p in results]
+        print output
+        return
+
     for line in stocks:
         line = line[:-1] if "\n" in line else line
         print line
@@ -383,8 +395,8 @@ def analyzebitstamp():
 
 if __name__ == "__main__":
     #analyzefortune500stocks()
-    #analyzebitstamp()
-    analyze_db(c, 15000)
+    analyzebitstamp()
+    #analyze_db(c, 15000)
 
 #why false, true, true
 #http://gyazo.com/4585b43a224831e154a90f1037117977
