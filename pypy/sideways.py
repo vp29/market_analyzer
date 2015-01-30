@@ -377,7 +377,7 @@ def analyzebitstamp():
     stocks = open('sandp500stocklist.txt', 'r')
 
     if multi_processing:
-        pool = multiprocessing.Pool(processes=4)
+        pool = multiprocessing.Pool(processes=64)
         results = [pool.apply_async(analyzeStock,args=(line,samplePeriod,analysisRange,stepSize,False,initial_investment,True,'sandp/' + line.strip() + '-20050101 075000-60sec.csv')) for line in stocks]
         output = [p.get() for p in results]
         print output
