@@ -44,23 +44,26 @@ def trendType(resSlope, supSlope, resInt, supInt, nextInd, bsPoint, curPrice, re
     elif ((-normCutoff < resNorm < normCutoff)
             or (-normCutoff < supNorm < normCutoff)):
         if -normCutoff < resNorm < normCutoff and supNorm > 0:
-            print "Triangle upward trend.  Predicted to break down."
+            #print "Triangle upward trend.  Predicted to break down."
+            pass
         elif -normCutoff < supNorm < normCutoff and resNorm < 0:
-            print "Triangle downward trend.  Predicted to break up."
+           # print "Triangle downward trend.  Predicted to break up."
+            pass
     elif (resNorm > 0 and supNorm > 0) \
         and ((0.9*supNorm <= resNorm <= supNorm)
              or (0.9*resNorm <= supNorm <= resNorm)):
             potBuy = True
-            print "Upward trending channel."
+          #  print "Upward trending channel."
     elif (resNorm < 0 and supNorm < 0) \
             and ((resNorm <= supNorm and abs(0.9*resNorm) <= abs(supNorm))
                  or (supNorm <= resNorm and abs(0.9*supNorm) <= abs(resNorm))):
             potBuy = True
-            print "Downward trending channel."
+         #   print "Downward trending channel."
     elif (resNorm < 0 > supNorm) \
             or (resNorm < 0 and resNorm < supNorm)\
             or (supNorm > resNorm > 0):
-        print "Wedge trend.  May break up or down."
+                pass
+        #print "Wedge trend.  May break up or down."
 
     #print "buy point:  " + str((nextSup + diff*bsPoint))
     #print "sell point: " + str((nextRes - diff*bsPoint))
@@ -74,6 +77,7 @@ def insert_into_database(stock,trade,soldTimestamp,sold_price,graph_url):
 def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, investment, read_csv, csvname=""):
     global global_percent_gain
     trades = open('trades.txt', 'a')
+    print stock
 
     data = None
     if read_csv:
@@ -369,7 +373,7 @@ def analyzebitstamp():
 
     if multi_processing:
         pool = multiprocessing.Pool(processes=4)
-        results = [pool.apply_async(analyzeStock,args=(line,samplePeriod,analysisRange,stepSize,False,initial_investment,True,'../../sandp/' + line.strip() + '-20050101 075000-60sec.csv')) for line in stocks]
+        results = [pool.apply_async(analyzeStock,args=(line,samplePeriod,analysisRange,stepSize,False,initial_investment,True,'sandp/' + line.strip() + '-20050101 075000-60sec.csv')) for line in stocks]
         output = [p.get() for p in results]
         print output
         return
