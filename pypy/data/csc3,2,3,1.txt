@@ -1,0 +1,92 @@
+(ABC) bought time: 1217850840.0
+(ABC) Stop Loss time to sell: 165.54 seconds
+(ABC) Stop Loss bought at: 46.55
+(ABC) Stop Loss sold at  : 45.09
+(ABC) Stop Loss percent lost: -3.13641245972
+Global percent gain: -3.13641245972
+(ABC) bought time: 1223374740.0
+(ABC) Stop Loss time to sell: 11.7 seconds
+(ABC) Stop Loss bought at: 34.94
+(ABC) Stop Loss sold at  : 33.97
+(ABC) Stop Loss percent lost: -2.77618775043
+Global percent gain: -5.91260021015
+(ABC) bought time: 1239195420.0
+(ABC) Stop Loss time to sell: 593.16 seconds
+(ABC) Stop Loss bought at: 38.35
+(ABC) Stop Loss sold at  : 37.36
+(ABC) Stop Loss percent lost: -2.5814863103
+Global percent gain: -8.49408652045
+(ABC) bought time: 1242295260.0
+(ABC) time to sell: 431.58 seconds
+(ABC) bought at: 36.35
+(ABC) sold at  : 37.25
+(ABC) percent gain: 2.47592847318
+Global percent gain: -6.01815804727
+(ABC) bought time: 1258109820.0
+(ABC) time to sell: 342.18 seconds
+(ABC) bought at: 53.94
+(ABC) sold at  : 55.23
+(ABC) percent gain: 2.3915461624
+Global percent gain: -3.62661188487
+(ABC) bought time: 1260355920.0
+(ABC) time to sell: 444.66 seconds
+(ABC) bought at: 55.22
+(ABC) sold at  : 56.39
+(ABC) percent gain: 2.11879753712
+Global percent gain: -1.50781434775
+(ABC) bought time: 1269516600.0
+(ABC) Stop Loss time to sell: 598.32 seconds
+(ABC) Stop Loss bought at: 55.05
+(ABC) Stop Loss sold at  : 53.7
+(ABC) Stop Loss percent lost: -2.45231607629
+Global percent gain: -3.96013042404
+(ABC) bought time: 1272371520.0
+(ABC) Stop Loss time to sell: 84.12 seconds
+(ABC) Stop Loss bought at: 54.62
+(ABC) Stop Loss sold at  : 53.42
+(ABC) Stop Loss percent lost: -2.19699743684
+Global percent gain: -6.15712786088
+(ABC) bought time: 1299578460.0
+(ABC) Stop Loss time to sell: 603.66 seconds
+(ABC) Stop Loss bought at: 47.41
+(ABC) Stop Loss sold at  : 45.8092
+(ABC) Stop Loss percent lost: -3.3765028475
+Global percent gain: -9.53363070838
+(ABC) bought time: 1339500180.0
+(ABC) Stop Loss time to sell: 98.7 seconds
+(ABC) Stop Loss bought at: 24.78
+(ABC) Stop Loss sold at  : 24.28
+(ABC) Stop Loss percent lost: -2.01775625504
+Global percent gain: -11.5513869634
+(ABC) bought time: 1364991720.0
+(ABC) Stop Loss time to sell: 163.32 seconds
+(ABC) Stop Loss bought at: 48.18
+(ABC) Stop Loss sold at  : 46.98
+(ABC) Stop Loss percent lost: -2.49066002491
+Global percent gain: -14.0420469883
+(ABC) bought time: 1377861540.0
+(ABC) time to sell: 340.38 seconds
+(ABC) bought at: 50.11
+(ABC) sold at  : 51.36
+(ABC) percent gain: 2.49451207344
+Global percent gain: -11.5475349149
+(ABC) bought time: 1394531280.0
+(ABC) time to sell: 705.3 seconds
+(ABC) bought at: 62.15
+(ABC) sold at  : 63.395
+(ABC) percent gain: 2.00321802092
+Global percent gain: -9.54431689397
+(ABC) bought time: 1397469000.0
+(ABC) time to sell: 86.82 seconds
+(ABC) bought at: 58.44
+(ABC) sold at  : 59.9
+(ABC) percent gain: 2.49828884326
+Global percent gain: -7.04602805071
+(ABC) bought time: 2015-01-16
+(ABC) bought at: 62.61
+(ABC) current price: 63.2302
+(ABC) percent gain: 0.99057658521
+Initial Investment: 15000
+Total Value: 14905.4489058
+Global percent gain: -6.0554514655
+Total Percent Gain: -0.630340628154
