@@ -153,7 +153,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
 
                     if graphing:
                         #MAKE SURE the kwargs at the end have the correct values set then remove this comment, then implement it the second if statement below
-                        graph_url = generate_a_graph(prices,resInter, resSlope,boughtIndex,j,supInter,supSlope,inter,slope, maxResIndex, maxSupIndex, str(j)+stock,"closed profitable trade",buy_price=trade.buy_price,buy_index=genY(resInter,resSlope,j-boughtIndex-960,j-boughtIndex),sold_price=sold_price,sold_index=prices[-1].index)
+                        graph_url = generate_a_graph(prices,resInter, resSlope,boughtIndex,j,supInter,supSlope,inter,slope, maxResIndex, maxSupIndex, str(j)+stock,"closed profitable trade",buy_price=trade.buy_price,buy_index=boughtIndex - (j-960),sold_price=sold_price,sold_index=prices[-1].index)
                     else:
                         graph_url = None
                     if database:
@@ -187,7 +187,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
 
                     if graphing:
                         #MAKE SURE the kwargs at the end have the correct values set then remove this comment, then implement it the second if statement below
-                        graph_url = generate_a_graph(prices,resInter, resSlope,boughtIndex,j,supInter,supSlope,inter,slope, maxResIndex, maxSupIndex, str(j)+stock,"Stop loss trade",buy_price=trade.buy_price,buy_index=genY(resInter,resSlope,j-boughtIndex-960,j-boughtIndex),sold_price=sold_price,sold_index=prices[-1].index)
+                        graph_url = generate_a_graph(prices,resInter, resSlope,boughtIndex,j,supInter,supSlope,inter,slope, maxResIndex, maxSupIndex, str(j)+stock,"Stop loss trade",buy_price=trade.buy_price,buy_index=boughtIndex - (j-960),sold_price=sold_price,sold_index=prices[-1].index)
                     else:
                         graph_url = None
 

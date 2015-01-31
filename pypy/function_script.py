@@ -75,7 +75,7 @@ def analyze_db(c, initial_val):
         for trade in open_trades:
             if i == trade.sell_time:
                 total += trade.investment*(1.0 + float((trade.sell_price - trade.buy_price))/float(trade.buy_price)) - trade.investment
-                print "gain: " + str(float((trade.sell_price - trade.buy_price))/float(trade.buy_price))
+                print "stock: " + trade.symbol + " gain: " + str(float((trade.sell_price - trade.buy_price))/float(trade.buy_price))
                 open_trades.remove(trade)
 
     print "end total: " + str(total)
