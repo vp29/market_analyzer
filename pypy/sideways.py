@@ -434,3 +434,6 @@ if __name__ == "__main__":
 #then again you can make teh argument that with tight stop losses it might be worth
 # putting 60%-90% of our free money in a single trade
 #if the potential for profit is high
+
+
+#http://gyazo.com/49ee39f459e471bca80a1265bb801139
