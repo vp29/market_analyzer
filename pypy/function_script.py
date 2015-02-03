@@ -60,9 +60,13 @@ def analyze_db(c, initial_val):
     for row in c.execute("SELECT * FROM stocks ORDER BY buy_date ASC;"):
         trades.append(Trade(row[2], row[3], 0.0, row[4], row[5], 0.0, row[1], row[7]))
 
-    sidewaysmovingmarketcounter = 0
-    upwardsmovingmarketcounter = 0
-    downwardsmovingmarketcoutner = 0
+    sidewaysprofitablemovingmarketcounter = 0
+    upwardsprofitablemovingmarketcounter = 0
+    downwardsprofitablemovingmarketcoutner = 0
+
+    sidewaysunprofitablecounter = 0
+    upwardunprofitablecoutner = 0
+    downwardunprofitablecoutner = 0
 
     start_time = trades[0].buy_time
     end_time = trades[-1].buy_time
@@ -81,19 +85,33 @@ def analyze_db(c, initial_val):
         for trade in open_trades:
             if i == trade.sell_time:
                 total += trade.investment*(1.0 + float((trade.sell_price - trade.buy_price))/float(trade.buy_price)) - trade.investment
-                print "stock: " + trade.symbol + " gain: " + str(float((trade.sell_price - trade.buy_price))/float(trade.buy_price))
-                if 'Upward' in trade.actual_type:
-                    upwardsmovingmarketcounter += 1
-                elif 'Downward' in trade.actual_type:
-                    downwardsmovingmarketcoutner += 1
-                elif 'Sideways' in trade.actual_type:
-                    sidewaysmovingmarketcounter += 1
+                gain = str(float((trade.sell_price - trade.buy_price))/float(trade.buy_price))
+                print "stock: " + trade.symbol + " gain: " + gain
+                if float(gain) > 0.000000000000:
+                    if 'Upward' in trade.actual_type:
+                        upwardsprofitablemovingmarketcounter += 1
+                    elif 'Downward' in trade.actual_type:
+                        downwardsprofitablemovingmarketcoutner += 1
+                    elif 'Sideways' in trade.actual_type:
+                        sidewaysprofitablemovingmarketcounter += 1
+                if float(gain) < 0.000000000000:
+                    if 'Upward' in trade.actual_type:
+                        upwardunprofitablecoutner += 1
+                    elif 'Downward' in trade.actual_type:
+                        downwardunprofitablecoutner += 1
+                    elif 'Sideways' in trade.actual_type:
+                        sidewaysunprofitablecounter += 1
+
                 print trade.actual_type
                 open_trades.remove(trade)
 
-    print sidewaysmovingmarketcounter
-    print upwardsmovingmarketcounter
-    print downwardsmovingmarketcoutner
+    print sidewaysprofitablemovingmarketcounter
+    print upwardsprofitablemovingmarketcounter
+    print downwardsprofitablemovingmarketcoutner
+
+    print sidewaysunprofitablecounter
+    print upwardunprofitablecoutner
+    print downwardunprofitablecoutner
     print "end total: " + str(total)
     print "end gain:  " + str((total-initial_val)/initial_val)
 
