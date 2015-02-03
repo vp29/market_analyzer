@@ -421,9 +421,9 @@ def analyzefile(filename):
 
 if __name__ == "__main__":
     #analyzefortune500stocks()
-    analyzebitstamp()
+    #analyzebitstamp()
     #analyzefile('CSC.csv')
-    #analyze_db(c, 15000)
+    analyze_db(c, 15000)
 
 #why false, true, true
 #http://gyazo.com/4585b43a224831e154a90f1037117977
