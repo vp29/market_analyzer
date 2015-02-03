@@ -15,19 +15,21 @@ import threading
 #snakeviz profile.prof
 conn = sqlite3.connect('stocks.db')
 c = conn.cursor()
-c.execute("CREATE TABLE IF NOT EXISTS stocks (id INTEGER PRIMARY KEY, symbol TEXT, buy_date INTEGER, sell_date INTEGER, buy_price DOUBLE, sell_price DOUBLE, graph_url TEXT);")
+c.execute("CREATE TABLE IF NOT EXISTS stocks (id INTEGER PRIMARY KEY, symbol TEXT, buy_date INTEGER, sell_date INTEGER, buy_price DOUBLE, sell_price DOUBLE, graph_url TEXT, actual_type TEXT);")
 conn.commit()
 
 
 
 database = True
-graphing = True
+graphing = False
 multi_processing = True
 
 global_percent_gain = 0.0
 global_stock_values = []
 
 def trendType(resSlope, supSlope, resInt, supInt, nextInd, bsPoint, curPrice, resRange, supRange):
+    global actual_type #probably shouldnt be globalized but whatever
+
     potBuy = False
     nextRes = resInt + resSlope*nextInd
     nextSup = supInt + supSlope*nextInd
@@ -42,37 +44,36 @@ def trendType(resSlope, supSlope, resInt, supInt, nextInd, bsPoint, curPrice, re
     if -normCutoff < resNorm < normCutoff\
             and -normCutoff < supNorm < normCutoff:
         potBuy = True
-        print "Sideways moving market."
+        actual_type = "Sideways moving market."
     elif ((-normCutoff < resNorm < normCutoff)
             or (-normCutoff < supNorm < normCutoff)):
         if -normCutoff < resNorm < normCutoff and supNorm > 0:
-            #print "Triangle upward trend.  Predicted to break down."
-            pass
+            actual_type = "Triangle upward trend.  Predicted to break down."
+
         elif -normCutoff < supNorm < normCutoff and resNorm < 0:
-           # print "Triangle downward trend.  Predicted to break up."
+            actual_type = "Triangle downward trend.  Predicted to break up."
             pass
     elif (resNorm > 0 and supNorm > 0) \
         and ((0.9*supNorm <= resNorm <= supNorm)
              or (0.9*resNorm <= supNorm <= resNorm)):
             potBuy = True
-          #  print "Upward trending channel."
+            actual_type = "Upward trending channel."
     elif (resNorm < 0 and supNorm < 0) \
             and ((resNorm <= supNorm and abs(0.9*resNorm) <= abs(supNorm))
                  or (supNorm <= resNorm and abs(0.9*supNorm) <= abs(resNorm))):
             potBuy = True
-         #   print "Downward trending channel."
+            actual_type = "Downward trending channel."
     elif (resNorm < 0 > supNorm) \
             or (resNorm < 0 and resNorm < supNorm)\
             or (supNorm > resNorm > 0):
-                pass
-        #print "Wedge trend.  May break up or down."
+        actual_type = "Wedge trend.  May break up or down."
 
     #print "buy point:  " + str((nextSup + diff*bsPoint))
     #print "sell point: " + str((nextRes - diff*bsPoint))
     return (nextSup + diff*bsPoint), (nextRes - diff*bsPoint), potBuy
 
-def insert_into_database(stock,trade,soldTimestamp,sold_price,graph_url):
-    c.execute("INSERT INTO stocks VALUES (?, ?, ?, ?, ?, ?, ?);", (None, stock, int(trade.buy_time), int(soldTimestamp), float(trade.buy_price), float(sold_price), graph_url))
+def insert_into_database(stock,trade,soldTimestamp,sold_price,graph_url,actual_type):
+    c.execute("INSERT INTO stocks VALUES (?, ?, ?, ?, ?, ?, ?, ?);", (None, stock, int(trade.buy_time), int(soldTimestamp), float(trade.buy_price), float(sold_price), graph_url, actual_type))
     conn.commit()
 
 
@@ -157,7 +158,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
                     else:
                         graph_url = None
                     if database:
-                        insert_into_database(stock,trade,soldTimestamp,sold_price,graph_url)
+                        insert_into_database(stock,trade,soldTimestamp,sold_price,graph_url, trade.actual_type)
 
                     bought_list.remove(trade)
                     if len(bought_list) == 0:
@@ -192,7 +193,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
                         graph_url = None
 
                     if database:
-                        insert_into_database(stock,trade,soldTimestamp,sold_price,graph_url)
+                        insert_into_database(stock,trade,soldTimestamp,sold_price,graph_url, trade.actual_type)
                     bought_list.remove(trade)
                     if len(bought_list) == 0:
                         bought = False
@@ -316,7 +317,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
 
                     print "Buy current price : " + str(prices[-1].price)
                     print "Sell at price     : " + str(sell_point)
-                    bought_list.append(Trade(boughtTimestamp, 0, sellCutoff, boughtPrice, 0.0))
+                    bought_list.append(Trade(boughtTimestamp, 0, sellCutoff, boughtPrice, 0.0, actual_type))
                 #elif prices[-1].price >= sell_point and bought == True:
                 #    bought = False
                 #    print "Sell current price: " + str(prices[-1].price)
@@ -420,9 +421,9 @@ def analyzefile(filename):
 
 if __name__ == "__main__":
     #analyzefortune500stocks()
-    #analyzebitstamp()
+    analyzebitstamp()
     #analyzefile('CSC.csv')
-    analyze_db(c, 15000)
+    #analyze_db(c, 15000)
 
 #why false, true, true
 #http://gyazo.com/4585b43a224831e154a90f1037117977

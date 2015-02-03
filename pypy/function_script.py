@@ -43,7 +43,8 @@ class Trade:
     sell_price = 0.0
     investment = 0.0
     symbol = ""
-    def __init__(self, buy_time, sell_time, sell_cutoff, buy_price, sell_price, investment=0.0, symbol=""):
+    actual_type = ""
+    def __init__(self, buy_time, sell_time, sell_cutoff, buy_price, sell_price,actual_type, investment=0.0, symbol=""):
         self.buy_time = buy_time
         self.sell_time = sell_time
         self.sell_cutoff = sell_cutoff
@@ -51,6 +52,7 @@ class Trade:
         self.buy_price = buy_price
         self.investment = investment
         self.symbol = symbol
+        self.actual_type = actual_type
 
 
 def analyze_db(c, initial_val):
@@ -75,7 +77,7 @@ def analyze_db(c, initial_val):
         for trade in open_trades:
             if i == trade.sell_time:
                 total += trade.investment*(1.0 + float((trade.sell_price - trade.buy_price))/float(trade.buy_price)) - trade.investment
-                print "stock: " + trade.symbol + " gain: " + str(float((trade.sell_price - trade.buy_price))/float(trade.buy_price))
+                print "gain: " + str(float((trade.sell_price - trade.buy_price))/float(trade.buy_price))
                 open_trades.remove(trade)
 
     print "end total: " + str(total)
@@ -109,7 +111,7 @@ def leastSquare(data):
 
 
 def findMatches(tempPrice,maxNumIndex,maxIndex, neg, cutoff, index):
-  
+
 
     multiplier = 1
     if neg:
@@ -228,7 +230,8 @@ def generate_a_graph(prices,resInter,resSlope,boughtIndex,j,supInter,supSlope,in
     #add auto_open=False arg to turn off iopening the browser
     unique_url = py.plot(fig, filename=str(index_or_title),auto_open=False)
     print unique_url
-    return unique_url
+    return str(unique_url)
+
 
 
 
