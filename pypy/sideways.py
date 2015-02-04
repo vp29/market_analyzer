@@ -4,7 +4,8 @@ import google_intraday as gi
 from function_script import matchIndexes, genY, leastSquare, findMatches, Price, Trade, generate_a_graph,background, analyze_db
 import multiprocessing
 import requests
-from variables import analysisRange, stop_loss_perc, bufferPercent, minimumPercent, samplePeriod, stepSize, startingMoney, initial_investment, total
+from variables import analysisRange, stop_loss_perc, bufferPercent, minimumPercent, samplePeriod, \
+    stepSize, startingMoney, initial_investment, total, longStocks, shortStocks
 import time
 from datetime import datetime, timedelta
 import sqlite3
@@ -15,7 +16,7 @@ import threading
 #snakeviz profile.prof
 conn = sqlite3.connect('stocks.db')
 c = conn.cursor()
-c.execute("CREATE TABLE IF NOT EXISTS stocks (id INTEGER PRIMARY KEY, symbol TEXT, buy_date INTEGER, sell_date INTEGER, buy_price DOUBLE, sell_price DOUBLE, graph_url TEXT, actual_type TEXT);")
+c.execute("CREATE TABLE IF NOT EXISTS stocks (id INTEGER PRIMARY KEY, symbol TEXT, buy_date INTEGER, sell_date INTEGER, buy_price DOUBLE, sell_price DOUBLE, graph_url TEXT, actual_type TEXT, long_short TEXT);")
 conn.commit()
 
 
@@ -72,8 +73,8 @@ def trendType(resSlope, supSlope, resInt, supInt, nextInd, bsPoint, curPrice, re
     #print "sell point: " + str((nextRes - diff*bsPoint))
     return (nextSup + diff*bsPoint), (nextRes - diff*bsPoint), potBuy
 
-def insert_into_database(stock,trade,soldTimestamp,sold_price,graph_url,actual_type):
-    c.execute("INSERT INTO stocks VALUES (?, ?, ?, ?, ?, ?, ?, ?);", (None, stock, int(trade.buy_time), int(soldTimestamp), float(trade.buy_price), float(sold_price), graph_url, actual_type))
+def insert_into_database(stock,trade,soldTimestamp,sold_price,graph_url,actual_type, long_short):
+    c.execute("INSERT INTO stocks VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);", (None, stock, int(trade.buy_time), int(soldTimestamp), float(trade.buy_price), float(sold_price), graph_url, actual_type, long_short))
     conn.commit()
 
 
@@ -114,9 +115,10 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
 
     bought = False
     #sellCutoff = 0.0
-    #sold_price = 0.0
+    soldPrice = 0.0
     boughtPrice = 0.0
-    buffer_zone = False
+    long_buffer_zone = False
+    short_buffer_zone = False
     #boughtIndex = 0
     boughtTime = ""
     bought_list = []
@@ -135,72 +137,144 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
 
         if bought:
             for trade in bought_list:
-                if prices[-1].price >= trade.sell_cutoff:
-                    sold_price = prices[-1].price
-                    soldDate = data.date[j+analysisRange]
-                    soldTime = data.time[j+analysisRange]
-                    soldDateTime = datetime(soldDate.year, soldDate.month, soldDate.day,
-                                            soldTime.hour, soldTime.minute, soldTime.second)
-                    soldTimestamp = (soldDateTime - datetime(1970, 1, 1)).total_seconds()
-                    global_percent_gain += float(sold_price-trade.buy_price)/trade.buy_price
+                if trade.long_short == "long":
+                    if prices[-1].price >= trade.sell_cutoff:
+                        sold_price = prices[-1].price
+                        soldDate = data.date[j+analysisRange]
+                        soldTime = data.time[j+analysisRange]
+                        soldDateTime = datetime(soldDate.year, soldDate.month, soldDate.day,
+                                                soldTime.hour, soldTime.minute, soldTime.second)
+                        soldTimestamp = (soldDateTime - datetime(1970, 1, 1)).total_seconds()
+                        global_percent_gain += float(sold_price-trade.buy_price)/trade.buy_price
 
-                    trades.write("(" + stock + ") bought time: " + str(trade.buy_time) + '\n')
-                    trades.write("(" + stock + ") time to sell: " + str((soldTimestamp - trade.buy_time)/1000) + " seconds\n")
-                    trades.write("(" + stock + ") bought at: " + str(trade.buy_price) + '\n')
-                    trades.write("(" + stock + ") sold at  : " + str(sold_price) + '\n')
-                    trades.write("(" + stock + ") percent gain: " + str(float(sold_price-trade.buy_price)/trade.buy_price * 100) + '\n')
-                    trades.write("Global percent gain: " + str(global_percent_gain*100) + '\n')
-                    trades.write("")
+                        trades.write("(" + stock + ") bought long time: " + str(trade.buy_time) + '\n')
+                        trades.write("(" + stock + ") time to long sell: " + str((soldTimestamp - trade.buy_time)/1000) + " seconds\n")
+                        trades.write("(" + stock + ") bought long at: " + str(trade.buy_price) + '\n')
+                        trades.write("(" + stock + ") sold long at  : " + str(sold_price) + '\n')
+                        trades.write("(" + stock + ") percent gain: " + str(float(sold_price-trade.buy_price)/trade.buy_price * 100) + '\n')
+                        trades.write("Global percent gain: " + str(global_percent_gain*100) + '\n')
+                        trades.write("")
 
-                    if graphing:
-                        #MAKE SURE the kwargs at the end have the correct values set then remove this comment, then implement it the second if statement below
-                        graph_url = generate_a_graph(prices,resInter, resSlope,boughtIndex,j,supInter,supSlope,inter,slope, maxResIndex, maxSupIndex, str(j)+stock,"closed profitable trade",buy_price=trade.buy_price,buy_index=boughtIndex - (j-960),sold_price=sold_price,sold_index=prices[-1].index)
-                    else:
-                        graph_url = None
-                    if database:
-                        insert_into_database(stock,trade,soldTimestamp,sold_price,graph_url, trade.actual_type)
+                        if graphing:
+                            #MAKE SURE the kwargs at the end have the correct values set then remove this comment, then implement it the second if statement below
+                            graph_url = generate_a_graph(prices,resInter, resSlope,boughtIndex,j,supInter,supSlope,inter,slope, maxResIndex, maxSupIndex, str(j)+stock,"closed long profitable trade",buy_price=trade.buy_price,buy_index=boughtIndex - (j-960),sold_price=sold_price,sold_index=prices[-1].index)
+                        else:
+                            graph_url = None
+                        if database:
+                            insert_into_database(stock,trade,soldTimestamp,sold_price,graph_url, trade.actual_type, trade.long_short)
 
-                    bought_list.remove(trade)
-                    if len(bought_list) == 0:
-                        bought = False
-                    investment *= (1+float(sold_price-trade.buy_price)/trade.buy_price)
-                    print "time to sell: " + str((soldTimestamp - trade.buy_time)/1000) + " seconds"
-                    print "bought at: " + str(trade.buy_price)
-                    print "sold at  : " + str(sold_price)
-                elif prices[-1].price <= (trade.buy_price - trade.buy_price*stop_loss_perc/100):
-                    sold_price = prices[-1].price
-                    soldDate = data.date[j+analysisRange]
-                    soldTime = data.time[j+analysisRange]
-                    soldDateTime = datetime(soldDate.year, soldDate.month, soldDate.day,
-                                            soldTime.hour, soldTime.minute, soldTime.second)
-                    soldTimestamp = (soldDateTime - datetime(1970, 1, 1)).total_seconds()
-                    global_percent_gain += float(sold_price-trade.buy_price)/trade.buy_price
-                    trades.write("(" + stock + ") bought time: " + str(trade.buy_time) + '\n')
-                    trades.write("(" + stock + ") Stop Loss time to sell: " + str((soldTimestamp - trade.buy_time)/1000) + " seconds\n")
-                    trades.write("(" + stock + ") Stop Loss bought at: " + str(trade.buy_price) + '\n')
-                    trades.write("(" + stock + ") Stop Loss sold at  : " + str(sold_price) + '\n')
-                    trades.write("(" + stock + ") Stop Loss percent lost: " + str(float(sold_price-trade.buy_price)/trade.buy_price * 100) + '\n')
-                    trades.write("Global percent gain: " + str(global_percent_gain*100) + '\n')
-                    trades.write("")
-                    investment *= (1+float(sold_price-trade.buy_price)/trade.buy_price)
-                    print "Stop Loss bought at: " + str(trade.buy_price)
-                    print "Stop Loss sold at: " + str(sold_price)
+                        bought_list.remove(trade)
+                        if len(bought_list) == 0:
+                            bought = False
+                        investment *= (1+float(sold_price-trade.buy_price)/trade.buy_price)
+                        print "time to sell: " + str((soldTimestamp - trade.buy_time)/1000) + " seconds"
+                        print "bought at: " + str(trade.buy_price)
+                        print "sold at  : " + str(sold_price)
+                    elif prices[-1].price <= (trade.buy_price - trade.buy_price*stop_loss_perc/100):
+                        sold_price = prices[-1].price
+                        soldDate = data.date[j+analysisRange]
+                        soldTime = data.time[j+analysisRange]
+                        soldDateTime = datetime(soldDate.year, soldDate.month, soldDate.day,
+                                                soldTime.hour, soldTime.minute, soldTime.second)
+                        soldTimestamp = (soldDateTime - datetime(1970, 1, 1)).total_seconds()
+                        global_percent_gain += float(sold_price-trade.buy_price)/trade.buy_price
+                        trades.write("(" + stock + ") bought time: " + str(trade.buy_time) + '\n')
+                        trades.write("(" + stock + ") Stop Loss long time to sell: " + str((soldTimestamp - trade.buy_time)/1000) + " seconds\n")
+                        trades.write("(" + stock + ") Stop Loss long bought at: " + str(trade.buy_price) + '\n')
+                        trades.write("(" + stock + ") Stop Loss long sold at  : " + str(sold_price) + '\n')
+                        trades.write("(" + stock + ") Stop Loss long percent lost: " + str(float(sold_price-trade.buy_price)/trade.buy_price * 100) + '\n')
+                        trades.write("Global percent gain: " + str(global_percent_gain*100) + '\n')
+                        trades.write("")
+                        investment *= (1+float(sold_price-trade.buy_price)/trade.buy_price)
+                        print "Stop Loss bought at: " + str(trade.buy_price)
+                        print "Stop Loss sold at: " + str(sold_price)
 
-                    if graphing:
-                        #MAKE SURE the kwargs at the end have the correct values set then remove this comment, then implement it the second if statement below
-                        graph_url = generate_a_graph(prices,resInter, resSlope,boughtIndex,j,supInter,supSlope,inter,slope, maxResIndex, maxSupIndex, str(j)+stock,"Stop loss trade",buy_price=trade.buy_price,buy_index=boughtIndex - (j-960),sold_price=sold_price,sold_index=prices[-1].index)
-                    else:
-                        graph_url = None
+                        if graphing:
+                            #MAKE SURE the kwargs at the end have the correct values set then remove this comment, then implement it the second if statement below
+                            graph_url = generate_a_graph(prices,resInter, resSlope,boughtIndex,j,supInter,supSlope,inter,slope, maxResIndex, maxSupIndex, str(j)+stock,"Stop loss long trade",buy_price=trade.buy_price,buy_index=prices[-1].index,sold_price=sold_price,sold_index=sellIndex - (j-960))
+                        else:
+                            graph_url = None
 
-                    if database:
-                        insert_into_database(stock,trade,soldTimestamp,sold_price,graph_url, trade.actual_type)
-                    bought_list.remove(trade)
-                    if len(bought_list) == 0:
-                        bought = False
-                    continue
-                else:
-                    if not database:
+                        if database:
+                            insert_into_database(stock,trade,soldTimestamp,sold_price,graph_url, trade.actual_type, trade.long_short)
+                        bought_list.remove(trade)
+                        if len(bought_list) == 0:
+                            bought = False
                         continue
+                    else:
+                        if not database:
+                            continue
+                elif trade.long_short == "short":
+                    if prices[-1].price <= trade.buy_price:
+                        buy_price = prices[-1].price
+                        buyDate = data.date[j+analysisRange]
+                        buyTime = data.time[j+analysisRange]
+                        buyDateTime = datetime(buyDate.year, buyDate.month, buyDate.day,
+                                                buyTime.hour, buyTime.minute, buyTime.second)
+                        buyTimestamp = (buyDateTime - datetime(1970, 1, 1)).total_seconds()
+                        global_percent_gain += float(trade.sell_price-buy_price)/trade.sell_price
+
+                        trades.write("(" + stock + ") Sell short time: " + str(trade.sell_time) + '\n')
+                        trades.write("(" + stock + ") time to short sell: " + str((buyTimestamp - trade.sell_time)/1000) + " seconds\n")
+                        trades.write("(" + stock + ") bought short at: " + str(buy_price) + '\n')
+                        trades.write("(" + stock + ") sold short at  : " + str(trade.sell_price) + '\n')
+                        trades.write("(" + stock + ") percent gain: " + str(float(trade.sell_price-buy_price)/trade.sell_price * 100) + '\n')
+                        trades.write("Global percent gain: " + str(global_percent_gain*100) + '\n')
+                        trades.write("")
+
+                        if graphing:
+                            #MAKE SURE the kwargs at the end have the correct values set then remove this comment, then implement it the second if statement below
+                            graph_url = generate_a_graph(prices,resInter, resSlope,boughtIndex,j,supInter,supSlope,inter,slope, maxResIndex, maxSupIndex, str(j)+stock,"closed short profitable trade",buy_price=buy_price,buy_index=prices[-1].index,sold_price=trade.sell_price,sold_index=sellIndex - (j-960))
+                        else:
+                            graph_url = None
+                        if database:
+                            trade.buy_time = buyTimestamp
+                            trade.buy_price = buy_price
+                            insert_into_database(stock,trade,trade.sell_time,trade.sell_price,graph_url, trade.actual_type, trade.long_short)
+
+                        bought_list.remove(trade)
+                        if len(bought_list) == 0:
+                            bought = False
+                        investment *= (1+float(trade.sell_price-buy_price)/trade.sell_price)
+                        print "time to sell: " + str((buyTimestamp - trade.sell_time)/1000) + " seconds"
+                        print "bought at: " + str(buy_price)
+                        print "sold at  : " + str(trade.sell_price)
+                    elif prices[-1].price >= (trade.sell_price + trade.sell_price*stop_loss_perc/100):
+                        buy_price = prices[-1].price
+                        buyDate = data.date[j+analysisRange]
+                        buyTime = data.time[j+analysisRange]
+                        buyDateTime = datetime(buyDate.year, buyDate.month, buyDate.day,
+                                                buyTime.hour, buyTime.minute, buyTime.second)
+                        buyTimestamp = (buyDateTime - datetime(1970, 1, 1)).total_seconds()
+                        global_percent_gain += float(trade.sell_price-buy_price)/trade.sell_price
+                        trades.write("(" + stock + ") Sell time: " + str(trade.sell_time) + '\n')
+                        trades.write("(" + stock + ") Stop Loss short time to sell: " + str((buyTimestamp - trade.sell_time)/1000) + " seconds\n")
+                        trades.write("(" + stock + ") Stop Loss short bought at: " + str(buy_price) + '\n')
+                        trades.write("(" + stock + ") Stop Loss short sold at  : " + str(trade.sell_price) + '\n')
+                        trades.write("(" + stock + ") Stop Loss short percent lost: " + str(float(trade.sell_price-buy_price)/trade.sell_price * 100) + '\n')
+                        trades.write("Global percent gain: " + str(global_percent_gain*100) + '\n')
+                        trades.write("")
+                        investment *= (1+float(trade.sell_price-buy_price)/trade.sell_price)
+                        print "Stop Loss short bought at: " + str(buy_price)
+                        print "Stop Loss short sold at: " + str(trade.sell_price)
+
+                        if graphing:
+                            #MAKE SURE the kwargs at the end have the correct values set then remove this comment, then implement it the second if statement below
+                            graph_url = generate_a_graph(prices,resInter, resSlope,boughtIndex,j,supInter,supSlope,inter,slope, maxResIndex, maxSupIndex, str(j)+stock,"Stop loss short trade",buy_price=buy_price,buy_index=prices[-1].index,sold_price=trade.sell_price,sold_index=sellIndex - (j-960))
+                        else:
+                            graph_url = None
+
+                        if database:
+                            trade.buy_time = buyTimestamp
+                            trade.buy_price = buy_price
+                            insert_into_database(stock,trade,trade.sell_time,trade.sell_price,graph_url, trade.actual_type, trade.long_short)
+                        bought_list.remove(trade)
+                        if len(bought_list) == 0:
+                            bought = False
+                        continue
+                    else:
+                        if not database:
+                            continue
             if len(bought_list) == 1 and not database:
                 continue
 
@@ -255,10 +329,13 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
         sup_val = supInter + supSlope*len(prices)
         res_val = resInter + resSlope*len(prices)
 
-        max_buy_point = sup_val + (res_val-sup_val)*(0.2)
-        min_buy_point = sup_val + (res_val-sup_val)*(0.1)
+        max_long_buy_point = sup_val + (res_val-sup_val)*(0.2)
+        min_long_buy_point = sup_val + (res_val-sup_val)*(0.1)
 
-        if buffer_zone:
+        max_short_sell_point = res_val - (res_val-sup_val)*(0.1)
+        min_short_sell_point = res_val - (res_val-sup_val)*(0.2)
+
+        if long_buffer_zone or short_buffer_zone:
 
             inter, slope = leastSquare(prices)
 
@@ -295,11 +372,11 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
             # print "Cur Price:  " + str(prices[-1].price)
             # print "buf Price:  " + str(sup_val + (res_val - sup_val)*(bufferPercent/100))
 
-            if sell_point > prices[-1].price*(1.0 + float(minimumPercent)/float(100)) and pot_buy:
-                if min_buy_point <= prices[-1].price <= max_buy_point and (database or (not database and bought == False)): #and bought == False:
+            if longStocks and long_buffer_zone and sell_point > prices[-1].price*(1.0 + float(minimumPercent)/float(100)) and pot_buy:
+                if min_long_buy_point <= prices[-1].price <= max_long_buy_point and (database or (not database and bought == False)): #and bought == False:
 
                     bought = True
-                    buffer_zone = False
+                    long_buffer_zone = False
                     boughtPrice = prices[-1].price
                     sellCutoff = sell_point
                     boughtIndex = j
@@ -317,19 +394,46 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
 
                     print "Buy current price : " + str(prices[-1].price)
                     print "Sell at price     : " + str(sell_point)
-                    bought_list.append(Trade(boughtTimestamp, 0, sellCutoff, boughtPrice, 0.0, actual_type))
-                #elif prices[-1].price >= sell_point and bought == True:
-                #    bought = False
-                #    print "Sell current price: " + str(prices[-1].price)
-                #    print "Buy at price      : " + str(buy_point)
+                    bought_list.append(Trade(boughtTimestamp, 0, sellCutoff, boughtPrice, 0.0, "long", 0.0, stock, actual_type))
+            elif shortStocks and short_buffer_zone and buy_point < prices[-1].price/(1.0 + float(minimumPercent)/float(100)) and pot_buy:
+                if min_short_sell_point <= prices[-1].price <= max_short_sell_point and (database or (not database and bought == False)): #and bought == False:
+
+                    bought = True
+                    short_buffer_zone = False
+                    boughtPrice = buy_point
+                    sellPrice = prices[-1].price
+                    sellIndex = j
+                    sellTime = data.date[j+analysisRange]
+                    sellDate = data.date[j+analysisRange]
+                    sell_time = data.time[j+analysisRange]
+                    sellDateTime = datetime(sellDate.year, sellDate.month, sellDate.day,
+                                            sell_time.hour, sell_time.minute, sell_time.second)
+                    sellTimestamp = (sellDateTime - datetime(1970, 1, 1, 0, 0, 0)).total_seconds()
+
+                    if graphing:
+                        graph_url = generate_a_graph(prices,resInter, resSlope,boughtIndex,j,supInter,supSlope,inter,slope, maxResIndex, maxSupIndex, str(j)+stock,"Generated short order")
+                    else:
+                        graph_url = None
+
+                    print "Buy current price : " + str(boughtPrice)
+                    print "Sell at price     : " + str(sellPrice)
+                    bought_list.append(Trade(0, sellTimestamp, 0.0, boughtPrice, sellPrice, "short", 0.0, stock, actual_type))
+
 
         #check if within buffer zone
         if sup_val + (res_val-sup_val)*(bufferPercent/100) >= prices[-1].price:
-            buffer_zone = True
-        elif prices[-1].price < min_buy_point and buffer_zone:
-            buffer_zone = True
+            long_buffer_zone = True
+        elif prices[-1].price < min_long_buy_point and long_buffer_zone:
+            long_buffer_zone = True
         else:
-            buffer_zone = False
+            long_buffer_zone = False
+
+        if res_val - (res_val-sup_val)*(bufferPercent/100) <= prices[-1].price:
+            short_buffer_zone = True
+        elif prices[-1].price > max_short_sell_point and short_buffer_zone:
+            short_buffer_zone = True
+        else:
+            short_buffer_zone = False
 
 
         #end_time = time.time()
@@ -422,8 +526,8 @@ def analyzefile(filename):
 if __name__ == "__main__":
     #analyzefortune500stocks()
     #analyzebitstamp()
-    #analyzefile('CSC.csv')
-    analyze_db(c, 15000)
+    analyzefile('CSC.csv')
+    #analyze_db(c, 15000)
 
 #why false, true, true
 #http://gyazo.com/4585b43a224831e154a90f1037117977

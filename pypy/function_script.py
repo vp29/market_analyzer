@@ -44,12 +44,14 @@ class Trade:
     investment = 0.0
     symbol = ""
     actual_type = ""
-    def __init__(self, buy_time, sell_time, sell_cutoff, buy_price, sell_price, investment=0.0, symbol="",actual_type=""):
+    long_short = ""
+    def __init__(self, buy_time, sell_time, sell_cutoff, buy_price, sell_price, long_short, investment=0.0, symbol="",actual_type=""):
         self.buy_time = buy_time
         self.sell_time = sell_time
         self.sell_cutoff = sell_cutoff
         self.sell_price = sell_price
         self.buy_price = buy_price
+        self.long_short = long_short
         self.investment = investment
         self.symbol = symbol
         self.actual_type = actual_type
@@ -58,7 +60,7 @@ class Trade:
 def analyze_db(c, initial_val):
     trades = []
     for row in c.execute("SELECT * FROM stocks ORDER BY buy_date ASC;"):
-        trades.append(Trade(row[2], row[3], 0.0, row[4], row[5], 0.0, row[1], row[7]))
+        trades.append(Trade(row[2], row[3], 0.0, row[4], row[5], row[8], 0.0, row[1], row[7]))
 
     sidewaysprofitablemovingmarketcounter = 0
     upwardsprofitablemovingmarketcounter = 0
