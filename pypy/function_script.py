@@ -70,29 +70,31 @@ def analyze_db(c, initial_val):
     upwardunprofitablecoutner = 0
     downwardunprofitablecoutner = 0
 
-    start_time = trades[0].buy_time
-    end_time = trades[-1].buy_time
+    start_time = trades[0].buy_time if trades[0].long_short == "long" else trades[0].sell_time
+    end_time = trades[-1].buy_time if trades[-1].long_short == "long" else trades[-1].sell_time
     open_trades = []
     max_trades = 10
-    single_trade = True #only allow once entrance into stock at any given time
+    single_trade = False #only allow once entrance into stock at any given time
     stocks = []
     total = initial_val
     total_used = 0
     total_possible = 0
     for i in range(start_time, end_time, 20):
         for trade in trades:
-            if i == trade.buy_time:
-                if len(open_trades) < max_trades and trade.symbol not in stocks:
+            enter_time = trade.buy_time if trade.long_short == "long" else trade.sell_time
+            if i == enter_time:
+                if len(open_trades) < max_trades and (not single_trade or (single_trade and trade.symbol not in stocks)):
                     stocks.append(trade.symbol)
                     investment_amount = total/(max_trades)
                     print investment_amount
                     #total -= investment_amount
-                    open_trades.append(Trade(trade.buy_time, trade.sell_time, 0.0, trade.buy_price, trade.sell_price, investment_amount, trade.symbol, trade.actual_type))
+                    open_trades.append(Trade(trade.buy_time, trade.sell_time, 0.0, trade.buy_price, trade.sell_price, trade.long_short, investment_amount, trade.symbol, trade.actual_type))
                     total_used += len(open_trades)
                     total_possible += max_trades
 
         for trade in open_trades:
-            if i == trade.sell_time:
+            exit_time = trade.sell_time if trade.long_short == "long" else trade.buy_time
+            if i == exit_time:
                 stocks.remove(trade.symbol)
                 total += trade.investment*(1.0 + float((trade.sell_price - trade.buy_price))/float(trade.buy_price)) - trade.investment
                 gain = str(float((trade.sell_price - trade.buy_price))/float(trade.buy_price))

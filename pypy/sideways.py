@@ -510,6 +510,7 @@ def analyzefile(filename):
     investment = analyzeStock(stock=str(filename), samplePeriod=samplePeriod, analysisRange=analysisRange,
                               stepSize=stepSize, showChart=False, investment=initial_investment, read_csv=True, csvname='data/%s' % filename)
 
+    total = 0.0
     if investment != initial_investment:
         #initial += initial_investment
         total += investment-initial_investment
