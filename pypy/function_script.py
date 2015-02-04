@@ -62,24 +62,32 @@ def analyze_db(c, initial_val):
     end_time = trades[-1].buy_time
     open_trades = []
     max_trades = 10
+    single_trade = True #only allow once entrance into stock at any given time
+    stocks = []
     total = initial_val
+    total_used = 0
+    total_possible = 0
     for i in range(start_time, end_time, 20):
         for trade in trades:
             if i == trade.buy_time:
-                if len(open_trades) < max_trades:
+                if len(open_trades) < max_trades and trade.symbol not in stocks:
+                    stocks.append(trade.symbol)
                     investment_amount = total/(max_trades)
                     print investment_amount
                     #total -= investment_amount
                     open_trades.append(Trade(trade.buy_time, trade.sell_time, 0.0, trade.buy_price, trade.sell_price, investment_amount, trade.symbol))
-
+        total_used += len(open_trades)
+        total_possible += max_trades
         for trade in open_trades:
             if i == trade.sell_time:
+                stocks.remove(trade.symbol)
                 total += trade.investment*(1.0 + float((trade.sell_price - trade.buy_price))/float(trade.buy_price)) - trade.investment
-                print "gain: " + str(float((trade.sell_price - trade.buy_price))/float(trade.buy_price))
+                print trade.symbol + " gain: " + str(float((trade.sell_price - trade.buy_price))/float(trade.buy_price))
                 open_trades.remove(trade)
 
     print "end total: " + str(total)
     print "end gain:  " + str((total-initial_val)/initial_val)
+    print "utilisation: " + str(float(total_used)/float(total_possible))
 
 def leastSquare(data):
     '''Y=a+bX, b=r*SDy/SDx, a=Y'-bX'

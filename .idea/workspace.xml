@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08fa0ffd-2583-4a8c-a63c-82ed294ef2cc" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pypy/sandp500stocklist.txt" afterPath="$PROJECT_DIR$/pypy/sandp500stocklist.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pypy/sideways.py" afterPath="$PROJECT_DIR$/pypy/sideways.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pypy/function_script.py" afterPath="$PROJECT_DIR$/pypy/function_script.py" />
     </list>
     <ignored path="market_analyzer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="sideways.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="sideways.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pypy/sideways.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.3003197" vertical-offset="6368" max-vertical-offset="6681">
-              <caret line="277" column="84" selection-start-line="277" selection-start-column="84" selection-end-line="277" selection-end-column="84" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="5127" max-vertical-offset="6834">
+              <caret line="281" column="37" selection-start-line="281" selection-start-column="37" selection-end-line="281" selection-end-column="37" />
               <folding>
                 <element signature="e#22#50#0" expanded="true" />
               </folding>
@@ -38,11 +37,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sandp500stocklist.txt" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="sandp500stocklist.txt" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pypy/sandp500stocklist.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8500">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8585">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -71,8 +70,8 @@
       <file leaf-file-name="function_script.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pypy/function_script.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3563" max-vertical-offset="3876">
-              <caret line="119" column="20" selection-start-line="119" selection-start-column="20" selection-end-line="119" selection-end-column="20" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="962" max-vertical-offset="4012">
+              <caret line="63" column="19" selection-start-line="63" selection-start-column="19" selection-end-line="63" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -114,9 +113,9 @@
         <option value="$PROJECT_DIR$/pypy/iqfeed.py" />
         <option value="$PROJECT_DIR$/pypy/google_intraday.py" />
         <option value="$PROJECT_DIR$/pypy/variables.py" />
-        <option value="$PROJECT_DIR$/pypy/sandp500stocklist.txt" />
-        <option value="$PROJECT_DIR$/pypy/function_script.py" />
         <option value="$PROJECT_DIR$/pypy/sideways.py" />
+        <option value="$PROJECT_DIR$/pypy/function_script.py" />
+        <option value="$PROJECT_DIR$/pypy/sandp500stocklist.txt" />
       </list>
     </option>
   </component>
@@ -448,7 +447,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3986014" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32743362" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33274338" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33274338" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -681,22 +680,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pypy/function_script.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3563" max-vertical-offset="3876">
-          <caret line="119" column="20" selection-start-line="119" selection-start-column="20" selection-end-line="119" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pypy/sandp500stocklist.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8585">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pypy/variables.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
@@ -707,11 +690,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pypy/sideways.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.3003197" vertical-offset="6368" max-vertical-offset="6681">
-          <caret line="277" column="84" selection-start-line="277" selection-start-column="84" selection-end-line="277" selection-end-column="84" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="5127" max-vertical-offset="6834">
+          <caret line="281" column="37" selection-start-line="281" selection-start-column="37" selection-end-line="281" selection-end-column="37" />
           <folding>
             <element signature="e#22#50#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pypy/function_script.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="962" max-vertical-offset="4012">
+          <caret line="63" column="19" selection-start-line="63" selection-start-column="19" selection-end-line="63" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pypy/sandp500stocklist.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8585">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="3" />
+          <folding />
         </state>
       </provider>
     </entry>
