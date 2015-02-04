@@ -1,0 +1,62 @@
+(ABC) bought time: 1217851800.0
+(ABC) Stop Loss time to sell: 165.48 seconds
+(ABC) Stop Loss bought at: 46.59
+(ABC) Stop Loss sold at  : 45.16
+(ABC) Stop Loss percent lost: -3.06932818201
+Global percent gain: -3.06932818201
+(ABC) bought time: 1223374740.0
+(ABC) Stop Loss time to sell: 12.6 seconds
+(ABC) Stop Loss bought at: 34.94
+(ABC) Stop Loss sold at  : 34.01
+(ABC) Stop Loss percent lost: -2.66170578134
+Global percent gain: -5.73103396335
+(ABC) bought time: 1242295260.0
+(ABC) time to sell: 434.4 seconds
+(ABC) bought at: 36.35
+(ABC) sold at  : 37.44
+(ABC) percent gain: 2.99862448418
+Global percent gain: -2.73240947917
+(ABC) bought time: 1260355920.0
+(ABC) time to sell: 444.66 seconds
+(ABC) bought at: 55.22
+(ABC) sold at  : 56.39
+(ABC) percent gain: 2.11879753712
+Global percent gain: -0.613611942047
+(ABC) bought time: 1269517500.0
+(ABC) Stop Loss time to sell: 597.42 seconds
+(ABC) Stop Loss bought at: 55.07
+(ABC) Stop Loss sold at  : 53.7
+(ABC) Stop Loss percent lost: -2.48774287271
+Global percent gain: -3.10135481475
+(ABC) bought time: 1272371520.0
+(ABC) Stop Loss time to sell: 85.02 seconds
+(ABC) Stop Loss bought at: 54.62
+(ABC) Stop Loss sold at  : 53.27
+(ABC) Stop Loss percent lost: -2.47162211644
+Global percent gain: -5.5729769312
+(ABC) bought time: 1364991720.0
+(ABC) Stop Loss time to sell: 164.22 seconds
+(ABC) Stop Loss bought at: 48.18
+(ABC) Stop Loss sold at  : 47.205
+(ABC) Stop Loss percent lost: -2.02366127024
+Global percent gain: -7.59663820143
+(ABC) bought time: 1377862500.0
+(ABC) time to sell: 428.76 seconds
+(ABC) bought at: 50.07
+(ABC) sold at  : 51.13
+(ABC) percent gain: 2.11703614939
+Global percent gain: -5.47960205204
+(ABC) bought time: 1394531280.0
+(ABC) time to sell: 705.3 seconds
+(ABC) bought at: 62.15
+(ABC) sold at  : 63.395
+(ABC) percent gain: 2.00321802092
+Global percent gain: -3.47638403112
+(ABC) bought time: 2015-01-16
+(ABC) bought at: 62.61
+(ABC) current price: 63.2302
+(ABC) percent gain: 0.99057658521
+Initial Investment: 15000
+Total Value: 14959.0751908
+Total Percent Gain: -0.272832061134
+Global percent gain: -2.48580744591
