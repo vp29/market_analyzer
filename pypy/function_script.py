@@ -79,23 +79,38 @@ def analyze_db(c, initial_val):
     total = initial_val
     total_used = 0
     total_possible = 0
+
+    #we cant be long and short at the same time, so we have to keep track
+    long_stocks = []
+    short_stocks = []
+
     for i in range(start_time, end_time, 20):
         for trade in trades:
             enter_time = trade.buy_time if trade.long_short == "long" else trade.sell_time
             if i == enter_time:
                 if len(open_trades) < max_trades and (not single_trade or (single_trade and trade.symbol not in stocks)):
-                    stocks.append(trade.symbol)
-                    investment_amount = total/(max_trades)
-                    print investment_amount
-                    #total -= investment_amount
-                    open_trades.append(Trade(trade.buy_time, trade.sell_time, 0.0, trade.buy_price, trade.sell_price, trade.long_short, investment_amount, trade.symbol, trade.actual_type))
-                    total_used += len(open_trades)
-                    total_possible += max_trades
+                    if (trade.long_short == "long" and trade.symbol not in short_stocks) or \
+                        (trade.long_short == "short" and trade.symbol not in long_stocks):
+                        stocks.append(trade.symbol)
+                        if trade.long_short == "long":
+                            long_stocks.append(trade.symbol)
+                        else:
+                            short_stocks.append(trade.symbol)
+                        investment_amount = total/(max_trades)
+                        print investment_amount
+                        #total -= investment_amount
+                        open_trades.append(Trade(trade.buy_time, trade.sell_time, 0.0, trade.buy_price, trade.sell_price, trade.long_short, investment_amount, trade.symbol, trade.actual_type))
+                        total_used += len(open_trades)
+                        total_possible += max_trades
 
         for trade in open_trades:
             exit_time = trade.sell_time if trade.long_short == "long" else trade.buy_time
             if i == exit_time:
                 stocks.remove(trade.symbol)
+                if trade.long_short == "long":
+                    long_stocks.remove(trade.symbol)
+                else:
+                    short_stocks.remove(trade.symbol)
                 total += trade.investment*(1.0 + float((trade.sell_price - trade.buy_price))/float(trade.buy_price)) - trade.investment
                 gain = str(float((trade.sell_price - trade.buy_price))/float(trade.buy_price))
                 print "stock: " + trade.symbol + " gain: " + gain
