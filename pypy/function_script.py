@@ -71,7 +71,7 @@ def analyze_db(c, initial_val):
     downwardunprofitablecoutner = 0
 
     start_time = trades[0].buy_time if trades[0].long_short == "long" else trades[0].sell_time
-    end_time = trades[-1].buy_time if trades[-1].long_short == "long" else trades[-1].sell_time
+    end_time = trades[-1].buy_time if trades[-1].long_short == "short" else trades[-1].sell_time
     open_trades = []
     max_trades = 10
     single_trade = False #only allow once entrance into stock at any given time
@@ -84,7 +84,7 @@ def analyze_db(c, initial_val):
     long_stocks = []
     short_stocks = []
 
-    for i in range(start_time, end_time, 20):
+    for i in range(start_time, end_time+20, 20):
         for trade in trades:
             enter_time = trade.buy_time if trade.long_short == "long" else trade.sell_time
             if i == enter_time:
@@ -107,12 +107,15 @@ def analyze_db(c, initial_val):
             exit_time = trade.sell_time if trade.long_short == "long" else trade.buy_time
             if i == exit_time:
                 stocks.remove(trade.symbol)
+                pgain = 0.0
                 if trade.long_short == "long":
                     long_stocks.remove(trade.symbol)
+                    pgain = float((trade.sell_price - trade.buy_price))/float(trade.buy_price)
                 else:
                     short_stocks.remove(trade.symbol)
-                total += trade.investment*(1.0 + float((trade.sell_price - trade.buy_price))/float(trade.buy_price)) - trade.investment
-                gain = str(float((trade.sell_price - trade.buy_price))/float(trade.buy_price))
+                    pgain = float((trade.sell_price - trade.buy_price))/float(trade.sell_price)
+                total += trade.investment*(1.0 + pgain) - trade.investment
+                gain = str(pgain)
                 print "stock: " + trade.symbol + " gain: " + gain
                 if float(gain) > 0.000000000000:
                     if 'Upward' in trade.actual_type:
