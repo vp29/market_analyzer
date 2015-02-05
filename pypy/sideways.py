@@ -21,9 +21,9 @@ conn.commit()
 
 
 
-database = True
-graphing = False
-multi_processing = True
+database = False
+graphing = True
+multi_processing = False
 
 global_percent_gain = 0.0
 global_stock_values = []
@@ -191,7 +191,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
 
                         if graphing:
                             #MAKE SURE the kwargs at the end have the correct values set then remove this comment, then implement it the second if statement below
-                            graph_url = generate_a_graph(prices,resInter, resSlope,boughtIndex,j,supInter,supSlope,inter,slope, maxResIndex, maxSupIndex, str(j)+stock,"Stop loss long trade",buy_price=trade.buy_price,buy_index=prices[-1].index,sold_price=sold_price,sold_index=sellIndex - (j-960))
+                            graph_url = generate_a_graph(prices,resInter, resSlope,boughtIndex,j,supInter,supSlope,inter,slope, maxResIndex, maxSupIndex, str(j)+stock,"Stop loss long trade",buy_price=trade.buy_price,buy_index=boughtIndex - (j-960),sold_price=sold_price,sold_index=prices[-1].index)
                         else:
                             graph_url = None
 
@@ -224,7 +224,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
 
                         if graphing:
                             #MAKE SURE the kwargs at the end have the correct values set then remove this comment, then implement it the second if statement below
-                            graph_url = generate_a_graph(prices,resInter, resSlope,boughtIndex,j,supInter,supSlope,inter,slope, maxResIndex, maxSupIndex, str(j)+stock,"closed short profitable trade",buy_price=buy_price,buy_index=prices[-1].index,sold_price=trade.sell_price,sold_index=sellIndex - (j-960))
+                            graph_url = generate_a_graph(prices,resInter, resSlope,sellIndex,j,supInter,supSlope,inter,slope, maxResIndex, maxSupIndex, str(j)+stock,"closed short profitable trade",buy_price=buy_price,buy_index=prices[-1].index,sold_price=trade.sell_price,sold_index=sellIndex - (j-960))
                         else:
                             graph_url = None
                         if database:
@@ -324,6 +324,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
             resInter, resSlope = leastSquare(tempPeaks)
             supInter, supSlope = leastSquare(tempTrough)
         except:
+            print "error"
             continue
 
         sup_val = supInter + supSlope*len(prices)
@@ -364,16 +365,19 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
                                                        len(prices)-1 - maxResIndex, len(prices)-1 - maxSupIndex )
 
             #only consider buying when support matches in middle and at least one side
-            pot_buy = pot_buy and (neg_matches[1] and (neg_matches[0] or neg_matches[2])) \
+            long_pot_buy = pot_buy and (neg_matches[1] and (neg_matches[0] or neg_matches[2])) \
                 and (pos_matches[1] and (pos_matches[0] and pos_matches[2]))
+
+            short_pot_buy = pot_buy and (neg_matches[1] and (neg_matches[0] and neg_matches[2])) \
+                and (pos_matches[1] and (pos_matches[0] or pos_matches[2]))
 
             # print "Sell Point: " + str(sell_point)
             # print "Buy Range:  " + str(min_buy_point) + ' - ' + str(max_buy_point)
             # print "Cur Price:  " + str(prices[-1].price)
             # print "buf Price:  " + str(sup_val + (res_val - sup_val)*(bufferPercent/100))
 
-            if longStocks and long_buffer_zone and sell_point > prices[-1].price*(1.0 + float(minimumPercent)/float(100)) and pot_buy:
-                if min_long_buy_point <= prices[-1].price <= max_long_buy_point and (database or (not database and bought == False)): #and bought == False:
+            if longStocks and long_buffer_zone and sell_point > prices[-1].price*(1.0 + float(minimumPercent)/float(100)) and long_pot_buy:
+                if min_long_buy_point <= prices[-1].price <= max_long_buy_point and (database or (not database and bought is False)): #and bought == False:
 
                     bought = True
                     long_buffer_zone = False
@@ -388,15 +392,15 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
                     boughtTimestamp = (boughtDateTime - datetime(1970, 1, 1, 0, 0, 0)).total_seconds()
 
                     if graphing:
-                        graph_url = generate_a_graph(prices,resInter, resSlope,boughtIndex,j,supInter,supSlope,inter,slope, maxResIndex, maxSupIndex, str(j)+stock,"Generated buy order")
+                        graph_url = generate_a_graph(prices,resInter, resSlope,-maxResIndex,analysisRange,supInter,supSlope,inter,slope, maxResIndex, maxSupIndex, str(j)+stock,"Generated buy order")
                     else:
                         graph_url = None
 
                     print "Buy current price : " + str(prices[-1].price)
                     print "Sell at price     : " + str(sell_point)
                     bought_list.append(Trade(boughtTimestamp, 0, sellCutoff, boughtPrice, 0.0, "long", 0.0, stock, actual_type))
-            elif shortStocks and short_buffer_zone and buy_point < prices[-1].price/(1.0 + float(minimumPercent)/float(100)) and pot_buy:
-                if min_short_sell_point <= prices[-1].price <= max_short_sell_point and (database or (not database and bought == False)): #and bought == False:
+            elif shortStocks and short_buffer_zone and buy_point < prices[-1].price/(1.0 + float(minimumPercent)/float(100)) and short_pot_buy:
+                if min_short_sell_point <= prices[-1].price <= max_short_sell_point and (database or (not database and bought is False)): #and bought == False:
 
                     bought = True
                     short_buffer_zone = False
@@ -411,7 +415,7 @@ def analyzeStock(stock, samplePeriod, analysisRange, stepSize, showChart, invest
                     sellTimestamp = (sellDateTime - datetime(1970, 1, 1, 0, 0, 0)).total_seconds()
 
                     if graphing:
-                        graph_url = generate_a_graph(prices,resInter, resSlope,boughtIndex,j,supInter,supSlope,inter,slope, maxResIndex, maxSupIndex, str(j)+stock,"Generated short order")
+                        graph_url = generate_a_graph(prices,resInter,resSlope,-maxResIndex,analysisRange,supInter,supSlope,inter,slope, maxResIndex, maxSupIndex, str(j)+stock,"Generated short order")
                     else:
                         graph_url = None
 
@@ -483,7 +487,7 @@ def analyzebitstamp():
 
     if multi_processing:
         pool = multiprocessing.Pool(processes=64)
-        results = [pool.apply_async(analyzeStock,args=(line,samplePeriod,analysisRange,stepSize,False,initial_investment,True,'sandp/' + line.strip() + '-20050101 075000-60sec.csv')) for line in stocks]
+        results = [pool.apply_async(analyzeStock,args=(line,samplePeriod,analysisRange,stepSize,False,initial_investment,True,'data/sandp/' + line.strip() + '-20050101 075000-60sec.csv')) for line in stocks]
         output = [p.get() for p in results]
         print output
         return
