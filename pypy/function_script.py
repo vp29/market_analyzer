@@ -62,18 +62,37 @@ def analyze_db(c, initial_val):
     for row in c.execute("SELECT * FROM stocks ORDER BY buy_date ASC;"):
         trades.append(Trade(row[2], row[3], 0.0, row[4], row[5], row[8], 0.0, row[1], row[7]))
 
-    sidewaysprofitablemovingmarketcounter = 0
-    upwardsprofitablemovingmarketcounter = 0
-    downwardsprofitablemovingmarketcoutner = 0
+    prof_sideways_trade = 0
+    prof_updwards_trade = 0
+    prof_downwards_trade = 0
 
     shortprofit = 0
     shortnon = 0
     longprofit = 0
     longnon = 0
 
-    sidewaysunprofitablecounter = 0
-    upwardunprofitablecoutner = 0
-    downwardunprofitablecoutner = 0
+    unprof_sideways_trade = 0
+    unprof_upwards_trade = 0
+    unprof_downwards_trade = 0
+
+    long_prof_sideways_trade = 0
+    long_prof_updwards_trade = 0
+    long_prof_downwards_trade = 0
+
+    long_unprof_sideways_trade = 0
+    long_unprof_upwards_trade = 0
+    long_unprof_downwards_trade = 0
+
+    short_prof_sideways_trade = 0
+    short_prof_updwards_trade = 0
+    short_prof_downwards_trade = 0
+
+    short_unprof_sideways_trade = 0
+    short_unprof_upwards_trade = 0
+    short_unprof_downwards_trade = 0
+
+
+
 
     start_time = trades[0].buy_time if trades[0].long_short == "long" else trades[0].sell_time
     end_time = trades[-1].buy_time if trades[-1].long_short == "short" else trades[-1].sell_time
@@ -84,6 +103,9 @@ def analyze_db(c, initial_val):
     total = initial_val
     total_used = 0
     total_possible = 0
+
+    max_drawdown = total/max_trades
+    max_gain = total/max_trades
 
     #we cant be long and short at the same time, so we have to keep track
     long_stocks = []
@@ -101,8 +123,17 @@ def analyze_db(c, initial_val):
                             long_stocks.append(trade.symbol)
                         else:
                             short_stocks.append(trade.symbol)
-                        investment_amount = total/(max_trades)
+                        investment_amount = total/max_trades
                         print investment_amount
+
+                        #checking to see if we're reaching a new low in the max drawdown
+                        if investment_amount < max_drawdown:
+                            max_drawdown = investment_amount
+
+                        #checking to see if we're reaching a new total gain high
+                        if investment_amount > max_gain:
+                            max_gain = investment_amount
+
                         #total -= investment_amount
                         open_trades.append(Trade(trade.buy_time, trade.sell_time, 0.0, trade.buy_price, trade.sell_price, trade.long_short, investment_amount, trade.symbol, trade.actual_type))
                         total_used += len(open_trades)
@@ -128,33 +159,63 @@ def analyze_db(c, initial_val):
                     else:
                         shortprofit += 1
                     if 'Upward' in trade.actual_type:
-                        upwardsprofitablemovingmarketcounter += 1
+                        prof_updwards_trade += 1
+                        if trade.long_short=="long": long_prof_updwards_trade +=1
+                        else: short_prof_updwards_trade += 1
                     elif 'Downward' in trade.actual_type:
-                        downwardsprofitablemovingmarketcoutner += 1
+                        prof_downwards_trade += 1
+                        if trade.long_short=="long": long_prof_downwards_trade +=1
+                        else: short_prof_downwards_trade += 1
                     elif 'Sideways' in trade.actual_type:
-                        sidewaysprofitablemovingmarketcounter += 1
+                        prof_sideways_trade += 1
+                        if trade.long_short=="long": long_prof_sideways_trade +=1
+                        else: short_prof_sideways_trade += 1
                 if float(gain) < 0.000000000000:
                     if trade.long_short == "long":
                         longnon += 1
                     else:
                         shortnon += 1
                     if 'Upward' in trade.actual_type:
-                        upwardunprofitablecoutner += 1
+                        unprof_upwards_trade += 1
+                        if trade.long_short=="long": long_unprof_upwards_trade +=1
+                        else: short_unprof_upwards_trade += 1
                     elif 'Downward' in trade.actual_type:
-                        downwardunprofitablecoutner += 1
+                        unprof_downwards_trade += 1
+                        if trade.long_short=="long": long_unprof_downwards_trade +=1
+                        else: short_unprof_downwards_trade += 1
                     elif 'Sideways' in trade.actual_type:
-                        sidewaysunprofitablecounter += 1
+                        unprof_sideways_trade += 1
+                        if trade.long_short=="long": long_unprof_sideways_trade +=1
+                        else: short_unprof_sideways_trade += 1
 
                 print trade.actual_type
                 open_trades.remove(trade)
 
-    print sidewaysprofitablemovingmarketcounter
-    print upwardsprofitablemovingmarketcounter
-    print downwardsprofitablemovingmarketcoutner
+    print "# sideways profitable: ",  prof_sideways_trade
+    print "# upwards profitable counter: " , prof_updwards_trade
+    print "# downwards profitable: ", prof_downwards_trade
 
-    print sidewaysunprofitablecounter
-    print upwardunprofitablecoutner
-    print downwardunprofitablecoutner
+    print "# sideways unprofitable: ", unprof_sideways_trade
+    print "# upwards unprofitable: " , unprof_upwards_trade
+    print "# downwards unproftiable: ", unprof_downwards_trade
+
+    print "total # of trades: " + str(unprof_downwards_trade+prof_downwards_trade+ prof_updwards_trade + unprof_upwards_trade + unprof_sideways_trade + prof_sideways_trade)
+    
+    print "percent of profitable sideways trades: " + str(float(prof_sideways_trade)/(float(prof_sideways_trade)+float(unprof_sideways_trade)))
+    print "percent of profitable upwards trades: " + str(float(prof_updwards_trade)/(float(prof_updwards_trade)+float(unprof_upwards_trade)))
+    print "percent of profitable downwards trades: " + str(float(prof_downwards_trade)/(float(prof_downwards_trade)+float(unprof_downwards_trade)))
+
+    print "LONG: percent of profitable sideways trades: " + str(float(long_prof_sideways_trade)/(float(long_prof_sideways_trade)+float(long_unprof_sideways_trade)))
+    print "LONG: percent of profitable upwards trades: " + str(float(long_prof_updwards_trade)/(float(long_prof_updwards_trade)+float(long_unprof_upwards_trade)))
+    print "LONG: percent of profitable downwards trades: " + str(float(long_prof_downwards_trade)/(float(long_prof_downwards_trade)+float(long_unprof_downwards_trade)))
+
+    print "SHORT: percent of profitable sideways trades: " + str(float(short_prof_sideways_trade)/(float(short_prof_sideways_trade)+float(short_unprof_sideways_trade)))
+    print "SHORT: percent of profitable upwards trades: " + str(float(short_prof_updwards_trade)/(float(short_prof_updwards_trade)+float(short_unprof_upwards_trade)))
+    print "SHORT: percent of profitable downwards trades: " + str(float(short_prof_downwards_trade)/(float(short_prof_downwards_trade)+float(short_unprof_downwards_trade)))
+
+    print "lowest_account_balance: ", max_drawdown
+    print "highest_account_balance: ", max_gain
+    
 
     print "percent short profit " + str(float(shortprofit)/float(shortprofit+shortnon))
     print "percent long profit " + str(float(longprofit)/float(longprofit+longnon))
