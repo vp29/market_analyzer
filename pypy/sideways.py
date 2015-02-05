@@ -21,9 +21,9 @@ conn.commit()
 
 
 
-database = False
-graphing = True
-multi_processing = False
+database = True
+graphing = False
+multi_processing = True
 
 global_percent_gain = 0.0
 global_stock_values = []
@@ -487,7 +487,7 @@ def analyzebitstamp():
 
     if multi_processing:
         pool = multiprocessing.Pool(processes=64)
-        results = [pool.apply_async(analyzeStock,args=(line,samplePeriod,analysisRange,stepSize,False,initial_investment,True,'data/sandp/' + line.strip() + '-20050101 075000-60sec.csv')) for line in stocks]
+        results = [pool.apply_async(analyzeStock,args=(line,samplePeriod,analysisRange,stepSize,False,initial_investment,True,'sandp/' + line.strip() + '-20050101 075000-60sec.csv')) for line in stocks]
         output = [p.get() for p in results]
         print output
         return
@@ -531,8 +531,8 @@ def analyzefile(filename):
 if __name__ == "__main__":
     #analyzefortune500stocks()
     #analyzebitstamp()
-    analyzefile('CSC.csv')
-    #analyze_db(c, 15000)
+    #analyzefile('CSC.csv')
+    analyze_db(c, 15000)
 
 #why false, true, true
 #http://gyazo.com/4585b43a224831e154a90f1037117977

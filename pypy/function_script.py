@@ -157,7 +157,7 @@ def analyze_db(c, initial_val):
     print downwardunprofitablecoutner
 
     print "percent short profit " + str(float(shortprofit)/float(shortprofit+shortnon))
-    print "percent short profit " + str(float(longprofit)/float(longprofit+longnon))
+    print "percent long profit " + str(float(longprofit)/float(longprofit+longnon))
     print "end total: " + str(total)
     print "end gain:  " + str((total-initial_val)/initial_val)
     print "utilisation: " + str(float(total_used)/float(total_possible))
