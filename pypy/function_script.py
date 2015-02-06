@@ -66,11 +66,6 @@ def analyze_db(c, initial_val):
     upwardsprofitablemovingmarketcounter = 0
     downwardsprofitablemovingmarketcoutner = 0
 
-    shortprofit = 0
-    shortnon = 0
-    longprofit = 0
-    longnon = 0
-
     sidewaysunprofitablecounter = 0
     upwardunprofitablecoutner = 0
     downwardunprofitablecoutner = 0
@@ -123,10 +118,6 @@ def analyze_db(c, initial_val):
                 gain = str(pgain)
                 print "stock: " + trade.symbol + " gain: " + gain
                 if float(gain) > 0.000000000000:
-                    if trade.long_short == "long":
-                        longprofit += 1
-                    else:
-                        shortprofit += 1
                     if 'Upward' in trade.actual_type:
                         upwardsprofitablemovingmarketcounter += 1
                     elif 'Downward' in trade.actual_type:
@@ -134,10 +125,6 @@ def analyze_db(c, initial_val):
                     elif 'Sideways' in trade.actual_type:
                         sidewaysprofitablemovingmarketcounter += 1
                 if float(gain) < 0.000000000000:
-                    if trade.long_short == "long":
-                        longnon += 1
-                    else:
-                        shortnon += 1
                     if 'Upward' in trade.actual_type:
                         upwardunprofitablecoutner += 1
                     elif 'Downward' in trade.actual_type:
@@ -155,9 +142,6 @@ def analyze_db(c, initial_val):
     print sidewaysunprofitablecounter
     print upwardunprofitablecoutner
     print downwardunprofitablecoutner
-
-    print "percent short profit " + str(float(shortprofit)/float(shortprofit+shortnon))
-    print "percent short profit " + str(float(longprofit)/float(longprofit+longnon))
     print "end total: " + str(total)
     print "end gain:  " + str((total-initial_val)/initial_val)
     print "utilisation: " + str(float(total_used)/float(total_possible))
