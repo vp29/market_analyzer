@@ -89,8 +89,11 @@ def analyze_stock(symbol, filename):
         temp_peaks = Helper.match_indexes(res_diff, prices)
         temp_troughs = Helper.match_indexes(sup_diff, prices)
 
-        res_inter, res_slope = Helper.least_square(temp_peaks)
-        sup_inter, sup_slope = Helper.least_square(temp_troughs)
+        try:
+            res_inter, res_slope = Helper.least_square(temp_peaks)
+            sup_inter, sup_slope = Helper.least_square(temp_troughs)
+        except:
+            continue
 
         res_val = res_inter + res_slope*analysisRange
         sup_val = sup_inter + sup_slope*analysisRange
