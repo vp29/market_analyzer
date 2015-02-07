@@ -151,7 +151,7 @@ def analyze_stock(symbol, filename):
                 if min_short_sell_point <= close <= max_short_sell_point: #and bought == False:
 
                     short_buffer_zone = False
-                    sellIndex = j
+                    sellIndex = i
 
                     #if graphing:
                     #    graph_url = generate_a_graph(prices,resInter, resSlope,boughtIndex,j,supInter,supSlope,inter,slope, maxResIndex, maxSupIndex, str(j)+stock,"Generated short order")
