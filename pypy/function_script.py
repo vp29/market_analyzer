@@ -2,7 +2,7 @@ import time
 import plotly.plotly as py
 import plotly.graph_objs
 import threading
-
+import datetime
 def background(f):
     '''
     a threading decorator
@@ -103,6 +103,8 @@ def analyze_db(c, initial_val):
                         total_used += len(open_trades)
                         total_possible += max_trades
 
+
+
         for trade in open_trades:
             exit_time = trade.sell_time if trade.long_short == "long" else trade.buy_time
             if i == exit_time:
@@ -117,6 +119,10 @@ def analyze_db(c, initial_val):
                 total += trade.investment*(1.0 + pgain) - trade.investment
                 gain = str(pgain)
                 print "stock: " + trade.symbol + " gain: " + gain
+                t = datetime.datetime.fromtimestamp(float(trade.sell_time))
+                fmt = "%Y-%m-%d %H:%M:%S"
+                print t.strftime(fmt)
+
                 if float(gain) > 0.000000000000:
                     if 'Upward' in trade.actual_type:
                         upwardsprofitablemovingmarketcounter += 1
