@@ -42,9 +42,9 @@ class Helper:
         x = 0.0
         y = 0.0
         for i, price in enumerate(data):
-            xy += price.close*i
-            xx += i*i
-            x += i
+            xy += price.close*price.index
+            xx += price.index*price.index
+            x += price.index
             y += price.close
 
         b = (num*xy - x*y)/(num*xx-x*x)
@@ -61,7 +61,7 @@ class Helper:
         for i, val in enumerate(diff):
             if val*multiplier > cur_max_diff:
                 cur_max_diff = val*multiplier
-            temp_diff.append(Diff(val, i))
+            temp_diff.append(Diff(val, i+index))
 
         temp_diff = [g for g in temp_diff if g.diff*multiplier >= cutoff*cur_max_diff]
 
@@ -91,8 +91,6 @@ class Helper:
         diff = nextRes - nextSup
         resNorm = resRise/curPrice
         supNorm = supRise/curPrice
-        #print "resRise: " + str(resRise) + " supRise: " + str(supRise)
-        #print "resNorm: " + str(resNorm) + " supNorm: " + str(supNorm)
         normCutoff = 0.01
         if -normCutoff < resNorm < normCutoff\
                 and -normCutoff < supNorm < normCutoff:

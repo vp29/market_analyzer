@@ -187,6 +187,8 @@ def findMatches(tempPrice,maxNumIndex,maxIndex, neg, cutoff, index):
         multiplier = -1
 
     curInter, curSlope = leastSquare(tempPrice)
+    #print curInter
+    #print curSlope
     diff = []
     curMaxDiff = 0.0
 
