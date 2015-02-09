@@ -5,6 +5,7 @@ from datetime import datetime
 import time
 from Data import Data
 from Diff import Diff
+from Trade import Trade
 
 
 class Helper:
@@ -122,3 +123,99 @@ class Helper:
         #print "buy point:  " + str((nextSup + diff*bsPoint))
         #print "sell point: " + str((nextRes - diff*bsPoint))
         return (nextSup + diff*sup_per), (nextRes - diff*res_per), potBuy, actual_type
+
+    @staticmethod
+    def analyze_db(db, initial_val):
+        trades = []
+
+        trades = db.read_trades()
+
+        sidewaysprofitablemovingmarketcounter = 0
+        upwardsprofitablemovingmarketcounter = 0
+        downwardsprofitablemovingmarketcoutner = 0
+
+        sidewaysunprofitablecounter = 0
+        upwardunprofitablecoutner = 0
+        downwardunprofitablecoutner = 0
+
+        start_time = trades[0].buy_time if trades[0].long_short == "long" else trades[0].sell_time
+        end_time = trades[-1].buy_time if trades[-1].long_short == "short" else trades[-1].sell_time
+        open_trades = []
+        max_trades = 10
+        single_trade = False #only allow once entrance into stock at any given time
+        stocks = []
+        total = initial_val
+        total_used = 0
+        total_possible = 0
+
+        #we cant be long and short at the same time, so we have to keep track
+        long_stocks = []
+        short_stocks = []
+
+        for i in range(start_time, end_time+20, 20):
+            for trade in trades:
+                enter_time = trade.buy_time if trade.long_short == "long" else trade.sell_time
+                if i == enter_time:
+                    if len(open_trades) < max_trades and (not single_trade or (single_trade and trade.symbol not in stocks)):
+                        if (trade.long_short == "long" and trade.symbol not in short_stocks) or \
+                            (trade.long_short == "short" and trade.symbol not in long_stocks):
+                            stocks.append(trade.symbol)
+                            if trade.long_short == "long":
+                                long_stocks.append(trade.symbol)
+                            else:
+                                short_stocks.append(trade.symbol)
+                            investment_amount = total/(max_trades)
+                            print investment_amount
+                            #total -= investment_amount
+                            open_trades.append(Trade(trade.buy_time, trade.sell_time, 0.0, trade.buy_price, trade.sell_price, trade.long_short, investment_amount, trade.symbol, trade.actual_type))
+                            total_used += len(open_trades)
+                            total_possible += max_trades
+
+
+
+            for trade in open_trades:
+                exit_time = trade.sell_time if trade.long_short == "long" else trade.buy_time
+                if i == exit_time:
+                    stocks.remove(trade.symbol)
+                    pgain = 0.0
+                    if trade.long_short == "long":
+                        long_stocks.remove(trade.symbol)
+                        pgain = float((trade.sell_price - trade.buy_price))/float(trade.buy_price)
+                    else:
+                        short_stocks.remove(trade.symbol)
+                        pgain = float((trade.sell_price - trade.buy_price))/float(trade.sell_price)
+                    total += trade.investment*(1.0 + pgain) - trade.investment
+                    gain = str(pgain)
+                    print "stock: " + trade.symbol + " gain: " + gain
+                    t = datetime.fromtimestamp(float(trade.sell_time))
+                    fmt = "%Y-%m-%d %H:%M:%S"
+                    print t.strftime(fmt)
+
+                    if float(gain) > 0.000000000000:
+                        if 'Upward' in trade.actual_type:
+                            upwardsprofitablemovingmarketcounter += 1
+                        elif 'Downward' in trade.actual_type:
+                            downwardsprofitablemovingmarketcoutner += 1
+                        elif 'Sideways' in trade.actual_type:
+                            sidewaysprofitablemovingmarketcounter += 1
+                    if float(gain) < 0.000000000000:
+                        if 'Upward' in trade.actual_type:
+                            upwardunprofitablecoutner += 1
+                        elif 'Downward' in trade.actual_type:
+                            downwardunprofitablecoutner += 1
+                        elif 'Sideways' in trade.actual_type:
+                            sidewaysunprofitablecounter += 1
+
+                    print trade.actual_type
+                    open_trades.remove(trade)
+
+        print sidewaysprofitablemovingmarketcounter
+        print upwardsprofitablemovingmarketcounter
+        print downwardsprofitablemovingmarketcoutner
+
+        print sidewaysunprofitablecounter
+        print upwardunprofitablecoutner
+        print downwardunprofitablecoutner
+        print "end total: " + str(total)
+        print "end gain:  " + str((total-initial_val)/initial_val)
+        print "utilisation: " + str(float(total_used)/float(total_possible))

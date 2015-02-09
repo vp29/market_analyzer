@@ -203,6 +203,14 @@ def analyze_stock(symbol, filename):
 
         #print ("loop time: ", time.time() - start_time)
 
+def analyze_sandp():
+    stocks = open("sandp500stocklist.txt", "r")
+
+    for stock in stocks:
+        stock = stock[:-1]
+        analyze_stock(stock, "data/sandp/" + stock + "-20050101 075000-60sec.csv")
+
 
 if __name__ == "__main__":
-    analyze_stock("CSC", "data/CSC.csv")
+    #analyze_sandp()
+    Helper.analyze_db(db, 15000)
