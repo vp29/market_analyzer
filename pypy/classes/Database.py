@@ -21,7 +21,7 @@ class Database:
     def read_trades(self):
         trades = []
 
-        for row in self.cursor.execute("SELECT * FROM stocks WHERE long_short = 'long' ORDER BY buy_date ASC;"):
+        for row in self.cursor.execute("SELECT * FROM stocks ORDER BY buy_date ASC;"):
             trades.append(Trade(row[2], row[3], 0.0, row[4], row[5], row[9], 0.0, row[1], row[8]))
 
         return trades

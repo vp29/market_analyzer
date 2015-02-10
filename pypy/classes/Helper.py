@@ -219,3 +219,45 @@ class Helper:
         print "end total: " + str(total)
         print "end gain:  " + str((total-initial_val)/initial_val)
         print "utilisation: " + str(float(total_used)/float(total_possible))
+
+    @staticmethod
+    def calculate_rsi(data):
+        rsi = 0.0
+        prev = 0.0
+        gain = 0.0
+        loss = 0.0
+        for i, item in enumerate(data):
+            if i == 0:
+                prev = item.close
+            elif i < 14:
+                cur_diff = item.close - prev
+                if cur_diff > 0:
+                    gain += cur_diff
+                else:
+                    loss += cur_diff
+                prev = item.close
+            elif i == 14:
+                cur_diff = item.close - prev
+                if cur_diff > 0:
+                    gain += cur_diff
+                else:
+                    loss += cur_diff
+                prev = item.close
+                avg_gain = gain/14
+                avg_loss = loss/14
+            else:
+                cur_diff = item.close - prev
+                prev = item.close
+                cur_loss = 0.0
+                cur_gain = 0.0
+                if cur_diff > 0:
+                    cur_gain = cur_diff
+                else:
+                    cur_loss = cur_diff
+                avg_gain = (avg_gain*13 + cur_gain)/14
+                avg_loss = (avg_loss*13 + cur_loss)/14
+
+        rs = avg_gain/abs(avg_loss)
+        rsi = 100 - 100/(1+rs)
+
+        return rsi

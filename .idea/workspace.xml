@@ -20,7 +20,7 @@
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/market_analyzer$sideways__1_.coverage" NAME="sideways (1) Coverage Results" MODIFIED="1423362844578" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pypy" />
-    <SUITE FILE_PATH="coverage/market_analyzer$new_sideways.coverage" NAME="new_sideways Coverage Results" MODIFIED="1423522632961" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pypy" />
+    <SUITE FILE_PATH="coverage/market_analyzer$new_sideways.coverage" NAME="new_sideways Coverage Results" MODIFIED="1423528643671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pypy" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -37,8 +37,8 @@
       <file leaf-file-name="new_sideways.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pypy/new_sideways.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9168026" vertical-offset="3076" max-vertical-offset="3774">
-              <caret line="214" column="5" selection-start-line="214" selection-start-column="5" selection-end-line="214" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.5068493" vertical-offset="1591" max-vertical-offset="3672">
+              <caret line="111" column="20" selection-start-line="111" selection-start-column="20" selection-end-line="111" selection-end-column="20" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -60,13 +60,13 @@
         <entry file="file://$PROJECT_DIR$/pypy/classes/Database.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
-              <caret line="23" column="85" selection-start-line="23" selection-start-column="85" selection-end-line="23" selection-end-column="85" />
+              <caret line="23" column="60" selection-start-line="23" selection-start-column="60" selection-end-line="23" selection-end-column="60" />
               <folding>
                 <element signature="e#21#35#0" expanded="true" />
-                <marker date="1423522630785" expanded="true" signature="277:540" placeholder="CREATE TABLE..IF..." />
-                <marker date="1423522630785" expanded="true" signature="645:701" placeholder="INSERT INTO ..." />
-                <marker date="1423522630785" expanded="true" signature="990:1029" placeholder="SELECT * FRO..stocks..." />
-                <marker date="1423522630785" expanded="true" signature="990:1058" placeholder="SELECT * FRO..stocks..." />
+                <marker date="1423524679326" expanded="true" signature="277:540" placeholder="CREATE TABLE..IF..." />
+                <marker date="1423524679326" expanded="true" signature="645:701" placeholder="INSERT INTO ..." />
+                <marker date="1423524679326" expanded="true" signature="990:1010" placeholder="SELECT * FRO..stocks..." />
+                <marker date="1423524679326" expanded="true" signature="990:1032" placeholder="SELECT * FRO..stocks..." />
               </folding>
             </state>
           </provider>
@@ -85,8 +85,8 @@
       <file leaf-file-name="Helper.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pypy/classes/Helper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.551724" vertical-offset="2965" max-vertical-offset="3842">
-              <caret line="189" column="32" selection-start-line="189" selection-start-column="24" selection-end-line="189" selection-end-column="32" />
+            <state vertical-scroll-proportion="-27.103449" vertical-offset="3668" max-vertical-offset="4556">
+              <caret line="262" column="0" selection-start-line="262" selection-start-column="0" selection-end-line="262" selection-end-column="0" />
               <folding>
                 <element signature="e#21#31#0" expanded="true" />
               </folding>
@@ -97,7 +97,7 @@
       <file leaf-file-name="Diff.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pypy/classes/Diff.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="238">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
               <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
               <folding />
             </state>
@@ -143,9 +143,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/pypy/sideways.py" />
-        <option value="$PROJECT_DIR$/pypy/new_sideways.py" />
-        <option value="$PROJECT_DIR$/pypy/classes/Helper.py" />
         <option value="$PROJECT_DIR$/pypy/classes/Database.py" />
+        <option value="$PROJECT_DIR$/pypy/classes/Helper.py" />
+        <option value="$PROJECT_DIR$/pypy/new_sideways.py" />
       </list>
     </option>
   </component>
@@ -585,7 +585,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1696" height="1066" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -593,13 +593,13 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3308977" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3308977" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2348643" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="10" y="98" width="1223" height="664" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2348643" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="43" y="35" width="1223" height="664" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -635,7 +635,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/pypy/new_sideways.py</url>
-          <line>190</line>
+          <line>184</line>
           <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
@@ -645,11 +645,11 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/pypy/new_sideways.py</url>
-          <line>197</line>
+          <line>191</line>
           <option name="timeStamp" value="46" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="48" />
+      <option name="time" value="51" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -977,14 +977,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pypy/classes/Diff.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
-          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pypy/classes/Line.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="132" max-vertical-offset="425">
@@ -996,14 +988,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="24" max-vertical-offset="425">
           <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pypy/classes/Trade.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="680">
-          <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1036,34 +1020,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pypy/classes/Database.py">
+    <entry file="file://$PROJECT_DIR$/pypy/classes/Trade.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
-          <caret line="23" column="85" selection-start-line="23" selection-start-column="85" selection-end-line="23" selection-end-column="85" />
-          <folding>
-            <element signature="e#21#35#0" expanded="true" />
-            <marker date="1423522630785" expanded="true" signature="277:540" placeholder="CREATE TABLE..IF..." />
-            <marker date="1423522630785" expanded="true" signature="645:701" placeholder="INSERT INTO ..." />
-            <marker date="1423522630785" expanded="true" signature="990:1029" placeholder="SELECT * FRO..stocks..." />
-            <marker date="1423522630785" expanded="true" signature="990:1058" placeholder="SELECT * FRO..stocks..." />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="680">
+          <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pypy/classes/Diff.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
+          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pypy/classes/Helper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.551724" vertical-offset="2965" max-vertical-offset="3842">
-          <caret line="189" column="32" selection-start-line="189" selection-start-column="24" selection-end-line="189" selection-end-column="32" />
+        <state vertical-scroll-proportion="-27.103449" vertical-offset="3668" max-vertical-offset="4556">
+          <caret line="262" column="0" selection-start-line="262" selection-start-column="0" selection-end-line="262" selection-end-column="0" />
           <folding>
             <element signature="e#21#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pypy/classes/Database.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
+          <caret line="23" column="60" selection-start-line="23" selection-start-column="60" selection-end-line="23" selection-end-column="60" />
+          <folding>
+            <element signature="e#21#35#0" expanded="true" />
+            <marker date="1423524679326" expanded="true" signature="277:540" placeholder="CREATE TABLE..IF..." />
+            <marker date="1423524679326" expanded="true" signature="645:701" placeholder="INSERT INTO ..." />
+            <marker date="1423524679326" expanded="true" signature="990:1010" placeholder="SELECT * FRO..stocks..." />
+            <marker date="1423524679326" expanded="true" signature="990:1032" placeholder="SELECT * FRO..stocks..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pypy/new_sideways.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9168026" vertical-offset="3076" max-vertical-offset="3774">
-          <caret line="214" column="5" selection-start-line="214" selection-start-column="5" selection-end-line="214" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.5068493" vertical-offset="1591" max-vertical-offset="3672">
+          <caret line="111" column="20" selection-start-line="111" selection-start-column="20" selection-end-line="111" selection-end-column="20" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>

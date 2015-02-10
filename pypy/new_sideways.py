@@ -13,6 +13,8 @@ import time
 conn = sqlite3.connect('stocks.db')
 db = Database(conn)
 
+DATABASE = False
+
 def analyze_stock(symbol, filename):
     print symbol
     data = Helper.read_csv(filename)
@@ -33,13 +35,15 @@ def analyze_stock(symbol, filename):
                 if close >= trade.exit_cutoff:
                     trade.sell_price = close
                     trade.sell_time = prices[-1].timestamp
-                    db.insert_trade(trade)
+                    if DATABASE:
+                        db.insert_trade(trade)
                     trades.remove(trade)
                     print trade
                 elif close <= (trade.buy_price - trade.buy_price*stop_loss_perc/100):
                     trade.sell_price = close
                     trade.sell_time = prices[-1].timestamp
-                    db.insert_trade(trade)
+                    if DATABASE:
+                        db.insert_trade(trade)
                     trades.remove(trade)
                     print trade
                 else:
@@ -48,13 +52,15 @@ def analyze_stock(symbol, filename):
                 if close <= trade.exit_cutoff:
                     trade.buy_price = close
                     trade.buy_time = prices[-1].timestamp
-                    db.insert_trade(trade)
+                    if DATABASE:
+                        db.insert_trade(trade)
                     trades.remove(trade)
                     print trade
                 elif close >= (trade.sell_price + trade.sell_price*stop_loss_perc/100):
                     trade.buy_price = close
                     trade.buy_time = prices[-1].timestamp
-                    db.insert_trade(trade)
+                    if DATABASE:
+                        db.insert_trade(trade)
                     trades.remove(trade)
                     print trade
                 else:
@@ -105,25 +111,14 @@ def analyze_stock(symbol, filename):
             print "error"
             continue
 
-        #print sup_inter
-        #print sup_slope
-
         res_val = res_inter + res_slope*analysisRange
         sup_val = sup_inter + sup_slope*analysisRange
-
-        #print res_val
-        #print sup_val
 
         max_long_buy_point = sup_val + (res_val-sup_val)*resMaxBuyPer/100
         min_long_buy_point = sup_val + (res_val-sup_val)*resMinBuyPer/100
 
         max_short_sell_point = res_val - (res_val-sup_val)*supMinBuyPer/100
         min_short_sell_point = res_val - (res_val-sup_val)*supMaxBuyPer/100
-
-        #print max_long_buy_point
-        #print min_long_buy_point
-        #print max_short_sell_point
-        #print min_short_sell_point
 
         if long_buffer_zone or short_buffer_zone:
 
@@ -139,9 +134,6 @@ def analyze_stock(symbol, filename):
                 for diff in sup_diff:
                     if diff.index in range(max_sup_index + k*(len(prices)-max_sup_index)//3, max_sup_index + (k+1)*(len(prices)-max_sup_index)//3):
                         neg_matches[k] = True
-
-            #print pos_matches
-            #print neg_matches
 
             buy_point, sell_point, pot_buy, actual_type = Helper.trendType(res_slope, sup_slope, res_inter, sup_inter,
                                                               analysisRange, supMinBuyPer/100, resMinBuyPer/100, close,
@@ -160,6 +152,7 @@ def analyze_stock(symbol, filename):
             if longStocks and long_buffer_zone and sell_point > close*(1.0 + minimumPercent/100) and pot_buy:
                 if min_long_buy_point <= close <= max_long_buy_point: #and bought == False:
 
+                    print Helper.calculate_rsi(prices)
                     long_buffer_zone = False
                     boughtIndex = i
 
@@ -174,6 +167,7 @@ def analyze_stock(symbol, filename):
             elif shortStocks and short_buffer_zone and buy_point < close/(1.0 + minimumPercent/100) and pot_buy:
                 if min_short_sell_point <= close <= max_short_sell_point: #and bought == False:
 
+                    print Helper.calculate_rsi(prices)
                     short_buffer_zone = False
                     sellIndex = i
 
@@ -212,5 +206,5 @@ def analyze_sandp():
 
 
 if __name__ == "__main__":
-    #analyze_sandp()
-    Helper.analyze_db(db, 15000)
+    analyze_sandp()
+    #Helper.analyze_db(db, 15000)
