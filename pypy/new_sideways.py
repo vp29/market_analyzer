@@ -207,5 +207,6 @@ def analyze_sandp():
 
 
 if __name__ == "__main__":
-    analyze_sandp()
-    #Helper.analyze_db(db, 15000)
+    #analyze_sandp()
+    #analyze_stock("CSC", "data/CSC.csv")
+    Helper.analyze_db(db, 15000)

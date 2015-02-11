@@ -1,0 +1,48 @@
+for j in range(0, analysisRange-1):
+            temp_prices = prices[j:]
+            inter, slope = Helper.least_square(temp_prices)
+            #print inter
+            #print slope
+            y_vals = Line(inter, slope, j, analysisRange).get_values()
+            diff_vals = []
+            for z in range(0, len(temp_prices)):
+                diff_vals.append(temp_prices[z].close - y_vals[z]) #[x - y for x, y in zip(temp_prices, y_vals)]
+
+            temp_diff = []
+            cur_max_diff = 0.0
+
+            for x, val in enumerate(diff_vals):
+                if val*1 > cur_max_diff:
+                    cur_max_diff = val*1
+                temp_diff.append(Diff(val, x+j))
+
+            temp_diff = [g for g in temp_diff if g.diff*1 >= resCutoff*cur_max_diff]
+
+            if len(temp_diff) > max_num_res_index:
+                big_diff = temp_diff
+                max_num_index = len(temp_diff)
+                max_index = j
+
+            res_diff=big_diff
+            max_num_res_index=max_num_index
+            max_res_index =max_index
+
+            #support
+            temp_diff = []
+            cur_max_diff = 0.0
+
+            for x, val in enumerate(diff_vals):
+                if val*-1 > cur_max_diff:
+                    cur_max_diff = val*-1
+                temp_diff.append(Diff(val, x+j))
+
+            temp_diff = [g for g in temp_diff if g.diff*-1 >= supCutoff*cur_max_diff]
+
+            if len(temp_diff) > max_num_sup_index:
+                big_diff = temp_diff
+                max_num_index = len(temp_diff)
+                max_index = j
+
+            sup_diff=big_diff
+            max_num_sup_index=max_num_index
+            max_sup_index =max_index
