@@ -3,9 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="08fa0ffd-2583-4a8c-a63c-82ed294ef2cc" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pypy/classes/Database.py" afterPath="$PROJECT_DIR$/pypy/classes/Database.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pypy/classes/Helper.py" afterPath="$PROJECT_DIR$/pypy/classes/Helper.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pypy/classes/Trade.py" afterPath="$PROJECT_DIR$/pypy/classes/Trade.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/market_analyzer.iml" afterPath="$PROJECT_DIR$/.idea/market_analyzer.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pypy/new_sideways.py" afterPath="$PROJECT_DIR$/pypy/new_sideways.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pypy/sideways.py" afterPath="$PROJECT_DIR$/pypy/sideways.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="market_analyzer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -20,7 +23,7 @@
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/market_analyzer$sideways__1_.coverage" NAME="sideways (1) Coverage Results" MODIFIED="1423362844578" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pypy" />
-    <SUITE FILE_PATH="coverage/market_analyzer$new_sideways.coverage" NAME="new_sideways Coverage Results" MODIFIED="1423528643671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pypy" />
+    <SUITE FILE_PATH="coverage/market_analyzer$new_sideways.coverage" NAME="new_sideways Coverage Results" MODIFIED="1423619457473" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pypy" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -34,11 +37,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="new_sideways.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="new_sideways.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pypy/new_sideways.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5068493" vertical-offset="1591" max-vertical-offset="3672">
-              <caret line="111" column="20" selection-start-line="111" selection-start-column="20" selection-end-line="111" selection-end-column="20" />
+            <state vertical-scroll-proportion="-1.1724138" vertical-offset="153" max-vertical-offset="3689">
+              <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -50,23 +53,29 @@
         <entry file="file://$PROJECT_DIR$/pypy/classes/Trade.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="680">
-              <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+              <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Database.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Database.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pypy/classes/Database.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
-              <caret line="23" column="60" selection-start-line="23" selection-start-column="60" selection-end-line="23" selection-end-column="60" />
+            <state vertical-scroll-proportion="0.83" vertical-offset="29" max-vertical-offset="833">
+              <caret line="31" column="42" selection-start-line="31" selection-start-column="42" selection-end-line="31" selection-end-column="42" />
               <folding>
                 <element signature="e#21#35#0" expanded="true" />
-                <marker date="1423524679326" expanded="true" signature="277:540" placeholder="CREATE TABLE..IF..." />
-                <marker date="1423524679326" expanded="true" signature="645:701" placeholder="INSERT INTO ..." />
-                <marker date="1423524679326" expanded="true" signature="990:1010" placeholder="SELECT * FRO..stocks..." />
-                <marker date="1423524679326" expanded="true" signature="990:1032" placeholder="SELECT * FRO..stocks..." />
+                <marker date="1423620951885" expanded="true" signature="312:339" placeholder="CREATE TABLE..IF..." />
+                <marker date="1423620951885" expanded="true" signature="312:651" placeholder="CREATE TABLE..IF..." />
+                <marker date="1423620951885" expanded="true" signature="875:887" placeholder="INSERT INTO ..." />
+                <marker date="1423620951885" expanded="true" signature="875:888" placeholder="INSERT INTO ..." />
+                <marker date="1423620951885" expanded="true" signature="875:963" placeholder="INSERT INTO ..." />
+                <marker date="1423620951885" expanded="true" signature="875:1086" placeholder="INSERT INTO ..." />
+                <marker date="1423620951885" expanded="true" signature="875:1088" placeholder="INSERT INTO ..." />
+                <marker date="1423620951885" expanded="true" signature="875:1089" placeholder="INSERT INTO ..." />
+                <marker date="1423620951885" expanded="true" signature="1516:1530" placeholder="SELECT * FRO..stocks..." />
+                <marker date="1423620951885" expanded="true" signature="1516:1575" placeholder="SELECT * FRO..stocks..." />
               </folding>
             </state>
           </provider>
@@ -85,10 +94,12 @@
       <file leaf-file-name="Helper.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pypy/classes/Helper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-27.103449" vertical-offset="3668" max-vertical-offset="4556">
+            <state vertical-scroll-proportion="-153.58621" vertical-offset="0" max-vertical-offset="4556">
               <caret line="262" column="0" selection-start-line="262" selection-start-column="0" selection-end-line="262" selection-end-column="0" />
               <folding>
                 <element signature="e#21#31#0" expanded="true" />
+                <marker date="1423528207588" expanded="true" signature="169:10224" placeholder="..." />
+                <marker date="1423528207588" expanded="true" signature="9023:10224" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -143,9 +154,10 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/pypy/sideways.py" />
-        <option value="$PROJECT_DIR$/pypy/classes/Database.py" />
         <option value="$PROJECT_DIR$/pypy/classes/Helper.py" />
+        <option value="$PROJECT_DIR$/pypy/classes/Trade.py" />
         <option value="$PROJECT_DIR$/pypy/new_sideways.py" />
+        <option value="$PROJECT_DIR$/pypy/classes/Database.py" />
       </list>
     </option>
   </component>
@@ -231,6 +243,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="site-packages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="market_analyzer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="market_analyzer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pypy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="classes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -243,7 +273,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/pypy/pypy.exe" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="options.lastSelected" value="preferences.pluginManager" />
+    <property name="options.lastSelected" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
@@ -257,6 +287,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Erics\PycharmProjects\market_analyzer\pypy\site-packages" />
       <recent name="C:\Users\Erics\PycharmProjects\market_analyzer\pypy" />
       <recent name="C:\Users\Erics\PycharmProjects\market_analyzer" />
     </key>
@@ -585,7 +616,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1696" height="1066" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -593,7 +624,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3308977" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3308977" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -635,7 +666,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/pypy/new_sideways.py</url>
-          <line>184</line>
+          <line>185</line>
           <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
@@ -645,7 +676,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/pypy/new_sideways.py</url>
-          <line>191</line>
+          <line>192</line>
           <option name="timeStamp" value="46" />
         </line-breakpoint>
       </breakpoints>
@@ -654,32 +685,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pypy/sideways.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="9010" max-vertical-offset="9350">
-          <caret line="530" column="4" selection-start-line="530" selection-start-column="4" selection-end-line="530" selection-end-column="4" />
-          <folding>
-            <marker date="1423362842400" expanded="true" signature="670:866" placeholder="CREATE TABLE..stocks..." />
-            <marker date="1423362842400" expanded="true" signature="3132:3185" placeholder="INSERT INTO ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pypy/sandp500stocklist.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="8568">
-          <caret line="2" column="3" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pypy/variables.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="289">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pypy/google_intraday.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="629" max-vertical-offset="1717">
@@ -991,14 +996,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pypy/variables.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="613">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="17" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pypy/sideways.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="7089" max-vertical-offset="9503">
@@ -1020,14 +1017,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pypy/classes/Trade.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="680">
-          <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pypy/classes/Diff.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
@@ -1036,36 +1025,84 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pypy/variables.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="613">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="17" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pypy/classes/Helper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-27.103449" vertical-offset="3668" max-vertical-offset="4556">
+        <state vertical-scroll-proportion="-153.58621" vertical-offset="0" max-vertical-offset="4556">
           <caret line="262" column="0" selection-start-line="262" selection-start-column="0" selection-end-line="262" selection-end-column="0" />
           <folding>
             <element signature="e#21#31#0" expanded="true" />
+            <marker date="1423528207588" expanded="true" signature="169:10224" placeholder="..." />
+            <marker date="1423528207588" expanded="true" signature="9023:10224" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pypy/site-packages/MySQL_python-1.2.5-py2.7.egg-info/PKG-INFO">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="833">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pypy/site-packages/setuptools.pth">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="613">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pypy/site-packages/PyMySQL-0.6.3.dist-info/WHEEL">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="613">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pypy/classes/Trade.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="680">
+          <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pypy/new_sideways.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.1724138" vertical-offset="153" max-vertical-offset="3689">
+          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pypy/classes/Database.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
-          <caret line="23" column="60" selection-start-line="23" selection-start-column="60" selection-end-line="23" selection-end-column="60" />
+        <state vertical-scroll-proportion="0.83" vertical-offset="29" max-vertical-offset="833">
+          <caret line="31" column="42" selection-start-line="31" selection-start-column="42" selection-end-line="31" selection-end-column="42" />
           <folding>
             <element signature="e#21#35#0" expanded="true" />
-            <marker date="1423524679326" expanded="true" signature="277:540" placeholder="CREATE TABLE..IF..." />
-            <marker date="1423524679326" expanded="true" signature="645:701" placeholder="INSERT INTO ..." />
-            <marker date="1423524679326" expanded="true" signature="990:1010" placeholder="SELECT * FRO..stocks..." />
-            <marker date="1423524679326" expanded="true" signature="990:1032" placeholder="SELECT * FRO..stocks..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pypy/new_sideways.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5068493" vertical-offset="1591" max-vertical-offset="3672">
-          <caret line="111" column="20" selection-start-line="111" selection-start-column="20" selection-end-line="111" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
+            <marker date="1423620951885" expanded="true" signature="312:339" placeholder="CREATE TABLE..IF..." />
+            <marker date="1423620951885" expanded="true" signature="312:651" placeholder="CREATE TABLE..IF..." />
+            <marker date="1423620951885" expanded="true" signature="875:887" placeholder="INSERT INTO ..." />
+            <marker date="1423620951885" expanded="true" signature="875:888" placeholder="INSERT INTO ..." />
+            <marker date="1423620951885" expanded="true" signature="875:963" placeholder="INSERT INTO ..." />
+            <marker date="1423620951885" expanded="true" signature="875:1086" placeholder="INSERT INTO ..." />
+            <marker date="1423620951885" expanded="true" signature="875:1088" placeholder="INSERT INTO ..." />
+            <marker date="1423620951885" expanded="true" signature="875:1089" placeholder="INSERT INTO ..." />
+            <marker date="1423620951885" expanded="true" signature="1516:1530" placeholder="SELECT * FRO..stocks..." />
+            <marker date="1423620951885" expanded="true" signature="1516:1575" placeholder="SELECT * FRO..stocks..." />
           </folding>
         </state>
       </provider>

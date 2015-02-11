@@ -8,12 +8,13 @@ from classes.Line import Line
 from classes.Diff import Diff
 from variables import *
 import sqlite3
+import pymysql
 import time
 
-conn = sqlite3.connect('stocks.db')
-db = Database(conn)
+db = Database('test')
+#db = Database(conn, str(int(time.time())))
 
-DATABASE = False
+DATABASE = True
 
 def analyze_stock(symbol, filename):
     print symbol

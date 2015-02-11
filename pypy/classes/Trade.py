@@ -13,8 +13,8 @@ class Trade:
     res_line = None
     sup_line = None
     mean_line = None
-    enter_url = None
-    exit_url = None
+    enter_url = ""
+    exit_url = ""
     def __init__(self, buy_time, sell_time, exit_cutoff, buy_price, sell_price, long_short, investment=0.0, symbol="",actual_type=""):
         self.buy_time = buy_time
         self.sell_time = sell_time
