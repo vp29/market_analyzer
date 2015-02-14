@@ -11,8 +11,13 @@ import sqlite3
 import pymysql
 import time
 
-db = Database('test')
-#db = Database(conn, str(int(time.time())))
+table_name = str(time.time()//1)
+table_name = table_name[:-2]
+print table_name
+
+table_name = '1423623241'
+
+db = Database(table_name)
 
 DATABASE = True
 
@@ -75,7 +80,7 @@ def analyze_stock(symbol, filename):
         max_sup_index = 0
 
         #try:
-        for j in range(0, analysisRange-1):
+        for j in range(0,1):#range(0, analysisRange-1):
             temp_prices = prices[j:]
             inter, slope = Helper.least_square(temp_prices)
             #print inter
@@ -109,7 +114,7 @@ def analyze_stock(symbol, filename):
             res_inter, res_slope = Helper.least_square(temp_peaks)
             sup_inter, sup_slope = Helper.least_square(temp_troughs)
         except:
-            print "error"
+            #print "error"
             continue
 
         res_val = res_inter + res_slope*analysisRange
@@ -209,4 +214,5 @@ def analyze_sandp():
 if __name__ == "__main__":
     #analyze_sandp()
     #analyze_stock("CSC", "data/CSC.csv")
-    Helper.analyze_db(db, 15000)
+    #Helper.analyze_db(db, 15000)
+    Helper.analyze_db_more_indepth(db, 15000)

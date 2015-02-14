@@ -10,6 +10,7 @@ class Database:
         self.table_name = table_name
         db_connection = self.create_connection()
         self.cursor = db_connection.cursor()
+        print table_name
         self.cursor.execute("CREATE TABLE IF NOT EXISTS s" + self.table_name + " (id int PRIMARY KEY NOT NULL AUTO_INCREMENT, "
                        "symbol VARCHAR(20), buy_date INTEGER, sell_date INTEGER, buy_price DOUBLE, "
                        "sell_price DOUBLE, enter_url VARCHAR(256), exit_url VARCHAR(256), actual_type varchar(256), long_short VARCHAR(10));")
@@ -31,7 +32,8 @@ class Database:
 
         db_connection = self.create_connection()
         self.cursor = db_connection.cursor()
-        for row in self.cursor.execute("SELECT * FROM " + self.table_name + " ORDER BY buy_date ASC;"):
+        self.cursor.execute("SELECT * FROM s" + self.table_name + " ORDER BY buy_date ASC;")
+        for row in self.cursor.fetchall():
             trades.append(Trade(row[2], row[3], 0.0, row[4], row[5], row[9], 0.0, row[1], row[8]))
         db_connection.close()
         return trades
