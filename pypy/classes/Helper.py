@@ -22,8 +22,12 @@ class Helper:
                 if '.' not in str(row[4]) and len(str(row[4])) >=4:
                     continue
                 if i % 5 == 0:
-                    data_val = Data(float(row[3]), float(row[1]), float(row[2]), float(row[4]), int(row[5]), time.mktime(datetime.strptime(row[0], "%Y-%m-%d %H:%M:%S").timetuple()))
-                    data.append(data_val)
+                    try:
+                        data_val = Data(float(row[3]), float(row[1]), float(row[2]), float(row[4]), int(row[5]), time.mktime(datetime.strptime(row[0], "%Y-%m-%d %H:%M:%S").timetuple()))
+                        data.append(data_val)
+                    except:
+                        None
+                        #print "Cannot parse line: " + row
                 i += 1
         return data
 
@@ -270,6 +274,15 @@ class Helper:
         long_stocks = []
         short_stocks = []
 
+        fmt = "%Y-%m-%d %H:%M:%S"
+
+        start_year = 2007
+        cur_year_start = 1167631200 #2007 timestamp
+        year_time = 31536000 #seconds in a year
+        long_gain = [1]
+        short_gain = [1]
+        j = 0
+
         for i in range(start_time, end_time+20, 20):
             for trade in trades:
                 enter_time = trade.buy_time if trade.long_short == "long" else trade.sell_time
@@ -294,20 +307,32 @@ class Helper:
             for trade in open_trades:
                 exit_time = trade.sell_time if trade.long_short == "long" else trade.buy_time
                 if i == exit_time:
+                    if exit_time > cur_year_start + year_time:
+                        j += 1
+                        long_gain.append(1)
+                        short_gain.append(1)
+                        cur_year_start += year_time
                     stocks.remove(trade.symbol)
                     pgain = 0.0
                     if trade.long_short == "long":
                         long_stocks.remove(trade.symbol)
                         pgain = float((trade.sell_price - trade.buy_price))/float(trade.buy_price)
+                        long_gain[j] *= (1.0 + pgain)
+                        t = datetime.fromtimestamp(float(trade.sell_time))
+                        time = datetime.fromtimestamp(float(trade.buy_time)).strftime(fmt) + " - " + t.strftime(fmt)
                     else:
                         short_stocks.remove(trade.symbol)
                         pgain = float((trade.sell_price - trade.buy_price))/float(trade.sell_price)
+                        short_gain[j] *= (1.0 + pgain)
+                        t = datetime.fromtimestamp(float(trade.sell_time))
+                        time = t.strftime(fmt) + " - " + datetime.fromtimestamp(float(trade.buy_time)).strftime(fmt)
                     total += trade.investment*(1.0 + pgain) - trade.investment
                     gain = str(pgain)
-                    print "stock: " + trade.symbol + " gain: " + gain
-                    t = datetime.fromtimestamp(float(trade.sell_time))
-                    fmt = "%Y-%m-%d %H:%M:%S"
-                    print t.strftime(fmt)
+                    print "stock: " + trade.symbol + " gain: " + gain + " type: " + trade.long_short
+                    print time
+
+                    if pgain > .5 or pgain < -.5:
+                        raw_input("Press Enter to continue...")
 
                     if float(gain) > 0.000000000000:
                         if 'Upward' in trade.actual_type:
@@ -363,6 +388,11 @@ class Helper:
             print "SHORT: percent of profitable downwards trades: " + str(float(short_prof_downwards_trade)/(float(short_prof_downwards_trade)+float(short_unprof_downwards_trade)))
         except:
             None
+
+        for i, x in enumerate(long_gain):
+            print str(start_year) + " long gain: " + str(long_gain[i])
+            print str(start_year) + " short gain: " + str(short_gain[i])
+            start_year += 1
 
         print "lowest_account_balance: ", max_drawdown
         print "highest_account_balance: ", max_gain

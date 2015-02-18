@@ -15,7 +15,8 @@ class Trade:
     mean_line = None
     enter_url = ""
     exit_url = ""
-    def __init__(self, buy_time, sell_time, exit_cutoff, buy_price, sell_price, long_short, investment=0.0, symbol="",actual_type=""):
+    id = ""
+    def __init__(self, buy_time, sell_time, exit_cutoff, buy_price, sell_price, long_short, investment=0.0, symbol="",actual_type="", id=0):
         self.buy_time = buy_time
         self.sell_time = sell_time
         self.exit_cutoff = exit_cutoff
@@ -25,6 +26,7 @@ class Trade:
         self.investment = investment
         self.symbol = symbol
         self.actual_type = actual_type
+        self.id = id
 
     def __repr__(self):
         return "Symbol:     " + self.symbol + "\n" + \

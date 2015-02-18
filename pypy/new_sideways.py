@@ -15,7 +15,7 @@ table_name = str(time.time()//1)
 table_name = table_name[:-2]
 print table_name
 
-table_name = '1423623241'
+table_name = '1424118804'
 
 db = Database(table_name)
 
@@ -216,3 +216,8 @@ if __name__ == "__main__":
     #analyze_stock("CSC", "data/CSC.csv")
     #Helper.analyze_db(db, 15000)
     Helper.analyze_db_more_indepth(db, 15000)
+    #trades = db.read_trades_symbol('WDC')
+    #for trade in trades:
+    #    print trade.id
+    #    print trade
+    #db.remove_item(5069)

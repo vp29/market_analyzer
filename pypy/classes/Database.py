@@ -38,6 +38,25 @@ class Database:
         db_connection.close()
         return trades
 
+    def read_trades_symbol(self, symbol):
+        trades = []
+
+        db_connection = self.create_connection()
+        self.cursor = db_connection.cursor()
+        self.cursor.execute("SELECT * FROM s" + self.table_name + " WHERE symbol ='" + symbol + "' ORDER BY buy_date ASC;")
+        for row in self.cursor.fetchall():
+            trades.append(Trade(row[2], row[3], 0.0, row[4], row[5], row[9], 0.0, row[1], row[8], row[0]))
+        db_connection.close()
+        return trades
+
+    def remove_item(self, idt):
+        db_connection = self.create_connection()
+        self.cursor = db_connection.cursor()
+        self.cursor.execute("DELETE FROM s" + self.table_name + " WHERE id=%s;" % (idt, ))
+        db_connection.commit()
+        db_connection.close()
+
+
     def create_connection(self):
         return pymysql.connect(host = "stocks1234567.db.9558983.hostedresource.com",
                        port = 3306,
