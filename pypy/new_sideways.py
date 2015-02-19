@@ -216,8 +216,8 @@ if __name__ == "__main__":
     #analyze_stock("CSC", "data/CSC.csv")
     #Helper.analyze_db(db, 15000)
     Helper.analyze_db_more_indepth(db, 15000)
-    #trades = db.read_trades_symbol('WDC')
+    #trades = db.read_trades_symbol('WMT')
     #for trade in trades:
     #    print trade.id
     #    print trade
-    #db.remove_item(5069)
+    #db.remove_item(5109)

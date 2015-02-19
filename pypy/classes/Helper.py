@@ -228,7 +228,7 @@ class Helper:
 
 
     @staticmethod
-    def analyze_db_more_indepth(db, initial_val):
+    def analyze_db_more_indepth(db, initial_val, margin_perc=.5):
         trades = []
 
         trades = db.read_trades()
@@ -279,8 +279,12 @@ class Helper:
         start_year = 2007
         cur_year_start = 1167631200 #2007 timestamp
         year_time = 31536000 #seconds in a year
-        long_gain = [1]
-        short_gain = [1]
+        long_gain = [0]
+        short_gain = [0]
+        long_trades = [0]
+        short_trades = [0]
+        total_long_gain = [1]
+        total_short_gain = [1]
         j = 0
 
         for i in range(start_time, end_time+20, 20):
@@ -309,30 +313,40 @@ class Helper:
                 if i == exit_time:
                     if exit_time > cur_year_start + year_time:
                         j += 1
-                        long_gain.append(1)
-                        short_gain.append(1)
+                        long_gain.append(0)
+                        short_gain.append(0)
+                        long_trades.append(0)
+                        short_trades.append(0)
+                        total_long_gain.append(1)
+                        total_short_gain.append(1)
                         cur_year_start += year_time
                     stocks.remove(trade.symbol)
                     pgain = 0.0
                     if trade.long_short == "long":
                         long_stocks.remove(trade.symbol)
                         pgain = float((trade.sell_price - trade.buy_price))/float(trade.buy_price)
-                        long_gain[j] *= (1.0 + pgain)
+                        long_gain[j] += pgain
+                        long_trades[j] += 1
+                        total_long_gain[j] *= (1 + pgain/max_trades)
                         t = datetime.fromtimestamp(float(trade.sell_time))
                         time = datetime.fromtimestamp(float(trade.buy_time)).strftime(fmt) + " - " + t.strftime(fmt)
                     else:
                         short_stocks.remove(trade.symbol)
                         pgain = float((trade.sell_price - trade.buy_price))/float(trade.sell_price)
-                        short_gain[j] *= (1.0 + pgain)
+                        short_gain[j] += pgain
+                        short_trades[j] += 1
+                        total_short_gain[j] *= (1 + pgain/max_trades)
                         t = datetime.fromtimestamp(float(trade.sell_time))
                         time = t.strftime(fmt) + " - " + datetime.fromtimestamp(float(trade.buy_time)).strftime(fmt)
-                    total += trade.investment*(1.0 + pgain) - trade.investment
+                    if pgain > .8 or pgain < -.8:
+                        continue
+                    total += float(1.0/(1.0-margin_perc))*trade.investment*(1.0 + pgain) - float(1.0/(1.0-margin_perc))*trade.investment
                     gain = str(pgain)
                     print "stock: " + trade.symbol + " gain: " + gain + " type: " + trade.long_short
                     print time
 
-                    if pgain > .5 or pgain < -.5:
-                        raw_input("Press Enter to continue...")
+                    #if pgain > .5 or pgain < -.5:
+                    #    raw_input("Press Enter to continue...")
 
                     if float(gain) > 0.000000000000:
                         if 'Upward' in trade.actual_type:
@@ -390,8 +404,11 @@ class Helper:
             None
 
         for i, x in enumerate(long_gain):
-            print str(start_year) + " long gain: " + str(long_gain[i])
-            print str(start_year) + " short gain: " + str(short_gain[i])
+            print str(start_year) + " long avg gain: " + str(float(long_gain[i])/float(long_trades[i])) + \
+                " total gain: " + str(total_long_gain[i])
+            print str(start_year) + " short avg gain: " + str(float(short_gain[i])/float(short_trades[i])) + \
+                " total gain: " + str(total_short_gain[i])
+            print str(start_year) + " total gain: " + str(total_long_gain[i] * total_short_gain[i])
             start_year += 1
 
         print "lowest_account_balance: ", max_drawdown
