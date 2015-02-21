@@ -233,6 +233,8 @@ class Helper:
 
         trades = db.read_trades()
 
+        trades = Helper.order_trades(trades)
+
         prof_sideways_trade = 0
         prof_updwards_trade = 0
         prof_downwards_trade = 0
@@ -287,9 +289,14 @@ class Helper:
         total_short_gain = [1]
         j = 0
 
-        for i in range(start_time, end_time+20, 20):
+
+
+        for i in range(start_time, end_time+60, 60):
             for trade in trades:
                 enter_time = trade.buy_time if trade.long_short == "long" else trade.sell_time
+                if enter_time < i:
+                    trades.remove(trade)
+                    continue
                 if i == enter_time:
                     if len(open_trades) < max_trades and (not single_trade or (single_trade and trade.symbol not in stocks)):
                         if (trade.long_short == "long" and trade.symbol not in short_stocks) or \
@@ -300,11 +307,14 @@ class Helper:
                             else:
                                 short_stocks.append(trade.symbol)
                             investment_amount = total/(max_trades)
-                            print investment_amount
+                            print trade.symbol + " -  " + str(investment_amount)
                             #total -= investment_amount
                             open_trades.append(Trade(trade.buy_time, trade.sell_time, 0.0, trade.buy_price, trade.sell_price, trade.long_short, investment_amount, trade.symbol, trade.actual_type))
                             total_used += len(open_trades)
                             total_possible += max_trades
+                elif trade.enter_time > i:
+                    break
+
 
 
 
@@ -417,6 +427,22 @@ class Helper:
         print "end gain:  " + str((total-initial_val)/initial_val)
         print "utilisation: " + str(float(total_used)/float(total_possible))
 
+
+    @staticmethod
+    def order_trades(trades):
+        ordered = []
+        short = []
+        long = []
+        for trade in trades:
+            if trade.long_short == 'long':
+                trade.enter_time = trade.buy_time
+                long.append(trade)
+            else:
+                trade.enter_time = trade.sell_time
+                short.append(trade)
+        long.extend(short)
+        ordered = sorted(long, key=lambda x: x.enter_time)
+        return ordered
 
     @staticmethod
     def calculate_rsi(data):
