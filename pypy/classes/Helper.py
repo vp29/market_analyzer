@@ -287,6 +287,7 @@ class Helper:
         short_trades = [0]
         total_long_gain = [1]
         total_short_gain = [1]
+        end_value = [initial_val]
         j = 0
 
 
@@ -323,6 +324,7 @@ class Helper:
                 if i == exit_time:
                     if exit_time > cur_year_start + year_time:
                         j += 1
+                        end_value.append(total)
                         long_gain.append(0)
                         short_gain.append(0)
                         long_trades.append(0)
@@ -418,8 +420,12 @@ class Helper:
                 " total gain: " + str(total_long_gain[i])
             print str(start_year) + " short avg gain: " + str(float(short_gain[i])/float(short_trades[i])) + \
                 " total gain: " + str(total_short_gain[i])
-            print str(start_year) + " total gain: " + str(total_long_gain[i] * total_short_gain[i])
+            if i < len(long_gain)-1:
+                print str(start_year) + " start value: " + str(end_value[i]) + " end value: " + str(end_value[i+1])
+                print str(start_year) + " total gain: " + str(float((end_value[i+1] - end_value[i])/end_value[i]))
             start_year += 1
+        print str(start_year-1) + " start value: " + str(end_value[-1]) + " end value: " + str(total)
+        print str(start_year-1) + " total gain: " + str(float((total - end_value[-1])/end_value[-1]))
 
         print "lowest_account_balance: ", max_drawdown
         print "highest_account_balance: ", max_gain

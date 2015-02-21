@@ -3,12 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="08fa0ffd-2583-4a8c-a63c-82ed294ef2cc" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pypy/classes/Helper.py" afterPath="$PROJECT_DIR$/pypy/classes/Helper.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pypy/classes/Trade.py" afterPath="$PROJECT_DIR$/pypy/classes/Trade.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/market_analyzer.iml" afterPath="$PROJECT_DIR$/.idea/market_analyzer.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pypy/new_sideways.py" afterPath="$PROJECT_DIR$/pypy/new_sideways.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pypy/table_list" afterPath="$PROJECT_DIR$/pypy/table_list" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="market_analyzer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,7 +20,7 @@
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/market_analyzer$sideways__1_.coverage" NAME="sideways (1) Coverage Results" MODIFIED="1423362844578" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pypy" />
-    <SUITE FILE_PATH="coverage/market_analyzer$new_sideways.coverage" NAME="new_sideways Coverage Results" MODIFIED="1424486307100" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pypy" />
+    <SUITE FILE_PATH="coverage/market_analyzer$new_sideways.coverage" NAME="new_sideways Coverage Results" MODIFIED="1424487503889" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pypy" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -50,8 +47,8 @@
       <file leaf-file-name="Helper.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pypy/classes/Helper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4524" max-vertical-offset="8364">
-              <caret line="300" column="39" selection-start-line="300" selection-start-column="39" selection-end-line="300" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="8052" max-vertical-offset="8466">
+              <caret line="426" column="94" selection-start-line="426" selection-start-column="94" selection-end-line="426" selection-end-column="94" />
               <folding>
                 <element signature="e#21#31#0" expanded="true" />
               </folding>
@@ -59,11 +56,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="new_sideways.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="new_sideways.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pypy/new_sideways.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7429306" vertical-offset="0" max-vertical-offset="3961">
-              <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+            <state vertical-scroll-proportion="-11.56" vertical-offset="0" max-vertical-offset="3961">
+              <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -81,11 +78,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="table_list" pinned="false" current-in-tab="false">
+      <file leaf-file-name="table_list" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pypy/table_list">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1071">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="10" />
+            <state vertical-scroll-proportion="0.28337237" vertical-offset="916" max-vertical-offset="1411">
+              <caret line="61" column="4" selection-start-line="61" selection-start-column="4" selection-end-line="77" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -107,10 +104,10 @@
         <option value="$PROJECT_DIR$/pypy/sideways.py" />
         <option value="$PROJECT_DIR$/pypy/classes/Database.py" />
         <option value="$PROJECT_DIR$/pypy/variables.py" />
-        <option value="$PROJECT_DIR$/pypy/table_list" />
         <option value="$PROJECT_DIR$/pypy/classes/Trade.py" />
         <option value="$PROJECT_DIR$/pypy/classes/Helper.py" />
         <option value="$PROJECT_DIR$/pypy/new_sideways.py" />
+        <option value="$PROJECT_DIR$/pypy/table_list" />
       </list>
     </option>
   </component>
@@ -883,14 +880,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pypy/variables.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="17" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pypy/classes/Database.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="427" max-vertical-offset="1190">
@@ -916,29 +905,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pypy/classes/Helper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4524" max-vertical-offset="8364">
-          <caret line="300" column="39" selection-start-line="300" selection-start-column="39" selection-end-line="300" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="6250" max-vertical-offset="8466">
+          <caret line="426" column="94" selection-start-line="426" selection-start-column="94" selection-end-line="426" selection-end-column="94" />
           <folding>
             <element signature="e#21#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pypy/table_list">
+    <entry file="file://$PROJECT_DIR$/pypy/new_sideways.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1071">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="10" />
+        <state vertical-scroll-proportion="-11.56" vertical-offset="0" max-vertical-offset="3961">
+          <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pypy/variables.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="17" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pypy/new_sideways.py">
+    <entry file="file://$PROJECT_DIR$/pypy/table_list">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7429306" vertical-offset="0" max-vertical-offset="3961">
-          <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.28337237" vertical-offset="916" max-vertical-offset="1411">
+          <caret line="61" column="4" selection-start-line="61" selection-start-column="4" selection-end-line="77" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
