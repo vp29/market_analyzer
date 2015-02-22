@@ -34,7 +34,11 @@ class Database:
         self.cursor = db_connection.cursor()
         self.cursor.execute("SELECT * FROM s" + self.table_name + " ORDER BY buy_date ASC;")
         for row in self.cursor.fetchall():
-            trades.append(Trade(row[2], row[3], 0.0, row[4], row[5], row[9], 0.0, row[1], row[8]))
+            t = Trade(row[2], row[3], 0.0, row[4], row[5], row[9], 0.0, row[1], row[8])
+            t.enter_url = row[6]
+            t.exit_url = row[7]
+            trades.append(t)
+
         db_connection.close()
         return trades
 

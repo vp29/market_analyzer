@@ -13,6 +13,7 @@ class Trade:
     res_line = None
     sup_line = None
     mean_line = None
+    prices = []
     enter_url = ""
     exit_url = ""
     id = ""
@@ -36,4 +37,6 @@ class Trade:
                 "Bought at:  " + str(self.buy_price) + "\n" + \
                 "Sell at:    " + str(self.sell_price) + "\n" + \
                 "Trend:      " + self.actual_type + "\n" + \
-                "Trade time: " + str(abs(self.buy_time - self.sell_time)) + "\n"
+                "Trade time: " + str(abs(self.buy_time - self.sell_time)) + "\n" + \
+                "Enter url:  " + self.enter_url + "\n" + \
+                "Exit url:   " + self.exit_url
