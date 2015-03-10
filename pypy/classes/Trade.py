@@ -18,6 +18,7 @@ class Trade:
     exit_url = ""
     id = ""
     enter_time = 0
+    stop_loss_val = 0.0
 
     def __init__(self, buy_time, sell_time, exit_cutoff, buy_price, sell_price, long_short, investment=0.0, symbol="",actual_type="", id=0):
         self.buy_time = buy_time

@@ -62,8 +62,12 @@ class Database:
 
 
     def create_connection(self):
-        return pymysql.connect(host = "stocks1234567.db.9558983.hostedresource.com",
-                       port = 3306,
-                       user = "stocks1234567",
-                       passwd = "Stocktest12345!",
-                       db = "stocks1234567")
+        while True:
+            try:
+                return pymysql.connect(host = "stocks1234567.db.9558983.hostedresource.com",
+                               port = 3306,
+                               user = "stocks1234567",
+                               passwd = "Stocktest12345!",
+                               db = "stocks1234567")
+            except:
+                print "Failed to connect to database"

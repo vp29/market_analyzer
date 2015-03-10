@@ -213,14 +213,13 @@ class Helper:
                             investment_amount = total/(max_trades)
                             print trade.symbol + " -  " + str(investment_amount)
                             #total -= investment_amount
-                            open_trades.append(Trade(trade.buy_time, trade.sell_time, 0.0, trade.buy_price, trade.sell_price, trade.long_short, investment_amount, trade.symbol, trade.actual_type))
+                            t = Trade(trade.buy_time, trade.sell_time, 0.0, trade.buy_price, trade.sell_price, trade.long_short, investment_amount, trade.symbol, trade.actual_type)
+                            t.exit_url = trade.exit_url
+                            open_trades.append(t)
                             total_used += len(open_trades)
                             total_possible += max_trades
                 elif trade.enter_time > i:
                     break
-
-
-
 
             for trade in open_trades:
                 exit_time = trade.sell_time if trade.long_short == "long" else trade.buy_time
@@ -253,11 +252,12 @@ class Helper:
                         total_short_gain[j] *= (1 + pgain/max_trades)
                         t = datetime.fromtimestamp(float(trade.sell_time))
                         time = t.strftime(fmt) + " - " + datetime.fromtimestamp(float(trade.buy_time)).strftime(fmt)
-                    if pgain > .8 or pgain < -.8:
+                    if pgain > .7 or pgain < -.7:
                         continue
                     total += float(1.0/(1.0-margin_perc))*trade.investment*(1.0 + pgain) - float(1.0/(1.0-margin_perc))*trade.investment
                     gain = str(pgain)
-                    print "stock: " + trade.symbol + " gain: " + gain + " type: " + trade.long_short
+                    print "stock: " + trade.symbol + " gain: " + gain + " type: " + trade.long_short + \
+                          "\n\tsell: " + str(trade.sell_price) + " buy : " + str(trade.buy_price)
                     print time
 
                     #if pgain > .5 or pgain < -.5:
@@ -277,6 +277,7 @@ class Helper:
                             if trade.long_short=="long": long_prof_sideways_trade +=1
                             else: short_prof_sideways_trade += 1
                     if float(gain) < 0.000000000000:
+                        print trade.exit_url
                         if 'Upward' in trade.actual_type:
                             unprof_upwards_trade += 1
                             if trade.long_short=="long": long_unprof_upwards_trade +=1
@@ -290,7 +291,7 @@ class Helper:
                             if trade.long_short=="long": long_unprof_sideways_trade +=1
                             else: short_unprof_sideways_trade += 1
 
-                    print trade.actual_type
+                    #print trade.actual_type
                     open_trades.remove(trade)
 
         print "# sideways profitable: ",  prof_sideways_trade
@@ -396,10 +397,11 @@ class Helper:
         return rsi
 
     @staticmethod
-    def generate_a_graph(resLine, supLine, meanLine, prices, index_or_title, identifiying_text,**kwargs):
+    def generate_a_graph(resLine, supLine, meanLine, prices, index_or_title, identifiying_text, exit_price,**kwargs):
         res_y = resLine.get_values()
         sup_y = supLine.get_values()
         mean_y = meanLine.get_values()
+        exit_y = [exit_price] * len(mean_y)
         price_y = []
         #put prices in list for plotting
         for price in prices:
@@ -430,11 +432,16 @@ class Helper:
         y=sup_y,
         name='Support'
         )
-        data = plotly.graph_objs.Data([trace0, trace1,trace2,trace3])
+        trace4 = plotly.graph_objs.Scatter(
+        x=range(0, len(exit_y)),
+        y=exit_y,
+        name="Exit cutoff"
+        )
+        data = plotly.graph_objs.Data([trace0, trace1,trace2,trace3,trace4])
 
         if kwargs:
             #print kwargs
-            trace4 = plotly.graph_objs.Scatter(
+            trace5 = plotly.graph_objs.Scatter(
               x= kwargs['buy_index'],
               y=kwargs['buy_price'],
               name='Buy Price',
@@ -443,7 +450,7 @@ class Helper:
                 )
               )
 
-            trace5 = plotly.graph_objs.Scatter(
+            trace6 = plotly.graph_objs.Scatter(
               x= kwargs['sold_index'],
               y=kwargs['sold_price'],
               name='Sell Price',
@@ -451,7 +458,7 @@ class Helper:
                   size=12
                 )
               )
-            data = plotly.graph_objs.Data([trace0, trace1,trace2,trace3,trace4,trace5])
+            data = plotly.graph_objs.Data([trace0, trace1,trace2,trace3,trace4,trace5,trace6])
 
 
         layout = plotly.graph_objs.Layout(
@@ -459,6 +466,10 @@ class Helper:
             )
         fig = plotly.graph_objs.Figure(data=data, layout=layout)
         #add auto_open=False arg to turn off iopening the browser
-        unique_url = py.plot(fig, filename=str(index_or_title),auto_open=False)
+        unique_url = ""
+        try:
+            unique_url = py.plot(fig, filename=str(index_or_title),auto_open=False)
+        except:
+            None
         print unique_url
         return str(unique_url)

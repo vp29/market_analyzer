@@ -15,9 +15,9 @@ table_name = str(time.time()//1)
 table_name = table_name[:-2]
 print table_name
 
-#table_name = '1424498558'
+#table_name = '1424992244'
 
-DATABASE = False
+DATABASE = True
 GRAPHING = True
 
 if DATABASE:
@@ -50,25 +50,37 @@ def analyze_stock(symbol, filename):
                         trade.res_line.end = len(trade.prices)-1
                         trade.sup_line.end = len(trade.prices)-1
                         trade.mean_line.end = len(trade.prices)-1
-                        url = Helper.generate_a_graph(trade.res_line, trade.sup_line, trade.mean_line, trade.prices, symbol + " long gain " + str(i), "testing" + str(i), buy_price=trade.buy_price, buy_index=analysisRange, sold_price=trade.sell_price, sold_index=len(trade.prices)-1)
+                        url = Helper.generate_a_graph(trade.res_line, trade.sup_line, trade.mean_line, trade.prices, symbol + " long gain " + str(i), "testing" + str(i), trade.exit_cutoff, buy_price=trade.buy_price, buy_index=analysisRange, sold_price=trade.sell_price, sold_index=len(trade.prices)-1)
                         trade.exit_url = url
                     if DATABASE:
                         db.insert_trade(trade)
                     trades.remove(trade)
                     print trade
-                elif close <= (trade.buy_price - trade.buy_price*stop_loss_perc/100):
+                #stop loss exit
+                elif close <= trade.stop_loss_val:
                     trade.sell_price = close
                     trade.sell_time = prices[-1].timestamp
                     if GRAPHING:
                         trade.res_line.end = len(trade.prices)-1
                         trade.sup_line.end = len(trade.prices)-1
                         trade.mean_line.end = len(trade.prices)-1
-                        url = Helper.generate_a_graph(trade.res_line, trade.sup_line, trade.mean_line, trade.prices, symbol + " long stop loss " + str(i), "testing" + str(i), buy_price=trade.buy_price, buy_index=analysisRange, sold_price=trade.sell_price, sold_index=len(trade.prices)-1)
+                        url = Helper.generate_a_graph(trade.res_line, trade.sup_line, trade.mean_line, trade.prices, symbol + " long stop loss " + str(i), "testing" + str(i), trade.exit_cutoff, buy_price=trade.buy_price, buy_index=analysisRange, sold_price=trade.sell_price, sold_index=len(trade.prices)-1)
                         trade.exit_url = url
                     if DATABASE:
                         db.insert_trade(trade)
                     trades.remove(trade)
                     print trade
+                #if we go past mean, set stop loss at close - 25% of difference
+                elif close > trade.buy_price + (trade.exit_cutoff-trade.buy_price)/2:
+                    trades.remove(trade)
+                    if trade.stop_loss_val < close - (trade.exit_cutoff-trade.buy_price)/4:
+                        trade.stop_loss_val = close - (trade.exit_cutoff-trade.buy_price)/4
+                    trades.append(trade)
+                #if we go over even_stop_loss_perc, set stop loss as buy_price
+                #elif close >= (trade.buy_price + (trade.exit_cutoff - trade.buy_price)*even_stop_loss_perc/100):
+                #    trades.remove(trade)
+                #    trade.stop_loss_val = trade.stop_loss_val if trade.stop_loss_val > trade.buy_price else trade.buy_price
+                #    trades.append(trade)
                 else:
                     continue
             elif trade.long_short == "short":
@@ -79,25 +91,36 @@ def analyze_stock(symbol, filename):
                         trade.res_line.end = len(trade.prices)-1
                         trade.sup_line.end = len(trade.prices)-1
                         trade.mean_line.end = len(trade.prices)-1
-                        url = Helper.generate_a_graph(trade.res_line, trade.sup_line, trade.mean_line, trade.prices, symbol + " short gain " + str(i), "testing" + str(i), buy_price=trade.buy_price, buy_index=len(trade.prices)-1, sold_price=trade.sell_price, sold_index=analysisRange)
+                        url = Helper.generate_a_graph(trade.res_line, trade.sup_line, trade.mean_line, trade.prices, symbol + " short gain " + str(i), "testing" + str(i), trade.exit_cutoff, buy_price=trade.buy_price, buy_index=len(trade.prices)-1, sold_price=trade.sell_price, sold_index=analysisRange)
                         trade.exit_url = url
                     if DATABASE:
                         db.insert_trade(trade)
                     trades.remove(trade)
                     print trade
-                elif close >= (trade.sell_price + trade.sell_price*stop_loss_perc/100):
+                elif close >= trade.stop_loss_val:
                     trade.buy_price = close
                     trade.buy_time = prices[-1].timestamp
                     if GRAPHING:
                         trade.res_line.end = len(trade.prices)-1
                         trade.sup_line.end = len(trade.prices)-1
                         trade.mean_line.end = len(trade.prices)-1
-                        url = Helper.generate_a_graph(trade.res_line, trade.sup_line, trade.mean_line, trade.prices, symbol + " short stop loss " + str(i), "testing" + str(i), buy_price=trade.buy_price, buy_index=len(trade.prices)-1, sold_price=trade.sell_price, sold_index=analysisRange)
+                        url = Helper.generate_a_graph(trade.res_line, trade.sup_line, trade.mean_line, trade.prices, symbol + " short stop loss " + str(i), "testing" + str(i), trade.exit_cutoff, buy_price=trade.buy_price, buy_index=len(trade.prices)-1, sold_price=trade.sell_price, sold_index=analysisRange)
                         trade.exit_url = url
                     if DATABASE:
                         db.insert_trade(trade)
                     trades.remove(trade)
                     print trade
+                #if we go past mean, set stop loss at 25% of difference
+                elif close < trade.sell_price - (trade.sell_price-trade.exit_cutoff)/2:
+                    trades.remove(trade)
+                    if trade.stop_loss_val > close + (trade.sell_price-trade.exit_cutoff)/4:
+                        trade.stop_loss_val = close + (trade.sell_price-trade.exit_cutoff)/4
+                    trades.append(trade)
+                #if we go over even_stop_loss_perc, set stop loss as buy_price
+                #elif close <= (trade.sell_price - (trade.sell_price-trade.exit_cutoff)*even_stop_loss_perc/100):
+                #    trades.remove(trade)
+                #    trade.stop_loss_val = trade.stop_loss_val if trade.stop_loss_val < trade.sell_price else trade.sell_price
+                #    trades.append(trade)
                 else:
                     continue
 
@@ -158,7 +181,7 @@ def analyze_stock(symbol, filename):
         if long_buffer_zone or short_buffer_zone:
 
             inter, slope = Helper.least_square(prices)
-            long_inter, long_slope = Helper.least_square(long_prices)
+            #long_inter, long_slope = Helper.least_square(long_prices)
             resLine = Line(res_inter, res_slope, max_res_index, analysisRange)
             supLine = Line(sup_inter, sup_slope, max_sup_index, analysisRange)
             meanLine = Line(inter, slope, 0, analysisRange)
@@ -182,36 +205,38 @@ def analyze_stock(symbol, filename):
             #only consider buying when support matches in middle and at least one side
             long_pot_buy = pot_buy and (neg_matches[1] and (neg_matches[0] or neg_matches[2])) \
                 and (pos_matches[1] and (pos_matches[0] and pos_matches[2]))
-            short_pot_buy = pot_buy and (neg_matches[1] and (neg_matches[0] and neg_matches[2])) \
-                and (pos_matches[1] and (pos_matches[0] or pos_matches[2]))
+            short_pot_buy = long_pot_buy# and (neg_matches[1] and (neg_matches[0] and neg_matches[2])) \
+                #and (pos_matches[1] and (pos_matches[0] or pos_matches[2]))
 
             #print "Sell Point: " + str(sell_point)
             #print "Buy Range:  " + str(min_long_buy_point) + ' - ' + str(max_long_buy_point)
             #print "Cur Price:  " + str(close)
             #print "buf Price:  " + str(sup_val + (res_val - sup_val)*(bufferPercent/100))
 
-            if longStocks and long_buffer_zone and sell_point > close*(1.0 + minimumPercent/100) and long_pot_buy and long_slope >= 0:
+            if longStocks and long_buffer_zone and sell_point > close*(1.0 + minimumPercent/100) and long_pot_buy:
                 if min_long_buy_point <= close <= max_long_buy_point: #and bought == False:
 
-                    print Helper.calculate_rsi(prices)
+                    #print Helper.calculate_rsi(prices)
                     long_buffer_zone = False
                     #url = Helper.generate_a_graph(resLine, supLine, meanLine, prices, symbol + " long " + str(i), "testing" + str(i))
 
                     t = Trade(prices[-1].timestamp, 0.0, sell_point, close, 0.0, "long", 0.0, symbol, actual_type)
+                    t.stop_loss_val = close - close*stop_loss_perc/100
                     t.prices = prices
                     #t.enter_url = url
                     t.res_line = resLine
                     t.sup_line = supLine
                     t.mean_line = meanLine
                     trades.append(t)
-            elif shortStocks and short_buffer_zone and buy_point < close/(1.0 + minimumPercent/100) and short_pot_buy and long_slope <= 0:
+            elif shortStocks and short_buffer_zone and buy_point < close/(1.0 + minimumPercent/100) and short_pot_buy:
                 if min_short_sell_point <= close <= max_short_sell_point: #and bought == False:
 
-                    print Helper.calculate_rsi(prices)
+                    #print Helper.calculate_rsi(prices)
                     short_buffer_zone = False
                     #url = Helper.generate_a_graph(resLine, supLine, meanLine, prices, symbol + " long " + str(i), "testing" + str(i))
 
                     t = Trade(0, prices[-1].timestamp, buy_point, 0.0, close, "short", 0.0, symbol, actual_type)
+                    t.stop_loss_val = close + close*stop_loss_perc/100
                     t.prices = prices
                     #t.enter_url = url
                     t.res_line = resLine
