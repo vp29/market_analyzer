@@ -15,7 +15,7 @@ table_name = str(time.time()//1)
 table_name = table_name[:-2]
 print table_name
 
-#table_name = '1424992244'
+#table_name = '1425947914'
 
 DATABASE = True
 GRAPHING = True
@@ -71,7 +71,7 @@ def analyze_stock(symbol, filename):
                     trades.remove(trade)
                     print trade
                 #if we go past mean, set stop loss at close - 25% of difference
-                elif close > trade.buy_price + (trade.exit_cutoff-trade.buy_price)/2:
+                elif close > trade.buy_price + (trade.exit_cutoff-trade.buy_price)/4:
                     trades.remove(trade)
                     if trade.stop_loss_val < close - (trade.exit_cutoff-trade.buy_price)/4:
                         trade.stop_loss_val = close - (trade.exit_cutoff-trade.buy_price)/4
@@ -111,7 +111,7 @@ def analyze_stock(symbol, filename):
                     trades.remove(trade)
                     print trade
                 #if we go past mean, set stop loss at 25% of difference
-                elif close < trade.sell_price - (trade.sell_price-trade.exit_cutoff)/2:
+                elif close < trade.sell_price - (trade.sell_price-trade.exit_cutoff)/4:
                     trades.remove(trade)
                     if trade.stop_loss_val > close + (trade.sell_price-trade.exit_cutoff)/4:
                         trade.stop_loss_val = close + (trade.sell_price-trade.exit_cutoff)/4
@@ -279,3 +279,4 @@ if __name__ == "__main__":
     #    print trade.id
     #    print trade
     #db.remove_item(5109)
+    #Helper.get_graph('8809', "plots/test.png")

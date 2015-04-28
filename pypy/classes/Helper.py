@@ -397,6 +397,12 @@ class Helper:
         return rsi
 
     @staticmethod
+    def get_graph(graph, out_file):
+        plotly.tools.set_credentials_file(username='shemer77', api_key='m034bapk2z', stream_ids=['0373v57h06', 'cjbitbcr9j'])
+        figure = py.get_figure('shemer77', graph)
+        py.image.save_as(figure, out_file)
+
+    @staticmethod
     def generate_a_graph(resLine, supLine, meanLine, prices, index_or_title, identifiying_text, exit_price,**kwargs):
         res_y = resLine.get_values()
         sup_y = supLine.get_values()
