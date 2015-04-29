@@ -9,6 +9,8 @@ from Helper import Helper
 import os
 from tkintertable.Tables import TableCanvas
 from tkintertable.TableModels import TableModel
+import graphs
+import time
 
 class Analysis(tk.Frame):
     def __init__(self, parent):
@@ -57,25 +59,58 @@ class Analysis(tk.Frame):
         table.createTableFrame()
         #trades_lb = tk.Listbox(t, selectmode=tk.SINGLE)
         for trade in trades:
-            table.addRow(Buy_Time=trade.buy_time, Sell_Time=trade.sell_time, Exit_Cutoff=trade.exit_cutoff,
-                         Sell_Price=trade.sell_price, Buy_Price=trade.buy_price, Long_Short=trade.long_short,
-                         Trend=trade.actual_type, Exit_URL=trade.exit_url)
+            table.addRow(Buy_Time=trade.buy_time, Sell_Time=trade.sell_time, Sell_Price=trade.sell_price,
+                         Buy_Price=trade.buy_price, Long_Short=trade.long_short,Trend=trade.actual_type,
+                         Exit_URL=trade.exit_url)
         table.redrawTable()
+        table.bind('<ButtonRelease-1>', lambda event :self.openPic(event, table))
         analyze_button = tk.Button(t, text="Analyze", command=lambda: self.analyze_data(trades))
         analyze_button.pack(side=tk.RIGHT, padx=5, pady=5)
         bad_trades_button = tk.Button(t, text="View Bad Trades", command=lambda: self.bad_trades(trades, model, table))
         bad_trades_button.pack(side=tk.RIGHT, padx=5, pady=5)
+        good_trades_button = tk.Button(t, text="View Good Trades", command=lambda: self.good_trades(trades, model, table))
+        good_trades_button.pack(side=tk.RIGHT, padx=5, pady=5)
+        all_trades_button = tk.Button(t, text="View All Trades", command=lambda: self.all_trades(trades, model, table))
+        all_trades_button.pack(side=tk.RIGHT, padx=5, pady=5)
         #trades_lb.pack(fill=tk.BOTH, expand=1)
+
+    def openPic(self, event, table):
+        try:
+            rclicked = table.get_row_clicked(event)
+            cclicked = table.get_col_clicked(event)
+            clicks = (rclicked, cclicked)
+            print 'clicks:', clicks
+        except:
+            print 'Error'
+        if clicks:
+            #Now we try to get the value of the row+col that was clicked.
+            try:
+                url = table.model.getValueAt(clicks[0], clicks[1])
+                if(url.startswith("https:")):
+                    out_file = "temp" + str(time.time()//1) + ".png"
+                    graph = graphs.graphs()
+                    graph.get_graph(url, out_file)
+                    im = Image.open(out_file)
+                    im.show()
+            except:
+                print 'No record at:', clicks
+
 
     def analyze_data(self, trades):
         Helper.analyze_db_more_indepth(None, 15000, .5, trades)
 
+    def all_trades(self, trades, model, table):
+        model.deleteRows()
+        for trade in trades:
+            model.addRow(Buy_Time=trade.buy_time, Sell_Time=trade.sell_time, Exit_Cutoff=trade.exit_cutoff,
+                         Sell_Price=trade.sell_price, Buy_Price=trade.buy_price, Long_Short=trade.long_short,
+                         Trend=trade.actual_type, Exit_URL=trade.exit_url)
+        table.redrawTable()
+
     def bad_trades(self, trades, model, table):
         bad_trades = []
         for trade in trades:
-            if trade.long_short == "long" and trade.buy_price > trade.sell_price:
-                bad_trades.append(trade)
-            elif trade.long_short == "short" and trade.sell_price < trade.buy_price:
+            if trade.buy_price > trade.sell_price:
                 bad_trades.append(trade)
         model.deleteRows()
         for trade in bad_trades:
@@ -84,6 +119,17 @@ class Analysis(tk.Frame):
                          Trend=trade.actual_type, Exit_URL=trade.exit_url)
         table.redrawTable()
 
+    def good_trades(self, trades, model, table):
+        good_trades = []
+        for trade in trades:
+            if trade.buy_price < trade.sell_price:
+                good_trades.append(trade)
+        model.deleteRows()
+        for trade in good_trades:
+            model.addRow(Buy_Time=trade.buy_time, Sell_Time=trade.sell_time, Exit_Cutoff=trade.exit_cutoff,
+                         Sell_Price=trade.sell_price, Buy_Price=trade.buy_price, Long_Short=trade.long_short,
+                         Trend=trade.actual_type, Exit_URL=trade.exit_url)
+        table.redrawTable()
 
 if __name__ == "__main__":
     root=tk.Tk()

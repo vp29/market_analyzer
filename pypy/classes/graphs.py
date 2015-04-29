@@ -8,10 +8,10 @@ from Database import Database
 from Helper import Helper
 import os
 
-table_name = '1424992244'
-db = Database(table_name)
+#table_name = 's1424992244'
+#db = Database(table_name)
 
-class graphs(tk.Frame):
+class graphs:
 
     SCALE = 2
     #frame = None
@@ -26,7 +26,7 @@ class graphs(tk.Frame):
         figure = py.get_figure(url)
         py.image.save_as(figure, out_file)
 
-class Example(tk.Frame):
+"""class Example(tk.Frame):
     SCALE = 2
     def __init__(self, root):
 
@@ -137,4 +137,4 @@ root.mainloop()
 #for trade in trades:
 #    if trade.exit_url != '':
 #        graph.get_graph(trade.exit_url, "graph_" + str(i) + ".png")
-#        i= i+1
+#        i= i+1"""
