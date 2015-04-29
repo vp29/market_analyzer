@@ -24,3 +24,4 @@ pypy/data/csc2,2,6,3.txt
 pypy/data/csc2,5,6,3.txt
 pypy/data/csc3,2,3,1.txt
 pypy/sandp500stocklist.txt
+*.png

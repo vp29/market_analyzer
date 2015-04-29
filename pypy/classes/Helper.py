@@ -131,10 +131,13 @@ class Helper:
         return (nextSup + diff*sup_per), (nextRes - diff*res_per), potBuy, actual_type
 
     @staticmethod
-    def analyze_db_more_indepth(db, initial_val, margin_perc=.5):
+    def analyze_db_more_indepth(db, initial_val, margin_perc=.5, trades_in=[]):
         trades = []
 
-        trades = db.read_trades()
+        if db != None:
+            trades = db.read_trades()
+        else:
+            trades = trades_in
 
         trades = Helper.order_trades(trades)
 

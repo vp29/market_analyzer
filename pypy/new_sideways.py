@@ -12,7 +12,7 @@ import pymysql
 import time
 
 table_name = str(time.time()//1)
-table_name = table_name[:-2]
+table_name = 's' + table_name[:-2]
 print table_name
 
 #table_name = '1425947914'

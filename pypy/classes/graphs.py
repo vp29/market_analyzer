@@ -26,7 +26,6 @@ class graphs(tk.Frame):
         figure = py.get_figure(url)
         py.image.save_as(figure, out_file)
 
-
 class Example(tk.Frame):
     SCALE = 2
     def __init__(self, root):
