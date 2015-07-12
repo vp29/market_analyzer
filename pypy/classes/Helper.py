@@ -13,6 +13,15 @@ import plotly.graph_objs
 class Helper:
 
     @staticmethod
+    def check_day_change(prev_ts, cur_ts, period):
+        day_change = False
+
+        if(prev_ts + period*10 < cur_ts):
+            day_change = True
+
+        return day_change
+
+    @staticmethod
     def read_csv(filename):
         data = []
         with open(filename, 'rb') as csvfile:
@@ -323,14 +332,20 @@ class Helper:
             None
 
         for i, x in enumerate(long_gain):
-            print str(start_year) + " long avg gain: " + str(float(long_gain[i])/float(long_trades[i])) + \
-                " total gain: " + str(total_long_gain[i])
-            print str(start_year) + " short avg gain: " + str(float(short_gain[i])/float(short_trades[i])) + \
-                " total gain: " + str(total_short_gain[i])
+            try:
+                print str(start_year) + " long avg gain: " + str(float(long_gain[i])/float(long_trades[i])) + \
+                    " total gain: " + str(total_long_gain[i])
+            except:
+                None
+            try:
+                print str(start_year) + " short avg gain: " + str(float(short_gain[i])/float(short_trades[i])) + \
+                    " total gain: " + str(total_short_gain[i])
+            except:
+                None
             if i < len(long_gain)-1:
                 print str(start_year) + " start value: " + str(end_value[i]) + " end value: " + str(end_value[i+1])
                 print str(start_year) + " total gain: " + str(float((end_value[i+1] - end_value[i])/end_value[i]))
-            start_year += 1
+                start_year += 1
         print str(start_year-1) + " start value: " + str(end_value[-1]) + " end value: " + str(total)
         print str(start_year-1) + " total gain: " + str(float((total - end_value[-1])/end_value[-1]))
 

@@ -14,7 +14,8 @@ class Database:
             print table_name
             self.cursor.execute("CREATE TABLE IF NOT EXISTS " + self.table_name + " (id int PRIMARY KEY NOT NULL AUTO_INCREMENT, "
                            "symbol VARCHAR(20), buy_date INTEGER, sell_date INTEGER, buy_price DOUBLE, "
-                           "sell_price DOUBLE, enter_url VARCHAR(256), exit_url VARCHAR(256), actual_type varchar(256), long_short VARCHAR(10));")
+                           "sell_price DOUBLE, enter_url VARCHAR(256), exit_url VARCHAR(256), actual_type varchar(256), long_short VARCHAR(10),"
+                           " exit_cutoff DOUBLE);")
             db_connection.commit()
         db_connection.close()
 
@@ -22,9 +23,9 @@ class Database:
         db_connection = self.create_connection()
         self.cursor = db_connection.cursor()
         self.cursor.execute("INSERT INTO " + self.table_name + "(symbol, buy_date, sell_date, buy_price, sell_price, "
-            "enter_url, exit_url, actual_type, long_short) VALUES (\"%s\", %s, %s, %s, %s, \"%s\", \"%s\", \"%s\", \"%s\");" %
+            "enter_url, exit_url, actual_type, long_short, exit_cutoff) VALUES (\"%s\", %s, %s, %s, %s, \"%s\", \"%s\", \"%s\", \"%s\", %s);" %
             (trade.symbol, trade.buy_time, trade.sell_time, trade.buy_price, trade.sell_price,
-             trade.enter_url, trade.exit_url, trade.actual_type, trade.long_short))
+             trade.enter_url, trade.exit_url, trade.actual_type, trade.long_short, trade.exit_cutoff))
         db_connection.commit()
         db_connection.close()
 
